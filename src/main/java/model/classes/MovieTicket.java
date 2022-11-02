@@ -1,14 +1,19 @@
-package model;
+package model.classes;
+
+import model.enums.CinemaType;
+import model.enums.DayType;
 
 import java.io.Serializable;
 
 public class MovieTicket implements Serializable {
+    private int movieGoerid;
     private Movie movie;
     private CinemaType cinemaType;
     private int movieGoerAge;
     private DayType dayType;
 
-    public MovieTicket( Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType){
+    public MovieTicket(int movieGoerid, Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType){
+        this.movieGoerid = movieGoerid;
         this.movie = movie;
         this.cinemaType = cinemaType;
         this.movieGoerAge = movieGoerAge;
@@ -45,5 +50,13 @@ public class MovieTicket implements Serializable {
 
     public void setDayType(DayType dayType) {
         this.dayType = dayType;
+    }
+
+    public int getMovieGoerid() {
+        return movieGoerid;
+    }
+
+    public void setMovieGoerid(int movieGoerid) {
+        this.movieGoerid = movieGoerid;
     }
 }

@@ -1,4 +1,5 @@
 package model.classes;
+import model.enums.CinemaType;
 
 public class Cinema {
     private int cinemaCode;

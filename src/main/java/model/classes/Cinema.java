@@ -1,6 +1,8 @@
 package model.classes;
 import model.enums.CinemaType;
 
+import java.util.ArrayList;
+
 public class Cinema {
     private int cinemaCode;
     private Movie currentMovie;

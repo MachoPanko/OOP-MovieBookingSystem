@@ -1,6 +1,4 @@
-package model;
-
-import java.util.ArrayList;
+package model.classes;
 
 public class Cinema {
     private int cinemaCode;

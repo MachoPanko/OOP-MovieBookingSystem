@@ -1,4 +1,7 @@
-package model;
+package model.classes;
+
+import model.enums.CinemaType;
+import model.enums.DayType;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
 package view;
 
 import controller.DatabaseController;
-import model.Movie;
+import model.classes.Movie;
 
 import java.util.ArrayList;
 import java.util.Scanner;

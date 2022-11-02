@@ -1,9 +1,9 @@
 package view;
-import model.AgeRating;
-import model.Movie;
+import model.enums.AgeRating;
+import model.classes.Movie;
 import controller.*;
-import model.MovieStatus;
-import model.MovieTag;
+import model.enums.MovieStatus;
+import model.enums.MovieTag;
 import java.util.ArrayList;
 import java.util.Scanner;
 

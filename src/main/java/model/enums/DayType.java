@@ -1,4 +1,4 @@
-package model;
+package model.enums;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;

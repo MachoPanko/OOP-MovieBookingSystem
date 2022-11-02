@@ -1,9 +1,9 @@
 package controller;
-import model.*;
+import model.classes.Movie;
+import model.classes.Staff;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 public class DatabaseController {

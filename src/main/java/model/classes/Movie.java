@@ -1,4 +1,8 @@
-package model;
+package model.classes;
+
+import model.enums.AgeRating;
+import model.enums.MovieStatus;
+import model.enums.MovieTag;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package model;
+package model.enums;
 
 public enum CinemaType {
     //can just change the name of cinema classes/experiences

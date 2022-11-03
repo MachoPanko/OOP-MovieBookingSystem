@@ -1,4 +1,5 @@
 package controller;
+import model.classes.Booking;
 import model.classes.Movie;
 import model.classes.Staff;
 

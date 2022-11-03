@@ -1,20 +1,23 @@
-package model;
+package model.classes;
+
+
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Booking implements Serializable {
     private String bookingId;
     private MovieGoer movieGoer;
     private Date date;
-    private MovieTicket movieTicket;
+    private ArrayList<MovieTicket> movieTickets;
     private Seating seating;
     private Transaction transaction;
 
-    public Booking(String bookingId, MovieGoer movieGoer, Date date, MovieTicket movieTicket, Seating seating, Transaction transaction) {
+    public Booking(String bookingId, MovieGoer movieGoer, Date date, ArrayList<MovieTicket> movieTicket, Seating seating, Transaction transaction) {
         this.bookingId = bookingId;
         this.movieGoer = movieGoer;
         this.date = date;
-        this.movieTicket = movieTicket;
+        this.movieTickets = movieTickets;
         this.seating = seating;
         this.transaction = transaction;
     }
@@ -43,12 +46,12 @@ public class Booking implements Serializable {
         this.date = date;
     }
 
-    public MovieTicket getMovieTicket() {
-        return movieTicket;
+    public ArrayList<MovieTicket> getMovieTickets() {
+        return movieTickets;
     }
 
-    public void setMovieTicket(MovieTicket movieTicket) {
-        this.movieTicket = movieTicket;
+    public void setMovieTickets(ArrayList<MovieTicket> movieTickets) {
+        this.movieTickets = movieTickets;
     }
 
     public Seating getSeating() {
@@ -73,8 +76,10 @@ public class Booking implements Serializable {
         build.append("Booking ID: "); build.append(this.getBookingId()); build.append("\n");
         build.append("Name: "); build.append(this.getMovieGoer().getName()); build.append("\n");
         build.append("Date: "); build.append(this.getDate()); build.append("\n");
-        build.append("Ticket: "); build.append(this.getMovieTicket()); build.append("\n");
+        build.append("Ticket: "); build.append(this.getMovieTickets()); build.append("\n");
         build.append("seating Number: "); build.append(this.getSeating()); build.append("\n");
         build.append("Transaction: "); build.append(this.getTransaction()); build.append("\n");
         return build.toString();
 }
+}
+

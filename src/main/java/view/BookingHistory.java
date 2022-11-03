@@ -1,8 +1,7 @@
 package view;
 
 import controller.DatabaseController;
-import model.Booking;
-import model.MovieGoer;
+import model.classes.Booking;
 
 import java.util.ArrayList;
 

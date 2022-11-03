@@ -1,5 +1,4 @@
 package view;
-import model.MovieGoer;
 
 import java.util.Scanner;
 

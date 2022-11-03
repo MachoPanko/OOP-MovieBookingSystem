@@ -1,4 +1,4 @@
-package model;
+package model.classes;
 
 public class MovieGoer {
     private String CustomerId;

@@ -1,6 +1,7 @@
 package controller;
 import model.*;
 
+import java.awt.print.Book;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -83,6 +84,30 @@ public class DatabaseController {
         catch (Exception e){
             System.out.println("There was an error in retrieving the staff login details");
             return (new ArrayList<Staff>());
+        }
+    }
+    public static void saveBookings(Booking booking){
+        try{
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/database/bookingHistory.txt"));
+            ArrayList<Booking> bookings = new ArrayList<Booking>();
+            bookings.add(booking);
+            oos.writeObject(bookings);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static ArrayList<Booking> loadBookings(){
+        try{
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/database/bookingHistory.txt"));
+            ArrayList<Booking> bookings = (ArrayList<Booking>) ois.readObject();
+            return bookings;
+        }catch (FileNotFoundException fileE){
+            System.out.println(fileE.getMessage());
+            return (new ArrayList<Booking>());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return (new ArrayList<Booking>());
         }
     }
 

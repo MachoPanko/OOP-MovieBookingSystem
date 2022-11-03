@@ -8,13 +8,15 @@ public class Cinema {
     private Movie currentMovie;
     private Seating[][] seatingLayout;
     private CinemaType cinemaClass;
+    private int[] showTiming;
     public int rows = 10;
     public int columns = 18;
 
-    public Cinema(int cinemaCode){ // , Movie currentMovie, CinemaType cinemaClass
+    public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, int[] showTiming){
         this.cinemaCode = cinemaCode;
-        //this.currentMovie = currentMovie;
-        //this.cinemaClass = cinemaClass;
+        this.currentMovie = currentMovie;
+        this.cinemaClass = cinemaClass;
+        this.showTiming = showTiming;
         this.seatingLayout = new Seating[rows][columns];
         for (int i = 0; i< this.rows; i++) {
             for(int j=0; j< this.columns; j++) {

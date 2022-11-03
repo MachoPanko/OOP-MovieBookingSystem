@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Transaction {
     private int transactionID;
-    private ArrayList<Pricing> prices;
+    private ArrayList<Double> prices;
     private double totalPrice;
     private String date;
     private TransactionType transactionType;
-    public Transaction(int transactionID, ArrayList<Pricing> prices, double totalPrice, String date, TransactionType transactionType){
+    public Transaction(int transactionID, ArrayList<Double> prices, double totalPrice, String date, TransactionType transactionType){
         this.transactionID = transactionID;
         this.prices = prices;
         this.totalPrice = totalPrice;
@@ -19,7 +19,7 @@ public class Transaction {
     public int getTransactionID() {
         return transactionID;
     }
-    public ArrayList<Pricing> getPrices() {
+    public ArrayList<Double> getPrices() {
         return prices;
     }
     public double getTotalPrice() {
@@ -34,7 +34,7 @@ public class Transaction {
     public void setTransactionID(int transactionID) {
         this.transactionID = transactionID;
     }
-    public void setPrices(ArrayList<Pricing> prices) {
+    public void setPrices(ArrayList<Double> prices) {
         this.prices = prices;
     }
     public void setTotalPrice(double totalPrice) {

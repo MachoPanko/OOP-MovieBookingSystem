@@ -15,7 +15,7 @@ public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
     FRIDAY("Friday"),
 
     THURSDAY("Thursday"),
-    WEEKEND("Weekdend"),
+    WEEKEND("Weekend"),
     HOLIDAY("Holiday");
 
     private String day1;

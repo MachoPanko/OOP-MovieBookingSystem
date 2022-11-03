@@ -1,24 +1,35 @@
 package model.classes;
 
+
+import model.classes.Movie;
 import model.enums.CinemaType;
 import model.enums.DayType;
+
 import java.io.Serializable;
 
 public class MovieTicket implements Serializable {
     private Movie movie;
     private CinemaType cinemaType;
-    private Cinema cinemaRoom;
     private int movieGoerAge;
     private DayType dayType;
+    private boolean isStudent;
 
-    public MovieTicket( Movie movie, CinemaType cinemaType, Cinema cinemaRoom, int movieGoerAge, DayType dayType){
+    public MovieTicket( Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType, boolean isStudent){
         this.movie = movie;
         this.cinemaType = cinemaType;
-        this.cinemaRoom = cinemaRoom;
         this.movieGoerAge = movieGoerAge;
         this.dayType = dayType;
-
+        this.isStudent = isStudent;
     }
+
+    public boolean getStudent() {
+        return isStudent;
+    }
+
+    public void setStudent(boolean student) {
+        isStudent = student;
+    }
+
     public Movie getMovie() {
         return movie;
     }
@@ -33,14 +44,6 @@ public class MovieTicket implements Serializable {
 
     public void setCinemaType(CinemaType cinemaType) {
         this.cinemaType = cinemaType;
-    }
-
-    public Cinema getCinemaRoom() {
-        return cinemaRoom;
-    }
-
-    public void setCinemaRoom(Cinema cinemaRoom) {
-        this.cinemaRoom = cinemaRoom;
     }
 
     public int getMovieGoerAge() {
@@ -58,4 +61,5 @@ public class MovieTicket implements Serializable {
     public void setDayType(DayType dayType) {
         this.dayType = dayType;
     }
+
 }

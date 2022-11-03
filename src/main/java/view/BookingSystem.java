@@ -29,6 +29,15 @@ public class BookingSystem {
         System.out.println("Please Enter Your Age so i dont go to jail ;)");
         int age = sc.nextInt();
 
+        System.out.println("Are you a student?\n1) Yes\n2) No");
+        int student = sc.nextInt();
+        boolean isStudent;
+        if(student == 1){
+            isStudent = true;
+        }else{
+            isStudent = false;
+        }
+
         System.out.println("Please Enter Your Email");
         String email = sc.next();
 
@@ -77,8 +86,8 @@ public class BookingSystem {
             seatChoice = sc.next();
 
             //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
-            movieTickets.add(new MovieTicket(movieChosen,cinemaType,cinemaChosen,
-                    age, DayType.getType("01-01-2022")));    ///hard coded date here for testing
+            movieTickets.add(new MovieTicket(movieChosen,cinemaType,
+                    age, DayType.getType("01-01-2022"),isStudent));    ///hard coded date here for testing
             System.out.println("Please Enter 1 if you would like to buy another ticket or enter anything else if you wish to stop.");
             choice = sc.nextInt();
         } while (choice == 1);

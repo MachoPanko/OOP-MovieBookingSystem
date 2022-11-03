@@ -1,4 +1,5 @@
 package model.classes;
 
-public class Date {
+public class Pricing {
+
 }

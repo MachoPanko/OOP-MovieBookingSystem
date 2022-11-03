@@ -8,17 +8,15 @@ import java.util.ArrayList;
 public class Booking implements Serializable {
     private String bookingId;
     private MovieGoer movieGoer;
-    private Date date;
+    private String date;
     private ArrayList<MovieTicket> movieTickets;
-    private Seating seating;
     private Transaction transaction;
 
-    public Booking(String bookingId, MovieGoer movieGoer, Date date, ArrayList<MovieTicket> movieTicket, Seating seating, Transaction transaction) {
+    public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTicket, Transaction transaction) {
         this.bookingId = bookingId;
         this.movieGoer = movieGoer;
         this.date = date;
         this.movieTickets = movieTickets;
-        this.seating = seating;
         this.transaction = transaction;
     }
 
@@ -38,11 +36,11 @@ public class Booking implements Serializable {
         this.movieGoer = movieGoer;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -54,13 +52,7 @@ public class Booking implements Serializable {
         this.movieTickets = movieTickets;
     }
 
-    public Seating getSeating() {
-        return seating;
-    }
 
-    public void setSeating(Seating seating) {
-        this.seating = seating;
-    }
 
     public Transaction getTransaction() {
         return transaction;
@@ -77,8 +69,7 @@ public class Booking implements Serializable {
         build.append("Name: "); build.append(this.getMovieGoer().getName()); build.append("\n");
         build.append("Date: "); build.append(this.getDate()); build.append("\n");
         build.append("Ticket: "); build.append(this.getMovieTickets()); build.append("\n");
-        build.append("seating Number: "); build.append(this.getSeating()); build.append("\n");
-        build.append("Transaction: "); build.append(this.getTransaction()); build.append("\n");
+        build.append("Transaction: "); build.append(this.getTransaction().toString()); build.append("\n");
         return build.toString();
 }
 }

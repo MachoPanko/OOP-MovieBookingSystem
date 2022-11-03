@@ -8,7 +8,6 @@ public class MovieTicket implements Serializable {
     private int movieGoerAge;
     private DayType dayType;
 
-
     public MovieTicket( Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType){
         this.movie = movie;
         this.cinemaType = cinemaType;

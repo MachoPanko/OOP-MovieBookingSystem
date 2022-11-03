@@ -1,10 +1,10 @@
 package view;
 
 import controller.DatabaseController;
-import model.AgeRating;
-import model.Movie;
-import model.MovieStatus;
-import model.MovieTag;
+import model.enums.AgeRating;
+import model.classes.Movie;
+import model.enums.MovieStatus;
+import model.enums.MovieTag;
 
 import java.util.ArrayList;
 import java.util.Scanner;

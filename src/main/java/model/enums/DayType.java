@@ -11,6 +11,10 @@ import java.util.*;
 public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
 
     WEEKDAY("Weekday"),
+
+    FRIDAY("Friday"),
+
+    THURSDAY("Thursday"),
     WEEKEND("Weekdend"),
     HOLIDAY("Holiday");
 
@@ -35,6 +39,12 @@ public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
         }
         if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || c1.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY ){
             return WEEKEND;
+        }
+        else if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY ){
+            return FRIDAY;
+        }
+        else if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
+            return THURSDAY;
         }
         else {
             return WEEKDAY;

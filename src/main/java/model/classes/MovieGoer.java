@@ -3,11 +3,11 @@ package model.classes;
 public class MovieGoer {
     private String CustomerId;
     private String name;
-    private String mobile;
-    private String age;
+    private int mobile;
+    private int age;
     private String email;
 
-    public MovieGoer(String customerId, String name, String mobile, String age, String email) {
+    public MovieGoer(String customerId, String name, int mobile, int age, String email) {
         CustomerId = customerId;
         this.name = name;
         this.mobile = mobile;
@@ -31,19 +31,19 @@ public class MovieGoer {
         this.name = name;
     }
 
-    public String getMobile() {
+    public int getMobile() {
         return mobile;
     }
 
-    public void setMobile(String mobile) {
+    public void setMobile(int mobile) {
         this.mobile = mobile;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

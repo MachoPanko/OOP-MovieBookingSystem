@@ -1,4 +1,7 @@
 package model.enums;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -20,9 +23,9 @@ public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
         this.day1=day;
     }
 
-    public static DayType getType(String date){
+    public static DayType getType(String date) throws IOException {
         day = parseDate(date);
-        dayString =   date.substring(8) + date.substring(5,7);
+        dayString =   date.substring(5,7)+"-"+date.substring(8) + "-2022";
         Calendar c1 = Calendar.getInstance(TimeZone.getTimeZone("Singapore"));
         c1.setTime(day);
         for ( String holidays : holidayDates){

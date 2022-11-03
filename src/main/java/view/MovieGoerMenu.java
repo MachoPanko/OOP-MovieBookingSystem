@@ -1,9 +1,10 @@
 package view;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MovieGoerMenu {
-    public static void menu(){
+    public static void menu() throws IOException {
         System.out.println("1) Movie Listing\n2) Book & purchase ticket\n3) View Booking History\n");
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();

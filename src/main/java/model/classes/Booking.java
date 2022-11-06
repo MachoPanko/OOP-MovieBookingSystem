@@ -14,13 +14,7 @@ public class Booking implements Serializable {
     private Transaction transaction;
     private Double time; // hh:mm
 
-    public Double getTime() {
-        return time;
-    }
 
-    public void setTime(Double time) {
-        this.time = time;
-    }
 
     public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTicket, Seating seating, Transaction transaction, Double time) {
         this.bookingId = bookingId;
@@ -32,6 +26,13 @@ public class Booking implements Serializable {
         this.time = time;
     }
 
+    public Double getTime() {
+        return time;
+    }
+
+    public void setTime(Double time) {
+        this.time = time;
+    }
     public String getBookingId() {
         return bookingId;
     }

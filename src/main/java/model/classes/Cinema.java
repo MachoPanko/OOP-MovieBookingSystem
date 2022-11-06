@@ -8,11 +8,11 @@ public class Cinema {
     private Movie currentMovie;
     private Seating[][] seatingLayout;
     private CinemaType cinemaClass;
-    private int[] showTiming;
+    private Showtime showTiming;
     public int rows = 10;
     public int columns = 18;
 
-    public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, int[] showTiming){
+    public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
         this.cinemaCode = cinemaCode;
         this.currentMovie = currentMovie;
         this.cinemaClass = cinemaClass;
@@ -24,6 +24,47 @@ public class Cinema {
             }
         }
     }
+
+    public int getCinemaCode() {
+        return cinemaCode;
+    }
+
+    public void setCinemaCode(int cinemaCode) {
+        this.cinemaCode = cinemaCode;
+    }
+
+    public Movie getCurrentMovie() {
+        return currentMovie;
+    }
+
+    public void setCurrentMovie(Movie currentMovie) {
+        this.currentMovie = currentMovie;
+    }
+
+    public Seating[][] getSeatingLayout() {
+        return seatingLayout;
+    }
+
+    public void setSeatingLayout(Seating[][] seatingLayout) {
+        this.seatingLayout = seatingLayout;
+    }
+
+    public CinemaType getCinemaClass() {
+        return cinemaClass;
+    }
+
+    public void setCinemaClass(CinemaType cinemaClass) {
+        this.cinemaClass = cinemaClass;
+    }
+
+    public Showtime getShowTiming() {
+        return showTiming;
+    }
+
+    public void setShowTiming(Showtime showTiming) {
+        this.showTiming = showTiming;
+    }
+
     public void printSeatingLayout(){
 
         System.out.println("                                    Screen                                          ");
@@ -43,5 +84,6 @@ public class Cinema {
             System.out.println("____________________________________________________________________________");
         }
     }
+
 
 }

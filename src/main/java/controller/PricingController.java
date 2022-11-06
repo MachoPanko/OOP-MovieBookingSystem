@@ -13,19 +13,21 @@ import static model.enums.DayType.*;
 import static model.enums.MovieTag.THREED;
 
 public class PricingController {
-    public static double getPrice(MovieTicket movieTicket, Booking booking){
+    public static double getPrice(MovieTicket movieTicket,double time){
         double price = 0.0;
-        boolean isStudent = movieTicket.getStudent();
+        boolean isStudent = movieTicket.isStudent();
+        boolean isElderly = movieTicket.isElderly();
         int ticketAge = movieTicket.getMovieGoerAge();
-        double bookingTime = booking.getTime();
+        double bookingTime =time;
         MovieTag movieTag = movieTicket.getMovie().getMovieTag();
         DayType dayType = movieTicket.getDayType();
         boolean isSixpm = false;
         if(bookingTime > 18.00){
             isSixpm = true;
         }
+
         if(movieTag != THREED) {
-            if(ticketAge >= 55 && isSixpm != true){
+            if(isElderly == true && isSixpm == false){
                 price = 4.00;
             }
             else if(isStudent == true && dayType != HOLIDAY && isSixpm != true){

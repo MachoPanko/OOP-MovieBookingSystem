@@ -13,19 +13,38 @@ public class MovieTicket implements Serializable {
     private int movieGoerAge;
     private DayType dayType;
     private boolean isStudent;
+    private boolean isElderly;
+    private Seating[][] seating;
 
-    public MovieTicket( Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType, boolean isStudent){
+    public MovieTicket( Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType, boolean isStudent,boolean isElderly,Seating[][] seating){
         this.movie = movie;
         this.cinemaType = cinemaType;
         this.movieGoerAge = movieGoerAge;
         this.dayType = dayType;
         this.isStudent = isStudent;
+        this.isElderly = isElderly;
+        this.seating = seating;
     }
 
-    public boolean getStudent() {
+    public Seating[][] getSeating() {
+        return seating;
+    }
+
+    public void setSeating(Seating[][] seating) {
+        this.seating = seating;
+    }
+
+    public boolean isElderly() {
+        return isElderly;
+    }
+
+    public void setElderly(boolean elderly) {
+        isElderly = elderly;
+    }
+
+    public boolean isStudent() {
         return isStudent;
     }
-
     public void setStudent(boolean student) {
         isStudent = student;
     }

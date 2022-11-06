@@ -15,7 +15,9 @@ public class Transaction {
         this.totalPrice = totalPrice;
         this.date = date;
         this.transactionType = transactionType;
+
     }
+
     public int getTransactionID() {
         return transactionID;
     }

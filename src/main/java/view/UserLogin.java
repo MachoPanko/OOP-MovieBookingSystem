@@ -1,8 +1,8 @@
 package view;
 
+
 import controller.DatabaseController;
 import model.classes.Staff;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,6 +23,7 @@ public class UserLogin {
                 System.out.println("1) Create staff account\n2) Login staff account");
                 int choiceToCreateOrLogin = sc.nextInt();
                 sc.nextLine();
+                Object DatabaseController;
                 if(choiceToCreateOrLogin == 1){ // Create a new staff account
                     System.out.println("Create your username");
                     String username = sc.nextLine();
@@ -31,7 +32,7 @@ public class UserLogin {
                     String password = sc.nextLine();
 
                     Staff staff =  new Staff(username, password);
-                    DatabaseController.saveStaffAccount(staff);
+                    controller.DatabaseController.saveStaffAccount(staff);
                 }
                 else{ // Login to an existing account
                     System.out.println("Enter your username");
@@ -40,7 +41,7 @@ public class UserLogin {
                     System.out.println("Enter your password");
                     String password = sc.nextLine();
 
-                    ArrayList<Staff> staff = DatabaseController.loadStaffAccount();
+                    ArrayList<Staff> staff = controller.DatabaseController.loadStaffAccount();
                     for(Staff s : staff){
                         if(s.getUsername().toUpperCase().equals(username.toUpperCase()) &&
                                 s.getPassword().toUpperCase().equals(password.toUpperCase())){

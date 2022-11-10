@@ -88,8 +88,8 @@ public class BookingSystem {
             System.out.println("Col");
             int col = sc.nextInt();
             //Seating layout not complete
-            Seating[][] seatingLayout = new Seating[10][18];
-            seatingLayout[row][col].occupySeat();
+            cinemaChosen.bookSeating(row, col);
+            Seating[][] seatingLayout = cinemaChosen.getSeatingLayout();
 
 
 

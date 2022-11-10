@@ -1,6 +1,8 @@
 package model.classes;
 
-public class Review {
+import java.io.Serializable;
+
+public class Review implements Serializable {
     private MovieGoer customer;
     private String customerReview;
     private double customerRating;

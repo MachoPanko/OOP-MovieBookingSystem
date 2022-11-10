@@ -2,6 +2,7 @@ package controller;
 
 import model.classes.Booking;
 import model.classes.Movie;
+import model.classes.Review;
 import model.classes.Staff;
 
 import java.io.*;
@@ -87,7 +88,6 @@ public class DatabaseController {
 
     public static ArrayList<Staff> loadStaffAccount(){
         ArrayList<Staff> staffData = new ArrayList<>();
-
         try{
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/database/staffAccount.txt"));
             staffData = (ArrayList<Staff>) ois.readObject();
@@ -116,6 +116,27 @@ public class DatabaseController {
         } catch (Exception fileE){
             System.out.println(fileE.getMessage());
             return (new ArrayList<Booking>());
+        }
+    }
+    public static void saveReviews(Review review){
+        try{
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/database/reviewHistory.txt"));
+            ArrayList<Review> reviews = new ArrayList<Review>();
+            reviews.add(review);
+            oos.writeObject(reviews);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static ArrayList<Review> loadReviews(){
+        try{
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/database/reviewHistory.txt"));
+            ArrayList<Review> reviews = (ArrayList<Review>) ois.readObject();
+            return reviews;
+        } catch (Exception fileE){
+            System.out.println(fileE.getMessage());
+            return (new ArrayList<Review>());
         }
     }
 

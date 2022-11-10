@@ -18,13 +18,21 @@ public class MovieUpdate {
         String movieId = sc.nextLine();
 
         ArrayList<Movie> movies = DatabaseController.loadMovieData();
-        for(Movie m : movies){
 
+        for(Movie m : movies){
             if(movieId.equals(m.getMovieId())){
 
                 System.out.println("What do you want to update?");
-                System.out.println("1) Title\n2) Director\n3) Casts\n4) Movie Tag\n" +
-                        "5) Status\n6)Age Rating\n7)Movie Rating\n8)Sypnosis");
+                System.out.println("""
+                        1) Title
+                        2) Director
+                        3) Casts
+                        4) Movie Tag
+                        5) Status
+                        6)Age Rating
+                        7)Movie Rating
+                        8)Synopsis""");
+
                 int updateChoice = sc.nextInt();
                 sc.nextLine();
 
@@ -43,7 +51,7 @@ public class MovieUpdate {
                         System.out.println("Update movie casts");
                         ArrayList<String> casts = new ArrayList<>();
                         System.out.println("Enter number of casts:");
-                        int noCast = sc.nextInt();
+                        int noCast = Integer.parseInt(sc.nextLine());
 
                         for (int i = 0; i < noCast; ++i) {
                             System.out.println("Enter cast name:");
@@ -76,11 +84,11 @@ public class MovieUpdate {
                     }
                     case 7 -> {
                         System.out.println("Update movie rating (0-5)");
-                        double movieRatingUpdate = sc.nextDouble();
+                        double movieRatingUpdate = Double.parseDouble(sc.nextLine());
                         m.setMovieRating(movieRatingUpdate);
                     }
                     case 8 -> {
-                        System.out.println("Update movie sypnosis");
+                        System.out.println("Update movie synopsis");
                         String synopsisUpdate = sc.nextLine();
                         m.setMovieSynopsis(synopsisUpdate);
                     }

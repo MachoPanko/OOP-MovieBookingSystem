@@ -89,6 +89,7 @@ public class BookingSystem {
             int col = sc.nextInt();
             //Seating layout not complete
             Seating[][] seatingLayout = new Seating[10][18];
+            seatingLayout[row][col].occupySeat();
 
 
 
@@ -116,7 +117,7 @@ public class BookingSystem {
 
             //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
             movieTickets.add(new MovieTicket(movieChosen,cinemaType,
-                    age, DayType.getType(todaysDate),isStudent,isElderly,seatingLayout));    ///hard coded date here for testing
+                    age, DayType.getType(todaysDate),isStudent,isElderly,seatingLayout[row][col]));
             System.out.println("Please Enter 1 if you would like to buy another ticket or enter anything else if you wish to stop.");
             choice = sc.nextInt();
         } while (choice == 1);

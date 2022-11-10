@@ -1,15 +1,17 @@
 package view;
+
 import model.enums.AgeRating;
 import model.classes.Movie;
 import controller.*;
 import model.enums.MovieStatus;
 import model.enums.MovieTag;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MovieCreation {
 
-    public static void  createMovie() {
+    public static void createMovie() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter ID of movie:");
         String movieId = sc.nextLine();
@@ -20,8 +22,11 @@ public class MovieCreation {
         System.out.println("Enter name of director:");
         String director = sc.nextLine();
 
-        ArrayList<String> casts = new ArrayList<String>();
-        while(casts.size() < 2){ // For now add only 2 casts
+        ArrayList<String> casts = new ArrayList<>();
+        System.out.println("Enter number of casts:");
+        int noCast = sc.nextInt();
+
+        for (int i = 0; i < noCast; ++i) {
             System.out.println("Enter cast name:");
             String castName = sc.nextLine();
             casts.add(castName);
@@ -43,14 +48,22 @@ public class MovieCreation {
         MovieStatus movieStatus = MovieStatus.getMovieStatus(statusChoice);
 
         System.out.println("Enter Movie Rating (0-5):");
-        String movieRating = sc.nextLine();
+        double movieRating = sc.nextDouble();
 
-        System.out.println("Enter Sypnosis:");
-        String sypnosis = sc.nextLine();
+        System.out.println("Enter Synopsis:");
+        String synopsis = sc.nextLine();
 
-        Movie movie = new Movie(movieId,movieTitle,movieTag,movieStatus,sypnosis,movieRating,director,ageRating,casts);
+        Movie movie = new Movie(movieId,
+                movieTitle,
+                movieTag,
+                movieStatus,
+                synopsis,
+                movieRating,
+                director,
+                ageRating,
+                casts
+        );
+
         DatabaseController.saveMovieData(movie);
     }
-
-
 }

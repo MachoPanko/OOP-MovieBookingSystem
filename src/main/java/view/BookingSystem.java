@@ -1,5 +1,6 @@
 package view;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import controller.DatabaseController;
@@ -17,7 +18,12 @@ public class BookingSystem {
     public static void purchaseTicket() throws IOException {
         // INIT DATE
         long millis = System.currentTimeMillis();
-        String todaysDate = new java.sql.Date(millis).toString();
+        SimpleDateFormat sdf = new SimpleDateFormat(
+                "dd-MM-yyyy");
+
+        String todaysDate = sdf.format(new java.sql.Date(millis));
+
+
         // INIT moviegoer
         Scanner sc = new Scanner(System.in);
         System.out.println("Please Enter Your ID:");
@@ -132,7 +138,7 @@ public class BookingSystem {
         }
         System.out.println(totalPrice);
 ////        Updating Booking History
-        //Booking booking = new Booking("test", movieGoer, "01-01-2022",movieTickets, new Transaction(1234,)); //HARD CODED TRANSACTION ARGUMENTS
+       // Booking booking = new Booking("test", movieGoer, "01-01-2022",movieTickets, new Transaction(1234,)); //HARD CODED TRANSACTION ARGUMENTS
         //DatabaseController.saveBookings(booking);
 
 

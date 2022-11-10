@@ -11,17 +11,14 @@ import java.util.Scanner;
 
 public class MovieUpdate {
 
-    public static void updateMovie(){
+    public static void updateMovie() {
         System.out.println("Enter the ID of the movie to update");
         Scanner sc = new Scanner(System.in);
-
         String movieId = sc.nextLine();
-
         ArrayList<Movie> movies = DatabaseController.loadMovieData();
 
-        for(Movie m : movies){
-            if(movieId.equals(m.getMovieId())){
-
+        for (Movie m : movies) {
+            if (movieId.equals(m.getMovieId())) {
                 System.out.println("What do you want to update?");
                 System.out.println("""
                         1) Title
@@ -29,9 +26,9 @@ public class MovieUpdate {
                         3) Casts
                         4) Movie Tag
                         5) Status
-                        6)Age Rating
-                        7)Movie Rating
-                        8)Synopsis""");
+                        6) Age Rating
+                        7) Movie Rating
+                        8) Synopsis""");
 
                 int updateChoice = sc.nextInt();
                 sc.nextLine();
@@ -95,7 +92,7 @@ public class MovieUpdate {
                 }
 
             }
-            DatabaseController.updateMovieData(m,Integer.parseInt(movieId)-1);
+            DatabaseController.updateMovieData(m, Integer.parseInt(movieId) - 1);
         }
     }
 

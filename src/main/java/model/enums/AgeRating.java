@@ -15,18 +15,12 @@ public enum AgeRating {
 
     public static AgeRating getRating(String choice) {
         choice = choice.toUpperCase();
-        if(choice.equals("G")){
-            return G;
-        }
-        else if(choice.equals("PG")){
-            return PG;
-        }
-        else if (choice.equals("PG13")){
-            return PG13;
-        }
-        else if(choice.equals("NC17")){
-            return NC17;
-        }
-        else return null;
+        return switch (choice) {
+            case "G" -> G;
+            case "PG" -> PG;
+            case "PG13" -> PG13;
+            case "NC17" -> NC17;
+            default -> null;
+        };
     }
 }

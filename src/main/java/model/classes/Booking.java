@@ -10,29 +10,16 @@ public class Booking implements Serializable {
     private MovieGoer movieGoer;
     private String date;
     private ArrayList<MovieTicket> movieTickets;
-    private Seating seating;
     private Transaction transaction;
-    private Double time; // hh:mm
 
-
-
-    public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTicket, Seating seating, Transaction transaction, Double time) {
+    public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTicket, Transaction transaction) {
         this.bookingId = bookingId;
         this.movieGoer = movieGoer;
         this.date = date;
         this.movieTickets = movieTickets;
-        this.seating = seating;
         this.transaction = transaction;
-        this.time = time;
     }
 
-    public Double getTime() {
-        return time;
-    }
-
-    public void setTime(Double time) {
-        this.time = time;
-    }
     public String getBookingId() {
         return bookingId;
     }
@@ -65,13 +52,7 @@ public class Booking implements Serializable {
         this.movieTickets = movieTickets;
     }
 
-    public Seating getSeating() {
-        return seating;
-    }
 
-    public void setSeating(Seating seating) {
-        this.seating = seating;
-    }
 
     public Transaction getTransaction() {
         return transaction;
@@ -88,8 +69,7 @@ public class Booking implements Serializable {
         build.append("Name: "); build.append(this.getMovieGoer().getName()); build.append("\n");
         build.append("Date: "); build.append(this.getDate()); build.append("\n");
         build.append("Ticket: "); build.append(this.getMovieTickets()); build.append("\n");
-        build.append("seating Number: "); build.append(this.getSeating()); build.append("\n");
-        build.append("Transaction: "); build.append(this.getTransaction()); build.append("\n");
+        build.append("Transaction: "); build.append(this.getTransaction().toString()); build.append("\n");
         return build.toString();
 }
 }

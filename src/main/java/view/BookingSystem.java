@@ -15,7 +15,9 @@ public class BookingSystem {
 
 
     public static void purchaseTicket() throws IOException {
-
+        // INIT DATE
+        long millis = System.currentTimeMillis();
+        String todaysDate = new java.sql.Date(millis).toString();
         // INIT moviegoer
         Scanner sc = new Scanner(System.in);
         System.out.println("Please Enter Your ID:");
@@ -130,8 +132,8 @@ public class BookingSystem {
         }
         System.out.println(totalPrice);
 ////        Updating Booking History
-//        Booking booking = new Booking("test", movieGoer, "01-01-2022",movieTickets,);
-//        DatabaseController.saveBookings(booking);
+        //Booking booking = new Booking("test", movieGoer, "01-01-2022",movieTickets, new Transaction(1234,)); //HARD CODED TRANSACTION ARGUMENTS
+        //DatabaseController.saveBookings(booking);
 
 
 

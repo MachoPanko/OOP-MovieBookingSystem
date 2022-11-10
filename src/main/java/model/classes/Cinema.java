@@ -28,15 +28,12 @@ public class Cinema {
     public int getCinemaCode() {
         return cinemaCode;
     }
-
     public void setCinemaCode(int cinemaCode) {
         this.cinemaCode = cinemaCode;
     }
-
     public Movie getCurrentMovie() {
         return currentMovie;
     }
-
     public void setCurrentMovie(Movie currentMovie) {
         this.currentMovie = currentMovie;
     }
@@ -44,7 +41,6 @@ public class Cinema {
     public Seating[][] getSeatingLayout() {
         return seatingLayout;
     }
-
     public void setSeatingLayout(Seating[][] seatingLayout) {
         this.seatingLayout = seatingLayout;
     }
@@ -54,19 +50,15 @@ public class Cinema {
     public void unbookSeating(int row, int col){
         seatingLayout[row][col].unOccupySeat();
     }
-
     public CinemaType getCinemaClass() {
         return cinemaClass;
     }
-
     public void setCinemaClass(CinemaType cinemaClass) {
         this.cinemaClass = cinemaClass;
     }
-
     public Showtime getShowTiming() {
         return showTiming;
     }
-
     public void setShowTiming(Showtime showTiming) {
         this.showTiming = showTiming;
     }
@@ -79,8 +71,8 @@ public class Cinema {
             int asciiRow = 74-i; // Ascii for J to A
             System.out.printf((char)asciiRow + " ");
             for(int j=0; j< this.columns; j++) {
-                if(seatingLayout[i][j].isOccupied()==false){
-                    System.out.printf("[ ] ");
+                if(!seatingLayout[i][j].isOccupied()){
+                    System.out.print("[ ] ");
                 }
                 else{
                     System.out.print("[X] ");

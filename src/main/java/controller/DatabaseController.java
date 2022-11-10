@@ -86,18 +86,16 @@ public class DatabaseController {
     }
 
     public static ArrayList<Staff> loadStaffAccount(){
+        ArrayList<Staff> staffData = new ArrayList<>();
+
         try{
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/database/staffAccount.txt"));
-            ArrayList<Staff> staffData = new ArrayList<Staff>();
             staffData = (ArrayList<Staff>) ois.readObject();
-            return staffData;
-        }catch (FileNotFoundException fileE){
-            return (new ArrayList<Staff>());
-        }
-        catch (Exception e){
+        } catch (Exception e){
             System.out.println("There was an error in retrieving the staff login details");
-            return (new ArrayList<Staff>());
         }
+
+        return staffData;
     }
     public static void saveBookings(Booking booking){
         try{

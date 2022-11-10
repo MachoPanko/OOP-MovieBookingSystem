@@ -10,7 +10,12 @@ public class Transaction {
     private ArrayList<PricingController> ticketPrice;
     private String date;
     private TransactionType transactionType;
-    public Transaction(int transactionID, double totalPrice, String date, TransactionType transactionType, ArrayList<PricingController> ticketPrice){
+
+    public Transaction(int transactionID,
+                       double totalPrice,
+                       String date,
+                       TransactionType transactionType,
+                       ArrayList<PricingController> ticketPrice){
         this.transactionID = transactionID;
         this.totalPrice = totalPrice;
         this.date = date;
@@ -20,11 +25,9 @@ public class Transaction {
     public ArrayList<PricingController> getTicketPrice() {
         return ticketPrice;
     }
-
     public void setTicketPrice(ArrayList<PricingController> ticketPrice) {
         this.ticketPrice = ticketPrice;
     }
-
     public int getTransactionID() {
         return transactionID;
     }
@@ -40,7 +43,6 @@ public class Transaction {
     public void setTransactionID(int transactionID) {
         this.transactionID = transactionID;
     }
-
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
@@ -52,13 +54,13 @@ public class Transaction {
     }
 
     @Override
-    public String toString(){
-        StringBuilder build = new StringBuilder();
-        build.append("Transaction ID: "); build.append(this.getTransactionID()); build.append("\n");
-        build.append("Prices: "); build.append(this.getTicketPrice()); build.append("\n");
-        build.append("Total Price: "); build.append(this.getTotalPrice()); build.append("\n");
-        build.append("Date: "); build.append(this.getDate()); build.append("\n");
-        build.append("Transaction Type: "); build.append(this.getTransactionType().toString()); build.append("\n");
-        return build.toString();
+    public String toString() {
+        return "Transaction{" +
+                "transactionID=" + transactionID +
+                ", totalPrice=" + totalPrice +
+                ", ticketPrice=" + ticketPrice +
+                ", date='" + date + '\'' +
+                ", transactionType=" + transactionType +
+                '}';
     }
 }

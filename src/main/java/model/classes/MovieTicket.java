@@ -9,12 +9,13 @@ public class MovieTicket implements Serializable {
     private CinemaType cinemaType;
     private int movieGoerAge;
     private DayType dayType;
+    private int cinemaRoom;
     private boolean isElderly;
     private boolean isStudent;
     private Seating seat;
 
 
-    public MovieTicket(Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType, boolean isStudent, boolean isElderly, Seating seat){
+    public MovieTicket(Movie movie, CinemaType cinemaType, int movieGoerAge, DayType dayType, boolean isStudent, boolean isElderly, Seating seat, int cinemaRoom){
         this.movie = movie;
         this.cinemaType = cinemaType;
         this.movieGoerAge = movieGoerAge;
@@ -22,6 +23,7 @@ public class MovieTicket implements Serializable {
         this.isStudent = isStudent;
         this.isElderly = isElderly;
         this.seat = seat;
+        this.cinemaRoom = cinemaRoom;
     }
 
     public boolean isElderly() {

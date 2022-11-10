@@ -64,6 +64,8 @@ public class BookingSystem {
         System.out.println("Please Choose your Cinema Type");
         System.out.println("Platinum, Economy, IMAX");
         CinemaType  cinemaType = CinemaType.getType(sc.next());
+//        int timeOfMovie ; /// *Time format used to store movie timings have not been set as of when this code was written. please review.
+//        timeOfMovie = sc.nextInt();
         System.out.println("At which time do you want to watch it?");
         System.out.println("1) 09:00,2) 14:00,3) 21:00");
         int showtimeChoice = sc.nextInt();
@@ -88,8 +90,8 @@ public class BookingSystem {
             System.out.println("Col");
             int col = sc.nextInt();
             //Seating layout not complete
-            Seating[][] seatingLayout = new Seating[10][18];
-            seatingLayout[row][col].occupySeat();
+            cinemaChosen.bookSeating(row, col);
+            Seating[][] seatingLayout = cinemaChosen.getSeatingLayout();
 
 
 
@@ -114,10 +116,9 @@ public class BookingSystem {
                 isElderly = false;
             }
 
-
             //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
             movieTickets.add(new MovieTicket(movieChosen,cinemaType,
-                    age, DayType.getType(todaysDate),isStudent,isElderly,seatingLayout[row][col]));
+                    age, DayType.getType(todaysDate),isStudent,isElderly,seatingLayout[row][col], cinemaChosen.getCinemaCode()));    ///hard coded date here for testing
             System.out.println("Please Enter 1 if you would like to buy another ticket or enter anything else if you wish to stop.");
             choice = sc.nextInt();
         } while (choice == 1);
@@ -131,8 +132,8 @@ public class BookingSystem {
         }
         System.out.println(totalPrice);
 ////        Updating Booking History
-//        Booking booking = new Booking("test", movieGoer, "01-01-2022",movieTickets,);
-//        DatabaseController.saveBookings(booking);
+        //Booking booking = new Booking("test", movieGoer, "01-01-2022",movieTickets, new Transaction(1234,)); //HARD CODED TRANSACTION ARGUMENTS
+        //DatabaseController.saveBookings(booking);
 
 
 

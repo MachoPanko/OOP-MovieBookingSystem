@@ -13,6 +13,7 @@ public class Seating {
     public void occupySeat(){
         this.occupied = true;
     }
+    public void unOccupySeat(){this.occupied = false;}
     public boolean isOccupied(){
         return occupied;
     }

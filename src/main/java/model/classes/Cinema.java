@@ -48,6 +48,12 @@ public class Cinema {
     public void setSeatingLayout(Seating[][] seatingLayout) {
         this.seatingLayout = seatingLayout;
     }
+    public void bookSeating(int row, int col){
+        seatingLayout[row][col].occupySeat();
+    }
+    public void unbookSeating(int row, int col){
+        seatingLayout[row][col].unOccupySeat();
+    }
 
     public CinemaType getCinemaClass() {
         return cinemaClass;

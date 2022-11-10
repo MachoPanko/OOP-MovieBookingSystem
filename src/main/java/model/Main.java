@@ -1,4 +1,5 @@
 package model;
+
 import model.classes.Cinema;
 import model.enums.DayType;
 import view.*;
@@ -11,5 +12,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
 //        MovieCreation.createMovie();
         MovieConfiguration.configureMovies();
-        BookingSystem.purchaseTicket();
-    }}
+//        BookingSystem.purchaseTicket();
+    }
+}

@@ -8,21 +8,24 @@ import java.util.Scanner;
 
 public class MovieConfiguration {
 
-    public static void configureMovies(){
+    public static void configureMovies() {
         System.out.println("What would you like to do?");
-        System.out.println("1)Display movies\n2) Create movie\n3) Update movie\n3) Delete movie");
+        System.out.println("1) Display movies\n2) Create movie\n3) Update movie\n3) Delete movie");
         Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        if(choice == 1){ // Display movies (Stiil cannot show casts)
-            ArrayList<Movie> movies = DatabaseController.loadMovieData();
-            for(Movie m : movies){
-                System.out.println(m);
+        switch (sc.nextInt()) {
+            case 1 -> {
+                // Display movies (Still cannot show casts)
+                ArrayList<Movie> movies = DatabaseController.loadMovieData();
+                if (movies.size() == 0) {
+                    // create a file
+                    DatabaseController.initMovieData();
+                    System.out.println("There are no movies! Try creating new ones!");
+                } else {
+                    movies.forEach(System.out::println);
+                }
             }
-        }else if(choice == 2){ // Create movie
-            MovieCreation.createMovie();
-        }
-        else if(choice == 3){ // Update movie
-            MovieUpdate.updateMovie();
+            case 2 -> MovieCreation.createMovie(); // Create movie
+            case 3 -> MovieUpdate.updateMovie(); // Update movie
         }
     }
 }

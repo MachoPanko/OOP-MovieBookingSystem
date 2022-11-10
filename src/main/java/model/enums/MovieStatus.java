@@ -13,16 +13,11 @@ public enum MovieStatus {
     }
 
     public static MovieStatus getMovieStatus(String choice) {
-        choice = choice.toUpperCase();
-        if(choice.equals("COMING_SOON")){
-            return COMING_SOON;
-        }
-        else if(choice.equals("PREVIEW")){
-            return PREVIEW;
-        }
-        else if (choice.equals("NOW_SHOWING")){
-            return NOW_SHOWING;
-        }
-        else return null;
+        return switch (choice.toUpperCase()) {
+            case "COMING_SOON" -> COMING_SOON;
+            case "PREVIEW" -> PREVIEW;
+            case "NOW_SHOWING" -> NOW_SHOWING;
+            default -> null;
+        };
     }
 }

@@ -13,15 +13,11 @@ public enum MovieTag {
 
     public static MovieTag getMovieTag(String choice) {
         choice = choice.toUpperCase();
-        if(choice.equals("BLOCKBUSTER")){
-            return BLOCKBUSTER;
-        }
-        else if(choice.equals("NORMAL")){
-            return NORMAL;
-        }
-        else if (choice.equals("3D")){
-            return THREED;
-        }
-        else return null;
+        return switch (choice) {
+            case "BLOCKBUSTER" -> BLOCKBUSTER;
+            case "NORMAL" -> NORMAL;
+            case "3D" -> THREED;
+            default -> null;
+        };
     }
 }

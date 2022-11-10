@@ -24,7 +24,7 @@ public class MovieCreation {
 
         ArrayList<String> casts = new ArrayList<>();
         System.out.println("Enter number of casts:");
-        int noCast = sc.nextInt();
+        int noCast = Integer.parseInt(sc.nextLine());
 
         for (int i = 0; i < noCast; ++i) {
             System.out.println("Enter cast name:");
@@ -48,7 +48,7 @@ public class MovieCreation {
         MovieStatus movieStatus = MovieStatus.getMovieStatus(statusChoice);
 
         System.out.println("Enter Movie Rating (0-5):");
-        double movieRating = sc.nextDouble();
+        double movieRating = Double.parseDouble(sc.nextLine());
 
         System.out.println("Enter Synopsis:");
         String synopsis = sc.nextLine();

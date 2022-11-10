@@ -8,6 +8,7 @@ import controller.PricingController;
 import model.classes.*;
 import model.enums.CinemaType;
 import model.enums.DayType;
+import model.enums.TransactionType;
 
 public class BookingSystem {
 
@@ -138,8 +139,8 @@ public class BookingSystem {
         }
         System.out.println(totalPrice);
 ////        Updating Booking History
-       // Booking booking = new Booking("test", movieGoer, "01-01-2022",movieTickets, new Transaction(1234,)); //HARD CODED TRANSACTION ARGUMENTS
-        //DatabaseController.saveBookings(booking);
+        Booking booking = new Booking("test", movieGoer, todaysDate,movieTickets, new Transaction(1234,12,todaysDate, TransactionType.getType(), new ArrayList<>())); //HARD CODED TRANSACTION ARGUMENTS
+        DatabaseController.saveBookings(booking);
 
 
 

@@ -10,6 +10,19 @@ import java.util.ArrayList;
 
 public class DatabaseController {
 
+    public static void initMovieData() {
+        try{
+            File obj = new File("src/database/movieDatabase.txt");
+            if(obj.createNewFile()) {
+                System.out.println("Created new movieDatabase.txt");
+            } else {
+                System.out.println("Error creating new movieDATA");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void saveMovieData(Movie movie){
         try{
             ArrayList<Movie> movies = loadMovieData();
@@ -38,15 +51,14 @@ public class DatabaseController {
     }
 
     public static ArrayList<Movie> loadMovieData(){
+        ArrayList<Movie> movies = new ArrayList<>();
         try{
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/database/movieDatabase.txt"));
-            ArrayList<Movie> movies = new ArrayList<Movie>();
             movies = (ArrayList<Movie>) ois.readObject();
-            return movies;
         }catch (Exception e){
             System.out.println(e.getMessage());
-            return (new ArrayList<Movie>());
         }
+        return movies;
     }
 
     public static void saveStaffAccount(Staff staff){
@@ -103,11 +115,8 @@ public class DatabaseController {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/database/bookingHistory.txt"));
             ArrayList<Booking> bookings = (ArrayList<Booking>) ois.readObject();
             return bookings;
-        }catch (FileNotFoundException fileE){
+        } catch (Exception fileE){
             System.out.println(fileE.getMessage());
-            return (new ArrayList<Booking>());
-        }catch (Exception e){
-            System.out.println(e.getMessage());
             return (new ArrayList<Booking>());
         }
     }

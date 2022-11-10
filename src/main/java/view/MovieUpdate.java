@@ -27,63 +27,67 @@ public class MovieUpdate {
                         "5) Status\n6)Age Rating\n7)Movie Rating\n8)Sypnosis");
                 int updateChoice = sc.nextInt();
                 sc.nextLine();
-                switch (updateChoice){
-                    case 1:
+
+                switch (updateChoice) {
+                    case 1 -> {
                         System.out.println("Update movie title:");
                         String titleUpdate = sc.nextLine();
                         m.setMovieTitle(titleUpdate);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Update movie director:");
                         String directorUpdate = sc.nextLine();
                         m.setMovieDirector(directorUpdate);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.out.println("Update movie casts");
-                        ArrayList<String> casts = new ArrayList<String>();
-                        while(casts.size() < 2){ // For now add only 2 casts
+                        ArrayList<String> casts = new ArrayList<>();
+                        System.out.println("Enter number of casts:");
+                        int noCast = sc.nextInt();
+
+                        for (int i = 0; i < noCast; ++i) {
                             System.out.println("Enter cast name:");
                             String castName = sc.nextLine();
                             casts.add(castName);
                         }
+
                         m.setCasts(casts);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         System.out.println("Update movie tag");
                         System.out.println("Blockbuster, Normal, 3D");
                         String tagChoice = sc.nextLine();
                         MovieTag movieTag = MovieTag.getMovieTag(tagChoice);
                         m.setMovieTag(movieTag);
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         System.out.println("Update movie status");
                         System.out.println("Coming_Soon, Preview, Now_Showing");
                         String statusChoice = sc.nextLine();
                         MovieStatus movieStatus = MovieStatus.getMovieStatus(statusChoice);
                         m.setMovieStatus(movieStatus);
-                        break;
-                    case 6:
+                    }
+                    case 6 -> {
                         System.out.println("Update age rating");
                         System.out.println("G, PG, PG13, NC17");
                         String ageRatingUpdate = sc.nextLine();
                         AgeRating ageRating = AgeRating.getRating(ageRatingUpdate);
                         m.setAgeRating(ageRating);
-                        break;
-                    case 7:
+                    }
+                    case 7 -> {
                         System.out.println("Update movie rating (0-5)");
-                        String movieRatingUpdate = sc.nextLine();
+                        double movieRatingUpdate = sc.nextDouble();
                         m.setMovieRating(movieRatingUpdate);
-                        break;
-                    case 8:
+                    }
+                    case 8 -> {
                         System.out.println("Update movie sypnosis");
-                        String sypnosisUpdate = sc.nextLine();
-                        m.setMovieSypnosis(sypnosisUpdate);
-                        break;
-
+                        String synopsisUpdate = sc.nextLine();
+                        m.setMovieSynopsis(synopsisUpdate);
+                    }
                 }
 
             }
-            DatabaseController.updateMovieData(m,Integer.valueOf(movieId)-1);
+            DatabaseController.updateMovieData(m,Integer.parseInt(movieId)-1);
         }
     }
 

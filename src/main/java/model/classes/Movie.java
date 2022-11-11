@@ -18,7 +18,11 @@ public class Movie implements Serializable {
     private AgeRating ageRating;
     private ArrayList<String> casts;
 
+    private ArrayList<Review> reviews;
+
     //Still need to implement past reviews and reviewers rating
+
+
 
     public Movie(String movieId,
                  String movieTitle,
@@ -38,8 +42,20 @@ public class Movie implements Serializable {
         this.movieDirector = movieDirector;
         this.ageRating = ageRating;
         this.casts = casts;
+        this.reviews = new ArrayList<>();
+    }
+    public ArrayList<Review> getReviews() {
+        return reviews;
+    }
+    public void printReviews(){
+        for ( Review r : this.reviews){
+            System.out.println(r.getCustomerReview());
+        }
     }
 
+    public void updateReviews(Review newReview) {
+        this.reviews.add(newReview);
+    }
     public String getMovieId() {
         return movieId;
     }

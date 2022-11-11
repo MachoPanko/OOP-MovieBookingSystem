@@ -7,6 +7,8 @@ import model.classes.Staff;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 
 public class DatabaseController {
@@ -118,25 +120,45 @@ public class DatabaseController {
             return (new ArrayList<Booking>());
         }
     }
-    public static void saveReviews(Review review){
+    public static void createReviews(){
         try{
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/database/reviewHistory.txt"));
-            ArrayList<Review> reviews = new ArrayList<Review>();
-            reviews.add(review);
+            HashMap<String, ArrayList<Review>>reviews = new HashMap<>();
             oos.writeObject(reviews);
+
         }catch(Exception e){
+            System.out.println("Error! Cant Initialize Database!");
             System.out.println(e.getMessage());
         }
     }
 
-    public static ArrayList<Review> loadReviews(){
+    public static void updateReviews(Movie movie, Review newReview){
+        try{
+            ObjectInputStream ois = new ObjectInputStream( new FileInputStream("src/database/reviewHistory.txt"));
+            HashMap<String, ArrayList<Review>> dataBase = (HashMap<String, ArrayList<Review>>)ois.readObject();
+            ArrayList<Review> reviewList = dataBase.get(movie.getMovieTitle());
+            if( reviewList != null){ // if there alr is a movie entry
+                reviewList.add(newReview);
+            }
+            else{ // if there is no movie entry
+                dataBase.put(movie.getMovieTitle(),new ArrayList<>());
+                dataBase.get(movie.getMovieTitle()).add(newReview);
+            }
+
+        }catch(Exception e){
+            System.out.println("Error! Cant Update Database!");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static HashMap<String,ArrayList<Review>> loadReviews(){
         try{
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/database/reviewHistory.txt"));
-            ArrayList<Review> reviews = (ArrayList<Review>) ois.readObject();
-            return reviews;
+            return (HashMap<String, ArrayList<Review>>) ois.readObject();
         } catch (Exception fileE){
             System.out.println(fileE.getMessage());
-            return (new ArrayList<Review>());
+            System.out.println("Error! No Database Initialized!");
+            return (new HashMap<>());
         }
     }
 

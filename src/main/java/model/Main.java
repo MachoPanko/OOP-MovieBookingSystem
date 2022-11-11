@@ -40,7 +40,8 @@ public class Main {
                 case UpdateMovieViewSubmenu -> MovieUpdate.displaySubmenu();
                 case DeleteMovieView -> MovieDelete.display();
                 case ConfigureSystemSettingView -> ConfigureSystemSettingView.display();
-                case MovieGoerLoginView -> {}
+                case MovieGoerLoginView -> MovieGoerLogin.display();
+                case MovieGoerView -> MovieGoerMenu.display();
                 case ExitedView -> {}
             }
         }

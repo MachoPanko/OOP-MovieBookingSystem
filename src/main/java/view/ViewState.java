@@ -18,6 +18,7 @@ public class ViewState {
         UpdateMovieView,
         UpdateMovieViewSubmenu,
         DeleteMovieView,
+        MovieGoerView,
         ExitedView
     }
 

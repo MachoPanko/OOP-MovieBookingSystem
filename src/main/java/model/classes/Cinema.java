@@ -79,10 +79,10 @@ public class Cinema {
     public void printSeatingLayout(){
 
         System.out.println("                                    Screen                                          ");
-        System.out.println("   1    2   3   4   5   6   7   8   9   10   11   12   13   14   15   16   17   18");
+        System.out.println("  1   2   3   4   5   6   7   8   9   10   11   12   13   14   15   16   17   18");
         for (int i = 0; i< this.rows; i++) {
             int asciiRow = 74-i; // Ascii for J to A
-            System.out.printf((char)asciiRow+ i + " ");
+            System.out.printf(i + " ");
             for(int j=0; j< this.columns; j++) {
                 if(seatingLayout[i][j].isToDisplay()){
                     if(seatingLayout[i][j].isCoupleSeat()){

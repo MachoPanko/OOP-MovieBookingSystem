@@ -1,5 +1,5 @@
 package model.classes;
-
+import static model.Main.SC;
 import model.enums.AgeRating;
 import model.enums.MovieStatus;
 import model.enums.MovieTag;
@@ -18,6 +18,7 @@ public class Movie implements Serializable {
     private AgeRating ageRating;
     private ArrayList<String> casts;
 
+    private int numberOfRatings;
     private ArrayList<Review> reviews;
 
     //Still need to implement past reviews and reviewers rating
@@ -41,17 +42,23 @@ public class Movie implements Serializable {
         this.ageRating = ageRating;
         this.casts = casts;
         this.reviews = new ArrayList<>();
+        this.numberOfRatings = 0;
     }
     public ArrayList<Review> getReviews() {
         return reviews;
     }
     public void printReviews(){
+        System.out.println(movieRating);
         for ( Review r : this.reviews){
             System.out.println(r.getCustomerReview());
         }
     }
 
     public void updateReviews(Review newReview) {
+        this.numberOfRatings++;
+        System.out.println("How many stars out of 5 would you rate this movie? : ");
+        this.movieRating = (this.movieRating*(numberOfRatings-1)+SC.nextInt())/numberOfRatings;
+        SC.nextLine();
         this.reviews.add(newReview);
     }
     public String getMovieId() {

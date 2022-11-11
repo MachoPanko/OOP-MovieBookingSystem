@@ -4,6 +4,12 @@ import java.io.*;
 
 public class DatabaseLoader {
 
+    /**
+     * Load the file provided by filename.
+     * @param filename Path of file
+     * @return T
+     * @param <T> T must extends
+     */
     public static <T extends Serializable> T loadDb(String filename) {
         T result = null;
 
@@ -21,6 +27,7 @@ public class DatabaseLoader {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename));
             oos.writeObject(buffer);
+            oos.close();
         } catch (Exception e) {
             System.out.println("Error writing to " + filename);
             System.out.println(e.getMessage());

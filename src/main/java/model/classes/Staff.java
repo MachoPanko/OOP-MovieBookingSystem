@@ -2,7 +2,7 @@ package model.classes;
 
 import java.io.Serializable;
 
-public class Staff implements Serializable {
+public class Staff implements Serializable, User {
     private final String username;
     private final String password;
 
@@ -11,10 +11,10 @@ public class Staff implements Serializable {
         this.password = password;
     }
 
+    @Override
     public String getUsername() { return username; }
-    public String getPassword() {
-        return password;
-    }
+
+    public String getPassword() { return password; }
 
     public boolean equals(Staff staff){
         return(this.username.equals(staff.getUsername()) && this.password.equals(staff.getPassword()));

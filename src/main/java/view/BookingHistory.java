@@ -10,7 +10,7 @@ public class BookingHistory {
             // load booking files from database
             ArrayList<Booking> bookings = DatabaseController.loadBookings();
             for(Booking b : bookings){
-                if(b.getMovieGoer().getCustomerId() == id){
+                if(b.getMovieGoer().getUsername() == id){
                     System.out.println(b);
                 }
             }

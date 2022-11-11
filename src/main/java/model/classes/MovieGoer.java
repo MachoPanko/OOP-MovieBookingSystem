@@ -1,26 +1,24 @@
 package model.classes;
 
-public class MovieGoer {
-    private String CustomerId;
+import java.io.Serializable;
+
+public class MovieGoer implements Serializable, User {
+    private String username;
     private String name;
     private int mobile;
     private int age;
     private String email;
 
-    public MovieGoer(String customerId, String name, int mobile, int age, String email) {
-        CustomerId = customerId;
+    public MovieGoer(String username, String name, int mobile, int age, String email) {
+        this.username = username;
         this.name = name;
         this.mobile = mobile;
         this.age = age;
         this.email = email;
     }
 
-    public String getCustomerId() {
-        return CustomerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.CustomerId = customerId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
@@ -54,4 +52,7 @@ public class MovieGoer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String getUsername() { return null; }
 }

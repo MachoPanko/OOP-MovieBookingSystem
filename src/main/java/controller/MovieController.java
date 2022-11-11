@@ -12,7 +12,12 @@ public class MovieController {
 
     public static void loadMovies() {
         HashMap<String, Movie> hm = DatabaseLoader.loadDb(filename);
-        if(hm != null) MOVIES.putAll(hm);
+        if(hm != null) {
+            System.out.println("Loaded Movie Database!");
+            MOVIES.putAll(hm);
+        } else {
+            System.out.println("Empty movie database loaded.");
+        }
     }
 
     public static void writeMovies() {

@@ -54,5 +54,5 @@ public class MovieGoer implements Serializable, User {
     }
 
     @Override
-    public String getUsername() { return null; }
+    public String getUsername() { return this.username; }
 }

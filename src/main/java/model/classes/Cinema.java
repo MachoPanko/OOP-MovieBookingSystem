@@ -13,6 +13,7 @@ public class Cinema {
     public int columns = 18;
 
     public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
+
         this.cinemaCode = cinemaCode;
         this.currentMovie = currentMovie;
         this.cinemaClass = cinemaClass;
@@ -21,8 +22,20 @@ public class Cinema {
         for (int i = 0; i< this.rows; i++) {
             for(int j=0; j< this.columns; j++) {
                 seatingLayout[i][j] = new Seating(i, j);
+                if(i<4 && j<2){
+                    seatingLayout[i][j].setToDisplay(false);
+                }
+                if(i>6){
+                    if(i==9&&j>7&&j<10){
+                        seatingLayout[i][j].setToDisplay(false);
+                    }
+                    else{
+                        seatingLayout[i][j].setCoupleSeat(true);
+                    }
+                }
             }
         }
+        seatingLayout[9][7].occupySeat();
     }
 
     public int getCinemaCode() {
@@ -69,19 +82,39 @@ public class Cinema {
         System.out.println("   1    2   3   4   5   6   7   8   9   10   11   12   13   14   15   16   17   18");
         for (int i = 0; i< this.rows; i++) {
             int asciiRow = 74-i; // Ascii for J to A
-            System.out.printf((char)asciiRow + " ");
+            System.out.printf((char)asciiRow+ i + " ");
             for(int j=0; j< this.columns; j++) {
-                if(!seatingLayout[i][j].isOccupied()){
-                    System.out.print("[ ] ");
+                if(seatingLayout[i][j].isToDisplay()){
+                    if(seatingLayout[i][j].isCoupleSeat()){
+
+                        if(!seatingLayout[i][j].isOccupied()){
+                            System.out.print("[  |  ] ");
+                            j++;
+                        }
+                        else{
+                            System.out.print("[ x|x ] ");
+                            j++;
+                        }
+                    }
+                    else{
+                        if(!seatingLayout[i][j].isOccupied()){
+                            System.out.print("[ ] ");
+                        }
+                        else{
+                            System.out.print("[X] ");
+                        }
+                    }
+
                 }
                 else{
-                    System.out.print("[X] ");
+                    System.out.print("    ");
                 }
             }
             System.out.println((char)asciiRow + "");
             System.out.println("____________________________________________________________________________");
         }
     }
+
 
 
 }

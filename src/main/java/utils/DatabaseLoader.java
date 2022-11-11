@@ -22,9 +22,10 @@ public class DatabaseLoader {
             result = (T) ois.readObject();
         } catch(EOFException e) {
             System.out.println("Empty file loaded");
+        } catch (FileNotFoundException e) {
+            DatabaseLoader.createNewDatabase(filename);
         } catch (IOException e) {
             e.printStackTrace();
-            DatabaseLoader.createNewDatabase(filename);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("Make sure you provide the correct class!");
@@ -60,6 +61,6 @@ public class DatabaseLoader {
 
     public static void loadAllDb() {
         MovieController.loadMovies();
-//        BookHistoryController.loadMovies();
+        BookHistoryController.loadBookingHist();
     }
 }

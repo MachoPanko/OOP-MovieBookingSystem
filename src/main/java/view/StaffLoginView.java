@@ -10,7 +10,7 @@ import static model.Main.VIEW_STATE;
 
 public class StaffLoginView {
     public static void display() {
-        System.out.println("You are a staff!");
+        System.out.println("Staff login!");
         System.out.println("1) Login staff account\n2) Back");
         int choice =  SC.nextInt();
         SC.nextLine();
@@ -33,6 +33,7 @@ public class StaffLoginView {
                     VIEW_STATE.setCurrUser(staff);
                 } else {
                     System.out.println("Wrong password! Try again!");
+                    VIEW_STATE.setCurrState(ViewState.State.StaffLoginView);
                 }
             }
         } else {

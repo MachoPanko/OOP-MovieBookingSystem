@@ -1,32 +1,26 @@
 package model.classes;
 import controller.PricingController;
 import model.enums.TransactionType;
+import java.util.HashMap;
 
 import java.util.ArrayList;
 
 public class Transaction {
     private int transactionID;
     private double totalPrice;
-    private ArrayList<PricingController> ticketPrice;
     private String date;
     private TransactionType transactionType;
+    private ArrayList<ReceiptItem> receipts;
 
     public Transaction(int transactionID,
                        double totalPrice,
                        String date,
-                       TransactionType transactionType,
-                       ArrayList<PricingController> ticketPrice){
+                       ArrayList<ReceiptItem> receipts){
         this.transactionID = transactionID;
         this.totalPrice = totalPrice;
         this.date = date;
         this.transactionType = transactionType;
-    }
-
-    public ArrayList<PricingController> getTicketPrice() {
-        return ticketPrice;
-    }
-    public void setTicketPrice(ArrayList<PricingController> ticketPrice) {
-        this.ticketPrice = ticketPrice;
+        this.receipts = receipts;
     }
     public int getTransactionID() {
         return transactionID;
@@ -49,8 +43,34 @@ public class Transaction {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public ArrayList<ReceiptItem> getReceipts() {
+        return receipts;
+    }
+
+    public void setReceipts(ArrayList<ReceiptItem> receipts) {
+        this.receipts = receipts;
+    }
+
     public void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
+    }
+    public void printReceipt(){
+        int eCounter=0;
+        int sCounter=0;
+        int aCounter=0;
+        for(ReceiptItem r : receipts){
+            if(r.getTicketType() == "elderly"){
+                eCounter++;
+            } else if (r.getTicketType() == "adult") {
+                aCounter++;
+            }
+            else{
+                sCounter++;
+            }
+        }
+
+
     }
 
     @Override
@@ -58,7 +78,6 @@ public class Transaction {
         return "Transaction{" +
                 "transactionID=" + transactionID +
                 ", totalPrice=" + totalPrice +
-                ", ticketPrice=" + ticketPrice +
                 ", date='" + date + '\'' +
                 ", transactionType=" + transactionType +
                 '}';

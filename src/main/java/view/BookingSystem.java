@@ -134,13 +134,27 @@ public class BookingSystem {
         System.out.println("Input the time now:");
         double time = sc.nextDouble();
         double totalPrice = 0;
+        String ticketType = new String();
         for(MovieTicket mt : movieTickets){
-            totalPrice += PricingController.getPrice(mt,time);
+            if(!mt.isStudent()){
+                if(!mt.isElderly()){
+                    ticketType = "adult";
+                }
+                else{
+                    ticketType = "elderly";
+                }
+            }else{
+                ticketType = "student";
+            }
+            Double price = PricingController.getPrice(mt,time);
+            ReceiptItem receiptItems = new ReceiptItem(ticketType, price, mt.getMovie().getMovieTag());
+            totalPrice += price;
+
         }
         System.out.println(totalPrice);
 ////        Updating Booking History
-        Booking booking = new Booking("test", movieGoer, todaysDate,movieTickets, new Transaction(1234,12,todaysDate, TransactionType.getType(), new ArrayList<>())); //HARD CODED TRANSACTION ARGUMENTS
-        DatabaseController.saveBookings(booking);
+       // Booking booking = new Booking("test", movieGoer, todaysDate,movieTickets, new Transaction(1234,12,todaysDate, TransactionType.getType(), new ArrayList<>())); //HARD CODED TRANSACTION ARGUMENTS
+        //DatabaseController.saveBookings(booking);
 
 
 

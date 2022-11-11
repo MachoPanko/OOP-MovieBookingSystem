@@ -1,15 +1,13 @@
 package view;
 
-
-import controller.DatabaseController;
+import controller.StaffController;
 import model.classes.Staff;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserLogin {
 
-    public static void login() {
+    public static void displayLoginMenu() {
         System.out.println("Welcome to MOBLIMA");
         System.out.println("Are you a staff or a customer?");
         System.out.println("1) Staff\n2) Customer");
@@ -29,9 +27,15 @@ public class UserLogin {
 
                         System.out.println("Create your password");
                         String password = sc.nextLine();
+                        Staff staff = StaffController.STAFF_ACCOUNTS.get(username);
 
-                        Staff staff = new Staff(username, password);
-                        DatabaseController.saveStaffAccount(staff);
+                        if(staff != null) {
+                            System.out.println("Staff account already exist!");
+                        } else {
+                            StaffController.STAFF_ACCOUNTS.put(username, new Staff(username, password));
+                            System.out.println("[+] New staff account added!");
+                        }
+
                     }
                     case 2 -> { // Login to an existing account
                         System.out.println("Enter your username");
@@ -39,21 +43,19 @@ public class UserLogin {
 
                         System.out.println("Enter your password");
                         String password = sc.nextLine();
-                        ArrayList<Staff> staff = DatabaseController.loadStaffAccount();
-                        for (Staff s : staff) {
-                            if (s.getUsername().equalsIgnoreCase(username) &&
-                                    s.getPassword().equalsIgnoreCase(password)) {
-                                System.out.println("Welcome " + s.getUsername());
-                                System.out.println("Enter your choice");
-                                System.out.println("1) Configure movies\n");
-                                int staffChoice = Integer.parseInt(sc.nextLine());
-                                if (staffChoice == 1) {
-                                    MovieConfiguration.configureMovies();
-                                }
-                            } else {
-                                System.out.println("The details you have entered does not exist");
+                        Staff staff = StaffController.STAFF_ACCOUNTS.get(username);
+                        if(staff == null) {
+                            System.out.println("Staff " + username + " does not exist!");
+                        } else if (staff.getPassword().equals(password)){
+                            System.out.println("Welcome " + staff.getUsername());
+                            System.out.println("Enter your choice");
+                            System.out.println("1) Configure movies\n");
+                            int staffChoice = Integer.parseInt(sc.nextLine());
+                            if (staffChoice == 1) {
+                                MovieConfiguration.configureMovies();
                             }
-                            break;
+                        } else {
+                            System.out.println("Staff account does not exists!");
                         }
                     }
                 }

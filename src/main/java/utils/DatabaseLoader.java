@@ -2,6 +2,7 @@ package utils;
 
 import controller.BookHistoryController;
 import controller.MovieController;
+import controller.StaffController;
 
 import java.io.*;
 
@@ -21,14 +22,14 @@ public class DatabaseLoader {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename));
             result = (T) ois.readObject();
         } catch(EOFException e) {
-            System.out.println("Empty file loaded");
+            System.out.println("[-] Empty file loaded");
         } catch (FileNotFoundException e) {
             DatabaseLoader.createNewDatabase(filename);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Make sure you provide the correct class!");
+            System.out.println("[-] Make sure you provide the correct class!");
         }
 
         return result;
@@ -39,12 +40,12 @@ public class DatabaseLoader {
         try {
             boolean created = f.createNewFile();
             if (created) {
-                System.out.println("Created new database @ " + filename);
+                System.out.println("[+] Created new database @ " + filename);
             } else {
-                System.out.println("File already exist!");
+                System.out.println("[-] File already exist!");
             }
         } catch (IOException e) {
-            System.out.println("Error creating file!");
+            System.out.println("[-] Error creating file!");
         }
     }
 
@@ -54,13 +55,20 @@ public class DatabaseLoader {
             oos.writeObject(buffer);
             oos.close();
         } catch (Exception e) {
-            System.out.println("Error writing to " + filename);
+            System.out.println("[-] Error writing to " + filename);
             System.out.println(e.getMessage());
         }
     }
 
     public static void loadAllDb() {
-        MovieController.loadMovies();
-        BookHistoryController.loadBookingHist();
+        MovieController.load();
+        BookHistoryController.load();
+        StaffController.load();
+    }
+
+    public static void saveAllDb() {
+        MovieController.write();
+        BookHistoryController.write();
+        StaffController.write();
     }
 }

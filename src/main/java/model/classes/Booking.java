@@ -12,7 +12,7 @@ public class Booking implements Serializable {
     private ArrayList<MovieTicket> movieTickets;
     private Transaction transaction;
 
-    public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTicket, Transaction transaction) {
+    public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTickets, Transaction transaction) {
         this.bookingId = bookingId;
         this.movieGoer = movieGoer;
         this.date = date;
@@ -64,13 +64,11 @@ public class Booking implements Serializable {
 
     @Override
     public String toString(){
-        StringBuilder build = new StringBuilder();
-        build.append("Booking ID: "); build.append(this.getBookingId()); build.append("\n");
-        build.append("Name: "); build.append(this.getMovieGoer().getName()); build.append("\n");
-        build.append("Date: "); build.append(this.getDate()); build.append("\n");
-        build.append("Ticket: "); build.append(this.getMovieTickets()); build.append("\n");
-        build.append("Transaction: "); build.append(this.getTransaction().toString()); build.append("\n");
-        return build.toString();
+        return "Booking ID: " + this.getBookingId() + "\n" +
+                "Name: " + this.getMovieGoer().getUsername() + "\n" +
+                "Date: " + this.getDate() + "\n" +
+                "Ticket: " + this.getMovieTickets() + "\n" +
+                "Transaction: " + this.getTransaction().toString() + "\n";
 }
 }
 

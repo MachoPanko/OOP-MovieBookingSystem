@@ -54,11 +54,9 @@ public class Movie implements Serializable {
         }
     }
 
-    public void updateReviews(Review newReview) {
+    public void updateReviews(Review newReview , double intrating) {
         this.numberOfRatings++;
-        System.out.println("How many stars out of 5 would you rate this movie? : ");
-        this.movieRating = (this.movieRating*(numberOfRatings-1)+SC.nextInt())/numberOfRatings;
-        SC.nextLine();
+        this.movieRating = (this.movieRating*(numberOfRatings-1)+intrating)/numberOfRatings;
         this.reviews.add(newReview);
     }
 

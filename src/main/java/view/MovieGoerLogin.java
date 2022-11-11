@@ -25,7 +25,7 @@ public class MovieGoerLogin {
             System.out.println("Please enter your email");
             String email = SC.nextLine();
             VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
-            VIEW_STATE.setCurrUser(new MovieGoer(username,name,mobile,age,email));
+            VIEW_STATE.setCurrUser(new MovieGoer(username,mobile,age,email));
 
         } else {
             VIEW_STATE.setCurrState(ViewState.State.LoginView);

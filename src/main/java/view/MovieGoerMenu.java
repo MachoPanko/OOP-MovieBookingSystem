@@ -1,11 +1,12 @@
 package view;
 
-import controller.BookHistoryController;
-import model.classes.Booking;
-import model.classes.MovieGoer;
+import controller.MovieController;
+import controller.UserController;
+import model.classes.*;
 
-import java.awt.print.Book;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
@@ -42,14 +43,34 @@ public class MovieGoerMenu {
 
         }
     }
-    public static void handleReview() {
+    public static void handleReview() {  //UNTESTED AS OF FRI NIGHT. 233AM i go sleep first sorry
         String movieName = SC.nextLine();
+        Movie movie = MovieController.MOVIES.get(movieName);
         MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
         String username = movieGoer.getUsername();
         boolean ValidWatcher = false;
-        //for (Booking b : BookHistoryController.BOOKING_HIST.get(username)){
+        ArrayList<Booking> bookingArrayList = UserController.USER_HISTORY.get(username).getBookings();
+        for (Booking b : bookingArrayList){
+            for(MovieTicket m : b.getMovieTickets())
+                if(Objects.equals(m.getMovie().getMovieTitle(), movieName)){
+                    ValidWatcher = true;
+                    break;
+                }
+        }
+        if (ValidWatcher){
+            System.out.println("Please enter the Rating out of 5");
+            double rating = SC.nextDouble();
+            System.out.println("Please enter your comments about the movie:");
+            String customerReview = SC.nextLine();
+            Review review = new Review((MovieGoer) VIEW_STATE.getCurrUser(),customerReview,rating );
+            movie.updateReviews(review,rating);
+        }
+        else{
+            System.out.println("You havent watched this movie before! Try Another option.");
+        }
+        return;
 
-        //}
+
         //if( )//user never watch before , exit , else let him change review
     }
 }

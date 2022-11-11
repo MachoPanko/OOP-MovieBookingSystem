@@ -1,6 +1,6 @@
 package utils;
 
-import controller.BookHistoryController;
+import controller.UserController;
 import controller.MovieController;
 import controller.StaffController;
 
@@ -62,13 +62,13 @@ public class DatabaseLoader {
 
     public static void loadAllDb() {
         MovieController.load();
-        BookHistoryController.load();
+        UserController.load();
         StaffController.load();
     }
 
     public static void saveAllDb() {
         MovieController.write();
-        BookHistoryController.write();
+        UserController.write();
         StaffController.write();
     }
 }

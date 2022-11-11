@@ -42,7 +42,7 @@ public class BookingSystem {
         System.out.println("Please Enter Your Email:");
         String email = sc.next();
 
-        movieGoer = new MovieGoer(movieGoerid, name, mobile, age, email);
+        movieGoer = new MovieGoer(movieGoerid, mobile, age, email);
         //INIT movieTickets
         ArrayList<MovieTicket> movieTickets = new ArrayList<>();
         //INIT Movie choice

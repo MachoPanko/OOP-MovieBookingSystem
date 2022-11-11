@@ -1,33 +1,42 @@
 package model.classes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MovieGoer implements Serializable, User {
     private String username;
-    private String name;
+
     private int mobile;
     private int age;
     private String email;
 
-    public MovieGoer(String username, String name, int mobile, int age, String email) {
+
+
+    private ArrayList<Booking>bookings;
+
+    public MovieGoer(String username,  int mobile, int age, String email) {
         this.username = username;
-        this.name = name;
         this.mobile = mobile;
         this.age = age;
         this.email = email;
+        this.bookings = new ArrayList<>();
     }
 
+    public ArrayList<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
+    }
+    public void updateBookings (Booking newBooking){
+        this.bookings.add(newBooking);
+    }
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getMobile() {
         return mobile;

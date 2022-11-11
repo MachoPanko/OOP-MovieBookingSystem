@@ -1,10 +1,24 @@
 package model;
 
+import controller.StaffController;
+import model.classes.Staff;
 import utils.DatabaseLoader;
-import view.UserLogin;
+import view.LoginView;
+import view.StaffLoginView;
+import view.StaffView;
+import view.ViewState;
+
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args)  {
+
+    /**
+     * Contains user and view information to display things correctly
+     */
+    public static final ViewState VIEW_STATE = new ViewState(ViewState.State.LoginView, null);
+    public static final Scanner SC = new Scanner(System.in);
+
+    public static void main(String[] args) {
         // register ctrl-c handler, we should save all database on exit
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
@@ -19,7 +33,19 @@ public class Main {
         }));
 
         DatabaseLoader.loadAllDb();
-        UserLogin.displayLoginMenu();
+
+        while (VIEW_STATE.getCurrState() != ViewState.State.ExitedView) {
+            switch (VIEW_STATE.getCurrState()) {
+                case LoginView -> LoginView.display();
+                case StaffLoginView -> StaffLoginView.display();
+                case StaffView -> StaffView.display();
+                case ConfigureSystemSettingView -> {}
+                case MovieGoerLoginView -> {}
+                case ExitedView -> {}
+            }
+        }
+
+//        UserLogin.displayLoginMenu();
 //        MovieCreation.createMovie();
 //        MovieConfiguration.configureMovies();
 //        BookingSystem.purchaseTicket();

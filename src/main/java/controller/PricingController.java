@@ -7,8 +7,6 @@ import model.enums.CinemaType;
 import model.enums.DayType;
 import model.enums.MovieTag;
 
-import java.awt.print.Book;
-
 import static model.enums.DayType.*;
 import static model.enums.MovieTag.THREED;
 

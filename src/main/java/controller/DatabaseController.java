@@ -21,7 +21,7 @@ public class DatabaseController {
             } else {
                 System.out.println("Error creating new movieDATA");
             }
-        }catch (Exception e){
+        } catch (Exception e){
             System.out.println(e.getMessage());
         }
     }

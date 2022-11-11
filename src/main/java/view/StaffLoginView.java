@@ -30,6 +30,7 @@ public class StaffLoginView {
                 if(staff.getPassword().equals(password)) {
                     System.out.println("Hello " + staff.getUsername());
                     VIEW_STATE.setCurrState(ViewState.State.StaffView);
+                    VIEW_STATE.setCurrUser(staff);
                 } else {
                     System.out.println("Wrong password! Try again!");
                 }

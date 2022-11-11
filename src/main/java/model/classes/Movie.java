@@ -22,8 +22,6 @@ public class Movie implements Serializable {
 
     //Still need to implement past reviews and reviewers rating
 
-
-
     public Movie(String movieId,
                  String movieTitle,
                  MovieTag movieTag,
@@ -118,11 +116,12 @@ public class Movie implements Serializable {
                 ", movieTitle='" + movieTitle + '\'' +
                 ", movieTag=" + movieTag +
                 ", movieStatus=" + movieStatus +
-                ", movieSypnosis='" + movieSynopsis + '\'' +
-                ", movieRating='" + movieRating + '\'' +
+                ", movieSynopsis='" + movieSynopsis + '\'' +
+                ", movieRating=" + movieRating +
                 ", movieDirector='" + movieDirector + '\'' +
                 ", ageRating=" + ageRating +
                 ", casts=" + casts +
+                ", reviews=" + reviews +
                 '}';
     }
 }

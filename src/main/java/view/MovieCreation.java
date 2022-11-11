@@ -7,53 +7,52 @@ import model.enums.MovieStatus;
 import model.enums.MovieTag;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.UUID;
+
+import static model.Main.SC;
+import static model.Main.VIEW_STATE;
 
 public class MovieCreation {
 
-    public static void createMovie() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter ID of movie:");
-        String movieId = sc.nextLine();
-
+    public static void display() {
         System.out.println("Enter title of movie:");
-        String movieTitle = sc.nextLine();
+        String movieTitle = SC.nextLine();
 
         System.out.println("Enter name of director:");
-        String director = sc.nextLine();
+        String director = SC.nextLine();
 
         ArrayList<String> casts = new ArrayList<>();
         System.out.println("Enter number of casts:");
-        int noCast = Integer.parseInt(sc.nextLine());
+        int noCast = Integer.parseInt(SC.nextLine());
 
         for (int i = 0; i < noCast; ++i) {
             System.out.println("Enter cast name:");
-            String castName = sc.nextLine();
+            String castName = SC.nextLine();
             casts.add(castName);
         }
 
         System.out.println("Enter Age Rating:");
         System.out.println("G, PG, PG13, NC17");
-        String ageRatingChoice = sc.nextLine();
+        String ageRatingChoice = SC.nextLine();
         AgeRating ageRating = AgeRating.getRating(ageRatingChoice);
 
         System.out.println("Enter Movie Tag:");
         System.out.println("Blockbuster, Normal, 3D");
-        String tagChoice = sc.nextLine();
+        String tagChoice = SC.nextLine();
         MovieTag movieTag = MovieTag.getMovieTag(tagChoice);
 
         System.out.println("Enter Movie Status:");
         System.out.println("Coming_Soon, Preview, Now_Showing");
-        String statusChoice = sc.nextLine();
+        String statusChoice = SC.nextLine();
         MovieStatus movieStatus = MovieStatus.getMovieStatus(statusChoice);
 
         System.out.println("Enter Movie Rating (0-5):");
-        double movieRating = Double.parseDouble(sc.nextLine());
+        double movieRating = Double.parseDouble(SC.nextLine());
 
         System.out.println("Enter Synopsis:");
-        String synopsis = sc.nextLine();
+        String synopsis = SC.nextLine();
 
-        Movie movie = new Movie(movieId,
+        Movie movie = new Movie(UUID.randomUUID().toString(),
                 movieTitle,
                 movieTag,
                 movieStatus,
@@ -64,6 +63,7 @@ public class MovieCreation {
                 casts
         );
 
-        DatabaseController.saveMovieData(movie);
+        MovieController.MOVIES.put(movie.getMovieId(), movie);
+        VIEW_STATE.setCurrState(ViewState.State.StaffView);
     }
 }

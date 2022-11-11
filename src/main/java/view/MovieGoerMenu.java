@@ -9,7 +9,7 @@ public class MovieGoerMenu {
         Scanner sc = new Scanner(System.in);
         int choice = Integer.parseInt(sc.nextLine());
         switch (choice) {
-            case 1 -> MovieListing.listMovies(); // List out all movies
+            case 1 -> MovieListing.display(); // List out all movies
             case 2 -> BookingSystem.purchaseTicket();
             case 3 -> {
                 System.out.println("Please enter your name");

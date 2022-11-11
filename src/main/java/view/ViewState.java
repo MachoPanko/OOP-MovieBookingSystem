@@ -13,6 +13,11 @@ public class ViewState {
         StaffView,
         ConfigureSystemSettingView,
         MovieGoerLoginView,
+        ViewMoviesView,
+        AddMovieView,
+        UpdateMovieView,
+        UpdateMovieViewSubmenu,
+        DeleteMovieView,
         ExitedView
     }
 

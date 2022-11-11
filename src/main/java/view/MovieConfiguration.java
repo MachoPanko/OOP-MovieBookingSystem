@@ -24,8 +24,8 @@ public class MovieConfiguration {
                     movies.forEach(System.out::println);
                 }
             }
-            case 2 -> MovieCreation.createMovie(); // Create movie
-            case 3 -> MovieUpdate.updateMovie(); // Update movie
+            case 2 -> MovieCreation.display(); // Create movie
+            case 3 -> MovieUpdate.display(); // Update movie
         }
     }
 }

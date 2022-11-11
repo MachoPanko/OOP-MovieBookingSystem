@@ -1,12 +1,7 @@
 package model;
 
-import controller.StaffController;
-import model.classes.Staff;
 import utils.DatabaseLoader;
-import view.LoginView;
-import view.StaffLoginView;
-import view.StaffView;
-import view.ViewState;
+import view.*;
 
 import java.util.Scanner;
 
@@ -39,7 +34,12 @@ public class Main {
                 case LoginView -> LoginView.display();
                 case StaffLoginView -> StaffLoginView.display();
                 case StaffView -> StaffView.display();
-                case ConfigureSystemSettingView -> {}
+                case ViewMoviesView -> MovieListing.display();
+                case AddMovieView -> MovieCreation.display();
+                case UpdateMovieView -> MovieUpdate.display();
+                case UpdateMovieViewSubmenu -> MovieUpdate.displaySubmenu();
+                case DeleteMovieView -> MovieDelete.display();
+                case ConfigureSystemSettingView -> ConfigureSystemSettingView.display();
                 case MovieGoerLoginView -> {}
                 case ExitedView -> {}
             }

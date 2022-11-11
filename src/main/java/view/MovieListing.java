@@ -1,31 +1,40 @@
 package view;
 
-import controller.DatabaseController;
-import model.classes.Movie;
+import controller.MovieController;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import static model.Main.SC;
+import static model.Main.VIEW_STATE;
 
 public class MovieListing {
-    public static void listMovies() {
+    public static void display() {
         System.out.println("""
+                Movie Listing!
                 1) List all movies
                 2) List top 5 movies by ticket sales
                 3) List top 5 movies by ticket ratings
                 4) Search for a movie
-                """);
-        Scanner sc = new Scanner(System.in);
-        int choice = Integer.parseInt(sc.nextLine());
-        ArrayList<Movie> movies = DatabaseController.loadMovieData();
+                5) Back""");
+        int choice = SC.nextInt();
+        SC.nextLine();
+
         switch (choice) {
-            case 1 -> movies.forEach(System.out::println);
+            case 1 -> {
+                if(MovieController.MOVIES.size() == 0) {
+                    System.out.println("There are no movies!");
+                } else {
+                    System.out.println("List of Movies");
+                    MovieController.MOVIES.forEach((k,v) -> System.out.println(v));
+                    System.out.println();
+                }
+            }
             case 4 -> {
                 System.out.println("Which movie do you want to search?");
-                String searchChoice = sc.nextLine();
-                movies.stream()
-                        .filter(m -> searchChoice.toUpperCase().replaceAll("\\s+", "").equals(m.getMovieTitle().toUpperCase().replaceAll("\\s+", "")))
-                        .forEach(System.out::println);
+                String searchChoice = SC.nextLine();
+//                MovieController.MOVIES.stream()
+//                        .filter(m -> searchChoice.toUpperCase().replaceAll("\\s+", "").equals(m.getMovieTitle().toUpperCase().replaceAll("\\s+", "")))
+//                        .forEach(System.out::println);
             }
+            case 5 -> VIEW_STATE.setCurrState(ViewState.State.StaffView);
         }
     }
 }

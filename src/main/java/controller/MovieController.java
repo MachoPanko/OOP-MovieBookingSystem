@@ -16,14 +16,18 @@ public class MovieController {
 
     public static final HashMap<String, Movie> MOVIES = new HashMap<>();
 
-    public static ArrayList<Movie> getMoviesByCineplex(String cineplexId) {
+    public static HashSet<Movie> getMoviesByCineplex(String cineplexId) {
         HashSet<Movie> movies = new HashSet<>();
 
         for(Cinema c : CineplexController.CINEPLEXES.get(cineplexId).getCinemaList()) {
-            movies.addAll(c.getMoviesShownFiltered());
+            for(Movie m : c.getMoviesShown()) {
+                if(m != null) {
+                    movies.add(m);
+                }
+            }
         }
 
-        return new ArrayList<>(movies);
+        return movies;
     }
 
     public static void load() {
@@ -34,7 +38,7 @@ public class MovieController {
             String dummySynopsis = "Dominic Toretto (Vin Diesel) enjoys the adrenaline of street car racing and his fans treat him like a rock star. After a blazing encounter with the ruthless Johnny Tran, Dom decides to take Brian (Paul Walker), a newcomer to street racing, under his wing. Dom's sister Mia sees something she likes in Brian, too. Trouble is, neither of them realize he's an undercover cop, and Dominic and his rival Johnny Tran are both the prime suspects in a case involving dirty money and big-rig hijacking.";
             MOVIES.put("Ice Age 2", new Movie("Ice Age 2", MovieTag.THREED, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("Fast and Furious 420", new Movie("Fast and Furious 420", MovieTag.BLOCKBUSTER, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
-            MOVIES.put("KingsWomen", new Movie("KingsWomen", MovieTag.BLOCKBUSTER, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
+            MOVIES.put("KingsWomen", new Movie("KingsWomen", MovieTag.BLOCKBUSTER, MovieStatus.PREVIEW, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("The Beginning of OOP", new Movie("The Beginning of OOP", MovieTag.BLOCKBUSTER, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("Parasite", new Movie("Parasite", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("Jon7", new Movie("Jon7", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));

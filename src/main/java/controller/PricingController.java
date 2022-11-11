@@ -12,7 +12,7 @@ import static model.enums.MovieTag.THREED;
 
 public class PricingController {
     // nvr take into consideration cinematype
-    public static double getPrice(MovieTicket movieTicket,double time){
+    public static double getPrice(MovieTicket movieTicket, String time){
         double price = 0.0;
         double costOfCinemaType = 1;
         //adjust cost based on cinema Type
@@ -24,44 +24,39 @@ public class PricingController {
 
         boolean isStudent = movieTicket.isStudent();
         boolean isElderly = movieTicket.isElderly();
-        double bookingTime =time;
+        double bookingTime = Double.parseDouble(time) / 100.0;
         MovieTag movieTag = movieTicket.getMovie().getMovieTag();
         DayType dayType = movieTicket.getDayType();
-        boolean isSixpm = false;
-        if(bookingTime >= 18.00){
-            isSixpm = true;
-        }
+        boolean isSixpm = bookingTime >= 18.00;
 
         if(movieTag != THREED) {
-            if(isElderly == true && dayType != HOLIDAY && isSixpm == false){
+            if(isElderly && dayType != HOLIDAY && !isSixpm){
                 price = 4.00;
             }
-            else if(isStudent == true && dayType != HOLIDAY && isSixpm != true){
+            else if(isStudent && dayType != HOLIDAY && !isSixpm){
                 price = 7.00;
             }
             else if (dayType == FRIDAY) {
-                if (isSixpm == false) {
+                if (!isSixpm) {
                     price = 9.50;
                 } else {
                     price = 11.00;
                 }
-
-
             } else if (dayType == THURSDAY) {
                 price = 9.50;
             } else if (dayType == WEEKDAY) {
                 price = 8.50;
-            } else if (dayType == WEEKEND) {
+            } else if (dayType == WEEKEND || dayType == HOLIDAY) {
                 price = 11.00;
             }
-        } else if (movieTag == THREED) {
-            if(isStudent == true && dayType != HOLIDAY && isSixpm != true){
+        } else {
+            if(isStudent && dayType != HOLIDAY && !isSixpm){
                 price = 9.00;
             } else if (dayType == FRIDAY) {
                 price = 15.00;
             } else if (dayType == WEEKDAY || dayType == THURSDAY) {
                 price = 11.00;
-            } else if (dayType == WEEKEND) {
+            } else if (dayType == WEEKEND || dayType == HOLIDAY) {
                 price = 15.00;
             }
         }

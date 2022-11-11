@@ -48,6 +48,8 @@ public class MovieUpdate {
                 System.out.println("Update movie title:");
                 String titleUpdate = SC.nextLine();
                 m.setMovieTitle(titleUpdate);
+                MovieController.MOVIES.put(titleUpdate, m);
+                MovieController.MOVIES.remove(titleUpdate);
             }
             case 2 -> {
                 System.out.println("Update movie director:");

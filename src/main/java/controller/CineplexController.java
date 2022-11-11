@@ -27,12 +27,11 @@ public class CineplexController {
             Cinema imax = new Cinema(2,CinemaType.IMAX);
             Cinema plat = new Cinema(3,CinemaType.Platinum);
 
-            ArrayList<Movie> movieList = MovieController
-                    .MOVIES
-                    .values()
-                    .stream()
-                    .filter(s -> s.getMovieStatus() != MovieStatus.END_OF_SHOWING)
-                    .collect(Collectors.toCollection(ArrayList::new));
+            ArrayList<Movie> movieList = new ArrayList<>();
+            for(Movie m: MovieController.MOVIES.values()) {
+                if(m.getMovieStatus() == MovieStatus.END_OF_SHOWING) continue;
+                movieList.add(m);
+            }
 
             Random rand = new Random();
             for(int i = 0; i < econ.getShowTiming().size(); ++i) {

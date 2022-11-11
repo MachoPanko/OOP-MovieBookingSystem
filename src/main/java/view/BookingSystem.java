@@ -52,7 +52,7 @@ public class BookingSystem {
         for(Movie v: MovieController.getMoviesByCineplex(cineplexStr)) {
             boolean isStaff = VIEW_STATE.getCurrUser() instanceof Staff;
             if (!isStaff) {
-                if (v.getMovieStatus() == MovieStatus.END_OF_SHOWING) return;
+                if (MovieController.MOVIES.get(v.getMovieTitle()).getMovieStatus() == MovieStatus.END_OF_SHOWING) continue;
             }
             System.out.println(v);
         }
@@ -63,6 +63,11 @@ public class BookingSystem {
         Movie movieChosen = MovieController.MOVIES.get(movieChoice);
 
         if (movieChosen != null) {
+            if(movieChosen.getMovieStatus() == MovieStatus.END_OF_SHOWING) {
+                System.out.println("Movie is no longer available");
+                return;
+            }
+
             System.out.println("Please Choose your Cinema Type");
             System.out.println("Platinum, Economy, IMAX");
             CinemaType cinemaType = CinemaType.getType(SC.nextLine());
@@ -149,7 +154,7 @@ public class BookingSystem {
                 //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
 
                 MovieTicket currentMovieTicket = new MovieTicket(movieChosen, cinemaType, dayType, isStudent, isElderly, row, col, cinemaChosen.getCinemaCode());
-                totalPrice += PricingController.getPrice(currentMovieTicket, currentTime);
+                totalPrice += PricingController.getPrice(currentMovieTicket, cinemaChosen.getShowTiming().TIME[showtimeChoiceIdx]);
                 movieTickets.add(currentMovieTicket);
                 movieChosen.increaseTicketSales();
 

@@ -3,6 +3,7 @@ package model;
 import utils.DatabaseLoader;
 import view.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +14,7 @@ public class Main {
     public static final ViewState VIEW_STATE = new ViewState(ViewState.State.LoginView, null);
     public static final Scanner SC = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // register ctrl-c handler, we should save all database on exit
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {

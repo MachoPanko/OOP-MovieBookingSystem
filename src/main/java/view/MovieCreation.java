@@ -52,7 +52,7 @@ public class MovieCreation {
         System.out.println("Enter Synopsis:");
         String synopsis = SC.nextLine();
 
-        Movie movie = new Movie(UUID.randomUUID().toString(),
+        Movie movie = new Movie(
                 movieTitle,
                 movieTag,
                 movieStatus,
@@ -63,7 +63,7 @@ public class MovieCreation {
                 casts
         );
 
-        MovieController.MOVIES.put(movie.getMovieId(), movie);
+        MovieController.MOVIES.put(movie.getMovieTitle(), movie);
         VIEW_STATE.setCurrState(ViewState.State.StaffView);
     }
 }

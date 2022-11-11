@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Movie implements Serializable {
-    private String movieId;
+
     private String movieTitle;
     private MovieTag movieTag;
     private MovieStatus movieStatus;
@@ -23,7 +23,7 @@ public class Movie implements Serializable {
 
     //Still need to implement past reviews and reviewers rating
 
-    public Movie(String movieId,
+    public Movie(
                  String movieTitle,
                  MovieTag movieTag,
                  MovieStatus movieStatus,
@@ -32,7 +32,7 @@ public class Movie implements Serializable {
                  String movieDirector,
                  AgeRating ageRating,
                  ArrayList<String> casts) {
-        this.movieId = movieId;
+
         this.movieTitle = movieTitle;
         this.movieTag = movieTag;
         this.movieStatus = movieStatus;
@@ -61,12 +61,8 @@ public class Movie implements Serializable {
         SC.nextLine();
         this.reviews.add(newReview);
     }
-    public String getMovieId() {
-        return movieId;
-    }
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
-    }
+
+
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
@@ -119,7 +115,6 @@ public class Movie implements Serializable {
     @Override
     public String toString() {
         return "Movie{" +
-                "movieId='" + movieId + '\'' +
                 ", movieTitle='" + movieTitle + '\'' +
                 ", movieTag=" + movieTag +
                 ", movieStatus=" + movieStatus +

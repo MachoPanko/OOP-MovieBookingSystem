@@ -152,7 +152,7 @@ public class BookingSystem {
 
         }
         System.out.println(totalPrice);
-////        Updating Booking History
+////        Updating Booking HistoryT
        // Booking booking = new Booking("test", movieGoer, todaysDate,movieTickets, new Transaction(1234,12,todaysDate, TransactionType.getType(), new ArrayList<>())); //HARD CODED TRANSACTION ARGUMENTS
         //DatabaseController.saveBookings(booking);
 

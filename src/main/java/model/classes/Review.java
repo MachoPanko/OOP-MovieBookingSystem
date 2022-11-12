@@ -22,4 +22,13 @@ public class Review implements Serializable {
     public double getCustomerRating() {
         return customerRating;
     }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "customer=" + customer +
+                ", customerReview='" + customerReview + '\'' +
+                ", customerRating=" + customerRating +
+                '}';
+    }
 }

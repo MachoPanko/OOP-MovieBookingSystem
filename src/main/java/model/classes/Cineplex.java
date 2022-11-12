@@ -2,6 +2,7 @@ package model.classes;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Cineplex implements Serializable {
 
@@ -26,4 +27,13 @@ public class Cineplex implements Serializable {
     public ArrayList<Cinema> getCinemaList() { return this.cinemaList; }
     public String getCineplexName() { return cineplexName; }
     public void setCineplexName(String cineplexName) { this.cineplexName = cineplexName; }
+
+    @Override
+    public String toString() {
+        return "Cineplex{" +
+                "location_arr=" + Arrays.toString(location_arr) +
+                ", cineplexName='" + cineplexName + '\'' +
+                ", cinemaList=" + cinemaList +
+                '}';
+    }
 }

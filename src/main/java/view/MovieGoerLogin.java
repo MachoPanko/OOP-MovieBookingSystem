@@ -24,6 +24,7 @@ public class MovieGoerLogin {
             System.out.println("Please enter your email");
             String email = SC.nextLine();
             MovieGoer newUser = new MovieGoer(username,mobile,age,email);
+
             if (UserController.USER_DATABASE.get(username)==null){ // if user does not exist
                 System.out.println("Account Creation Success! Welcome " + username +"!");
                 VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);

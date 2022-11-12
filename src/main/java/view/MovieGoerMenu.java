@@ -31,11 +31,9 @@ public class MovieGoerMenu {
             case 2 -> {
                 VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
             }
-//            case 3 -> {
-//                System.out.println("Please enter your name");
-//                String name = SC.nextLine();
-//                BookingHistory.getBookingHistory(name); // Print out booking history
-//            }
+            case 3 -> {
+                VIEW_STATE.setCurrState(ViewState.State.BookingHistView);
+            }
             //case 4 ->
             case 6 -> {
                 handleReview();
@@ -71,7 +69,7 @@ public class MovieGoerMenu {
             System.out.println("Please enter your comments about the movie:");
             String customerReview = SC.nextLine();
             Review review = new Review((MovieGoer) VIEW_STATE.getCurrUser(),customerReview,rating );
-            movie.updateReviews(review,rating);
+            movie.updateReviews(review);
         }
         else{
             System.out.println("You havent watched this movie before! Try Another option.");

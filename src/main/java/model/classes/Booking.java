@@ -50,8 +50,6 @@ public class Booking implements Serializable {
         this.movieTickets = movieTickets;
     }
 
-
-
     public Transaction getTransaction() {
         return transaction;
     }
@@ -61,12 +59,12 @@ public class Booking implements Serializable {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Booking ID: " + this.getBookingId() + "\n" +
                 "Name: " + this.getMovieGoer().getUsername() + "\n" +
                 "Date: " + this.getDate() + "\n" +
-                "Ticket: " + this.getMovieTickets() + "\n" +
+                "Ticket: " + this.getMovieTickets().toString() + "\n" +
                 "Transaction: " + this.getTransaction().toString() + "\n";
-}
+    }
 }
 

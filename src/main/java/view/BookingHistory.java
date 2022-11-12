@@ -1,19 +1,15 @@
 package view;
 
-import controller.DatabaseController;
-import model.classes.Booking;
 
-import java.util.ArrayList;
+import model.classes.MovieGoer;
+
+import static model.Main.VIEW_STATE;
 
 public class BookingHistory {
-        public static void getBookingHistory(String id){
-            // load booking files from database
-            ArrayList<Booking> bookings = DatabaseController.loadBookings();
-            for(Booking b : bookings){
-                if(b.getMovieGoer().getUsername() == id){
-                    System.out.println(b);
-                }
-            }
-        }
-
+    public static void display() {
+        System.out.println("You bookings!");
+        MovieGoer m = (MovieGoer) VIEW_STATE.getCurrUser();
+        m.getBookings().forEach(System.out::println);
+        VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+    }
 }

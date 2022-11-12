@@ -9,9 +9,6 @@ public class MovieGoer implements Serializable, User {
     private int mobile;
     private int age;
     private String email;
-
-
-
     private ArrayList<Booking>bookings;
 
     public MovieGoer(String username,  int mobile, int age, String email) {
@@ -22,42 +19,30 @@ public class MovieGoer implements Serializable, User {
         this.bookings = new ArrayList<>();
     }
 
-    public ArrayList<Booking> getBookings() {
-        return bookings;
-    }
+    public ArrayList<Booking> getBookings() { return bookings; }
 
     public void setBookings(ArrayList<Booking> bookings) {
         this.bookings = bookings;
     }
-    public void updateBookings (Booking newBooking){
-        this.bookings.add(newBooking);
-    }
+    public void updateBookings (Booking newBooking){ this.bookings.add(newBooking); }
     public void setUsername(String username) {
         this.username = username;
     }
-
-
-
     public int getMobile() {
         return mobile;
     }
-
     public void setMobile(int mobile) {
         this.mobile = mobile;
     }
-
     public int getAge() {
         return age;
     }
-
     public void setAge(int age) {
         this.age = age;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }

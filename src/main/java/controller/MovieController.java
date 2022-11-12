@@ -1,15 +1,14 @@
 package controller;
 
 import model.classes.Movie;
+import model.classes.MovieGoer;
+import model.classes.Review;
 import model.enums.AgeRating;
 import model.enums.MovieStatus;
 import model.enums.MovieTag;
 import utils.DatabaseLoader;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MovieController {
     private static final String filename = "src/database/movieDatabase.ser";
@@ -29,6 +28,10 @@ public class MovieController {
             MOVIES.put("Parasite", new Movie("Parasite", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("Jon7", new Movie("Jon7", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("Slow and Chill 7", new Movie("Slow and Chill 7", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis, "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
+            Random rand = new Random();
+            MOVIES.forEach((k,v) -> {
+                v.updateReviews(new Review(new MovieGoer("John7", 999, 21, "John7@gmail.com"), "Good movie!",rand.nextDouble(0.0, 5.0)));
+            });
         }
 
         if(hm != null) {

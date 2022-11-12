@@ -17,6 +17,7 @@ public enum TransactionType {
             case "DEBITCARD" -> DEBITCARD;
             case "CREDITCARD" -> CREDITCARD;
             case "CASH" -> CASH;
+            default -> null;
         };
     }
 }

@@ -15,7 +15,6 @@ public class PricingController {
         double price = 0.0;
         boolean isStudent = movieTicket.isStudent();
         boolean isElderly = movieTicket.isElderly();
-        int ticketAge = movieTicket.getMovieGoerAge();
         double bookingTime =time;
         MovieTag movieTag = movieTicket.getMovie().getMovieTag();
         DayType dayType = movieTicket.getDayType();

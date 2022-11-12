@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class MovieTicket implements Serializable {
     private Movie movie;
     private CinemaType cinemaType;
-    private int movieGoerAge;
     private DayType dayType;
     private int cinemaRoom;
     private boolean isElderly;
@@ -17,7 +16,6 @@ public class MovieTicket implements Serializable {
 
     public MovieTicket(Movie movie,
                        CinemaType cinemaType,
-                       int movieGoerAge,
                        DayType dayType,
                        boolean isStudent,
                        boolean isElderly,
@@ -25,7 +23,6 @@ public class MovieTicket implements Serializable {
                        int cinemaRoom) {
         this.movie = movie;
         this.cinemaType = cinemaType;
-        this.movieGoerAge = movieGoerAge;
         this.dayType = dayType;
         this.isStudent = isStudent;
         this.isElderly = isElderly;
@@ -57,12 +54,6 @@ public class MovieTicket implements Serializable {
     public void setCinemaType(CinemaType cinemaType) {
         this.cinemaType = cinemaType;
     }
-    public int getMovieGoerAge() {
-        return movieGoerAge;
-    }
-    public void setMovieGoerAge(int movieGoerAge) {
-        this.movieGoerAge = movieGoerAge;
-    }
     public DayType getDayType() {
         return dayType;
     }
@@ -81,7 +72,6 @@ public class MovieTicket implements Serializable {
         return "MovieTicket{" +
                 "movie=" + movie +
                 ", cinemaType=" + cinemaType +
-                ", movieGoerAge=" + movieGoerAge +
                 ", dayType=" + dayType +
                 ", cinemaRoom=" + cinemaRoom +
                 ", isElderly=" + isElderly +

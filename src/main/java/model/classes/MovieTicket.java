@@ -19,14 +19,14 @@ public class MovieTicket implements Serializable {
                        DayType dayType,
                        boolean isStudent,
                        boolean isElderly,
-                       Seating seat,
+//                       Seating seat,
                        int cinemaRoom) {
         this.movie = movie;
         this.cinemaType = cinemaType;
         this.dayType = dayType;
         this.isStudent = isStudent;
         this.isElderly = isElderly;
-        this.seat = seat;
+//        this.seat = seat;
         this.cinemaRoom = cinemaRoom;
     }
 
@@ -60,12 +60,12 @@ public class MovieTicket implements Serializable {
     public void setDayType(DayType dayType) {
         this.dayType = dayType;
     }
-    public Seating getSeat() {
-        return seat;
-    }
-    public void setSeat(Seating seat) {
-        this.seat = seat;
-    }
+//    public Seating getSeat() {
+//        return seat;
+//    }
+//    public void setSeat(Seating seat) {
+//        this.seat = seat;
+//    }
 
     @Override
     public String toString() {
@@ -76,7 +76,7 @@ public class MovieTicket implements Serializable {
                 ", cinemaRoom=" + cinemaRoom +
                 ", isElderly=" + isElderly +
                 ", isStudent=" + isStudent +
-                ", seat=" + seat +
+//                ", seat=" + seat +
                 '}';
     }
 }

@@ -3,9 +3,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import controller.DatabaseController;
-import controller.MovieController;
-import controller.PricingController;
+import controller.*;
 import model.classes.*;
 import model.enums.CinemaType;
 import model.enums.DayType;
@@ -21,131 +19,122 @@ public class BookingSystem {
 
 
     public static void display()  {
-        // INIT DATE
+        //INIT Total price
+        double totalPrice = 0 ;
+        // INIT DATE and time
+        long millis = System.currentTimeMillis();
+        double currentTime = (millis/ 1000.0 ) / 60/60;
+        SimpleDateFormat sdf = new SimpleDateFormat(
+                "dd-MM-yyyy");
+        String todaysDate = sdf.format(new java.sql.Date(millis));
+        DayType dayType = DayType.getType(todaysDate);
+        MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
+        //INIT movieTickets
+        ArrayList<MovieTicket> movieTickets = new ArrayList<>();
+        //INIT Movie choice and cineplex
+        System.out.println("""
+                Please Enter the name of the Cineplex You are at!!
+                - AMK HUB
+                - DOWNTOWN EAST
+                - CAUSEWAY POINT
+                """);
+        Cineplex currentCineplex = CineplexController.CINEPLEXES.get(SC.nextLine()); ///hmm feels weird not to list all movies before typing movie name but nvm lifestyle stuff fix ltr
+        System.out.println("Please Enter The name of the Movie You would like to watch!!");
+        String movieChoice = SC.nextLine();
+        Movie movieChosen = MovieController.MOVIES.get(movieChoice);
+        Cinema cinemaChosen = null;
 
-//        long millis = System.currentTimeMillis();
-//        SimpleDateFormat sdf = new SimpleDateFormat(
-//                "dd-MM-yyyy");
-//        String todaysDate = sdf.format(new java.sql.Date(millis));
-//        MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
-//        //INIT movieTickets
-//        ArrayList<MovieTicket> movieTickets = new ArrayList<>();
-//        //INIT Movie choice
-//        System.out.println("Please Enter The name of the Movie You would like to watch!!");
-//        String movieChoice = SC.nextLine();
-//        Movie movieChosen = MovieController.MOVIES.get(movieChoice);
-//        Cinema cinemaChosen;
-//
-//        if (movieChosen != null) {
-//            System.out.println("Please Choose your Cinema Type");
-//            System.out.println("Platinum, Economy, IMAX");
-//            CinemaType cinemaType = CinemaType.getType(SC.nextLine());
-//
-//            System.out.println("At which time do you want to watch it?");
-//            System.out.println("1) 09:00,2) 14:00,3) 21:00");
-//            int showtimeChoice = SC.nextInt();
-//            Showtime showtime = new Showtime(movieChoice,showtimeChoice-1);
-//
-//            //Find suitable cinema based on time and movie given.
-//
-//            for (int j = 0 ; j <5 ; j++){ //implement once have cinema database this is dummy
-//                System.out.println("loop thru the cinema lists to match TIME and movie NAME and CINEMA TYPE. After finding cinema then save it as a variable");
-//                // find cinema by end of this loop
-//                cinemaChosen = new Cinema();
-//            }
-//            cinemaChosen.display();
-//
-//            // Ask for which seat they want
-//            int bookSeat = SC.nextInt() ;
-//            System.out.println("Enter the row that you like");
-//
-//
-//            while(bookSeat )
-//
-//
-//        } else {
-//            System.out.println("No such Movie exists! Please Try Again.");
-//            VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
-//        }
-//
-//
-//
-//
-//
-//        /// init cinema THIS PART IS EXTREMELY INCOMPLETE. ALOT OF HARD CODED FOR TESTING
-//
-//
-//
-//
-//        // Since movieGoer might want to book more than one ticket , theres a loop here.
-//        int choice;
-//        do {
-//            System.out.println("Dear "+name+", You Have Chosen To Buy A Ticket For "+ movieChosen.getMovieTitle()+" with a "+cinemaType+ "experience.");
-//            System.out.println("Please Choose your seat. Eg : row 1 col 1 ");
-//            cinemaChosen.printSeatingLayout();
-//            System.out.println("Row:");
-//            int row = sc.nextInt();
-//            System.out.println("Col");
-//            int col = sc.nextInt();
-//            //Seating layout not complete
-//            cinemaChosen.bookSeating(row, col);
-//            Seating[][] seatingLayout = cinemaChosen.getSeatingLayout();
-//
-//
-//
-//
-//            System.out.println("Student?\n1) Yes\n2) No");
-//            int student = sc.nextInt();
-//            boolean isStudent;
-//            boolean isElderly = false;
-//            if(student == 1){
-//                isStudent = true;
-//            }else{
-//                isStudent = false;
-//            }
-//
-//
-//            System.out.println("Elderly?\n1) Yes\n2) No");
-//            int elderly = sc.nextInt();
-//            if(elderly == 1){
-//                isElderly = true;
-//            }
-//            else{
-//                isElderly = false;
-//            }
-//
-//            //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
-//            movieTickets.add(new MovieTicket(movieChosen,cinemaType,
-//                    age, DayType.getType(todaysDate),isStudent,isElderly,seatingLayout[row][col], cinemaChosen.getCinemaCode()));    ///hard coded date here for testing
-//            System.out.println("Please Enter 1 if you would like to buy another ticket or enter anything else if you wish to stop.");
-//            choice = sc.nextInt();
-//        } while (choice == 1);
-//
-//
-//        System.out.println("Input the time now:");
-//        double time = sc.nextDouble();
-//        double totalPrice = 0;
-//        String ticketType = new String();
-//        for(MovieTicket mt : movieTickets){
-//            if(!mt.isStudent()){
-//                if(!mt.isElderly()){
-//                    ticketType = "adult";
-//                }
-//                else{
-//                    ticketType = "elderly";
-//                }
-//            }else{
-//                ticketType = "student";
-//            }
-//            Double price = PricingController.getPrice(mt,time);
-//            ReceiptItem receiptItems = new ReceiptItem(ticketType, price, mt.getMovie().getMovieTag());
-//            totalPrice += price;
-//
-//        }
-//        System.out.println(totalPrice);
-//////        Updating Booking HistoryT
-//       // Booking booking = new Booking("test", movieGoer, todaysDate,movieTickets, new Transaction(1234,12,todaysDate, TransactionType.getType(), new ArrayList<>())); //HARD CODED TRANSACTION ARGUMENTS
-//        //DatabaseController.saveBookings(booking);
+        if (movieChosen != null) {
+            System.out.println("Please Choose your Cinema Type");
+            System.out.println("Platinum, Economy, IMAX");
+            CinemaType cinemaType = CinemaType.getType(SC.nextLine());
+
+            System.out.println("At which time do you want to watch it?");
+            System.out.println("""
+                 1) 0800
+                 2) 0900
+                 3) 1000
+                 4) 1100
+                 5) 1200
+                 6) 1300
+                 7) 1400
+                 8) 1500
+                 9) 1600
+                10) 1700
+                11) 1800
+                12) 1900
+                13) 2000
+                14) 2100
+                15) 2200
+                16) 2300
+                17) 2400
+                """);
+            int showtimeChoice = SC.nextInt();
+            String showTimeChosen = new Showtime().TIME[showtimeChoice];
+
+            //Find suitable cinema based on time and movie given.
+            for (Cinema cinema: currentCineplex.getCinemaList()){
+                if ( cinema.getCinemaClass()==cinemaType){
+                    for(Movie m : cinema.getMoviesShown()){
+                        if ( movieChosen == m){
+                            cinemaChosen = cinema;
+                            break;
+                        }
+                    }
+                }
+            }
+            //Initial display
+            assert cinemaChosen != null;
+            // Repeated booking loop
+            int choice;
+            do {
+                System.out.println("Dear "+VIEW_STATE.getCurrUser().getUsername()+", You Have Chosen To Buy A Ticket For "+ movieChosen.getMovieTitle()+" with a "+cinemaType+ "experience.");
+                System.out.println("Please Choose your seat. Eg : row 1 col 1 ");
+                cinemaChosen.display();
+                System.out.println("Row:");
+                int row = SC.nextInt();
+                System.out.println("Col");
+                int col = SC.nextInt();
+                //Seating layout not complete idk who wrote this but tao is fixing this part
+                cinemaChosen.bookSeating(row, col);
+                System.out.println("Student?\n1) Yes\n2) No");
+                int student = SC.nextInt();
+                boolean isStudent;
+                boolean isElderly = false;
+                isStudent = student == 1;
+                System.out.println("Elderly?\n1) Yes\n2) No");
+                int elderly = SC.nextInt();
+                isElderly = elderly == 1;
+
+                //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
+                MovieTicket currentMovieTicket = new MovieTicket(movieChosen,cinemaType,dayType, isStudent,isElderly, row,col,cinemaChosen.getCinemaCode());
+                totalPrice += PricingController.getPrice( currentMovieTicket,currentTime);
+                movieTickets.add(currentMovieTicket);
+                System.out.println("Please Enter 1 if you would like to buy another ticket or enter anything else if you wish to stop.");
+                choice = SC.nextInt();
+            } while (choice == 1);
+            System.out.println("You have Finished Purchasing Tickets!");
+            System.out.println("""
+                Please Enter what Transaction Type you would like to pay with.
+                - DEBITCARD
+                - CREDITCARD
+                - CASH
+                """);
+            String transactionChoice = SC.nextLine();
+            //UPDATE USERDATABASE update transaction choice
+            UserController.USER_DATABASE.get(VIEW_STATE.getCurrUser().getUsername()).updateBookings(new Booking(UUID.randomUUID().toString(),movieGoer,todaysDate,movieTickets,new Transaction(UUID.randomUUID().toString(),totalPrice,todaysDate,TransactionType.getTransactionType(transactionChoice))));
+        } else {
+            System.out.println("No such Movie exists! Please Try Again.");
+            VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
+        }
+
+        // Since movieGoer might want to book more than one ticket , theres a loop here.
+
+
+
+////        Updating Booking HistoryT
+       // Booking booking = new Booking("test", movieGoer, todaysDate,movieTickets, new Transaction(1234,12,todaysDate, TransactionType.getType(), new ArrayList<>())); //HARD CODED TRANSACTION ARGUMENTS
+        //DatabaseController.saveBookings(booking);
 
 
 

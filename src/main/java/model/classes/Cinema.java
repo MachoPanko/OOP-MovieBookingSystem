@@ -53,7 +53,7 @@ public class Cinema {
         this.showTiming = showTiming;
     }
 
-    public void printSeatingLayout(){
+    public void display(){
         System.out.println("                                    Screen                                          ");
         for (int i = 0; i < COLS; ++i) {
             System.out.print(i + "\t");
@@ -68,5 +68,13 @@ public class Cinema {
             }
             System.out.println();
         }
+    }
+
+    public ArrayList<Movie> getMoviesShown() {
+        return moviesShown;
+    }
+
+    public void setMoviesShown(ArrayList<Movie> moviesShown) {
+        this.moviesShown = moviesShown;
     }
 }

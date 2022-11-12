@@ -16,7 +16,7 @@ public class MovieConfiguration {
                 1) Display movies
                 2) Create movie
                 3) Update movie
-                3) Delete movie""");
+                4) Delete movie""");
         switch (SC.nextInt()) {
             case 1 -> {
                 // Display movies (Still cannot show casts)

@@ -40,7 +40,7 @@ public class Cinema implements Serializable {
     public void display(int timingIdx){
         System.out.println("                                    Screen                                          \n ");
         for (int i = 0; i < ROWS; ++i) {
-            System.out.print(i + "\t");
+            System.out.println(i + "\t");
         }
         System.out.println();
 

@@ -14,6 +14,14 @@ public class PricingController {
     // nvr take into consideration cinematype
     public static double getPrice(MovieTicket movieTicket,double time){
         double price = 0.0;
+        double costOfCinemaType = 1;
+        //adjust cost based on cinema Type
+        if(movieTicket.getCinemaType() == CinemaType.IMAX){
+            costOfCinemaType = 1.3;
+        } else if (movieTicket.getCinemaType() == CinemaType.Platinum) {
+            costOfCinemaType = 1.5;
+        }
+
         boolean isStudent = movieTicket.isStudent();
         boolean isElderly = movieTicket.isElderly();
         double bookingTime =time;
@@ -25,7 +33,7 @@ public class PricingController {
         }
 
         if(movieTag != THREED) {
-            if(isElderly == true && isSixpm == false){
+            if(isElderly == true && dayType != HOLIDAY && isSixpm == false){
                 price = 4.00;
             }
             else if(isStudent == true && dayType != HOLIDAY && isSixpm != true){
@@ -57,6 +65,6 @@ public class PricingController {
                 price = 15.00;
             }
         }
-        return price;
+        return price * costOfCinemaType;
     }
 }

@@ -15,6 +15,10 @@ public class StaffController {
         HashMap<String, Staff> hm = DatabaseLoader.loadDb(filename);
         if(hm != null) {
             System.out.println("[+] Loaded staff account database!");
+            if(hm.size() == 0) {
+                STAFF_ACCOUNTS.put("budi", new Staff("budi", "budi123"));
+                STAFF_ACCOUNTS.put("admin", new Staff("admin", "admin"));
+            }
             STAFF_ACCOUNTS.putAll(hm);
         } else {
             System.out.println("[-] Empty staff account database loaded.");

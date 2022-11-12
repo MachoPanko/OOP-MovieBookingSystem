@@ -21,5 +21,4 @@ public class CinemaController {
 
     public static void write() {
         DatabaseLoader.writeDb(filename, CINEMAS);
-    }
-}
+    }}

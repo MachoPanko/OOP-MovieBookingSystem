@@ -1,5 +1,6 @@
 package utils;
 
+import controller.CineplexController;
 import controller.UserController;
 import controller.MovieController;
 import controller.StaffController;
@@ -76,6 +77,7 @@ public class DatabaseLoader {
         MovieController.load();
         UserController.load();
         StaffController.load();
+        CineplexController.load();
     }
 
     /**
@@ -85,5 +87,6 @@ public class DatabaseLoader {
         MovieController.write();
         UserController.write();
         StaffController.write();
+        CineplexController.write();
     }
 }

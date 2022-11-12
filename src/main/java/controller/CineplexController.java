@@ -26,8 +26,9 @@ public class CineplexController {
             if(hm.size() == 0) {
                 // preload movies if first time creating or there is no movies
                 CinemaType cinemaType;
-                //CINEPLEXES.put("AMK HUB",new Cineplex("AMK HUB", new ArrayList<Cinema>(new Cinema(1,null,CinemaType.Economy, new Showtime()))));
-
+                CINEPLEXES.put("AMK HUB",new Cineplex("AMK HUB", new ArrayList<Cinema>(List.of(new Cinema(1,null,CinemaType.Economy, new Showtime()),new Cinema(2,null,CinemaType.IMAX, new Showtime()),new Cinema(3,null,CinemaType.Platinum, new Showtime())))));
+                CINEPLEXES.put("DOWNTOWN EAST",new Cineplex("DOWNTOWN EAST", new ArrayList<Cinema>(List.of(new Cinema(1,null,CinemaType.Economy, new Showtime()),new Cinema(2,null,CinemaType.IMAX, new Showtime()),new Cinema(3,null,CinemaType.Platinum, new Showtime())))));
+                CINEPLEXES.put("CAUSEWAY POINT",new Cineplex("CAUSEWAY POINT", new ArrayList<Cinema>(List.of(new Cinema(1,null,CinemaType.Economy, new Showtime()),new Cinema(2,null,CinemaType.IMAX, new Showtime()),new Cinema(3,null,CinemaType.Platinum, new Showtime())))));
             }
 
             System.out.println("[+] Loaded Movie Database!");

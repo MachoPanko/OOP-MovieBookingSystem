@@ -2,43 +2,24 @@ package model.classes;
 import model.enums.CinemaType;
 
 public class Cinema {
-    private int cinemaCode;
+    private final String cinemaCode;
     private Movie currentMovie;
-    private Seating[][] seatingLayout;
+    private boolean[][] seatingLayout;
     private CinemaType cinemaClass;
     private Showtime showTiming;
     public static final int ROWS = 10;
     public static final int COLS = 18;
 
-    public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
+    public Cinema(String cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
         this.cinemaCode = cinemaCode;
         this.currentMovie = currentMovie;
         this.cinemaClass = cinemaClass;
         this.showTiming = showTiming;
-        this.seatingLayout = new Seating[ROWS][COLS];
-        for (int i = 0; i< ROWS; i++) {
-            for(int j = 0; j< COLS; j++) {
-                seatingLayout[i][j] = new Seating(i, j);
-                if(i<4 && j<2){
-                    seatingLayout[i][j].setToDisplay(false);
-                }
-                if(i>6){
-                    if(i==9&&j>7&&j<10){
-                        seatingLayout[i][j].setToDisplay(false);
-                    }
-                    else{
-                        seatingLayout[i][j].setCoupleSeat(true);
-                    }
-                }
-            }
-        }
+        this.seatingLayout = new boolean[ROWS][COLS];
     }
 
-    public int getCinemaCode() {
+    public String getCinemaCode() {
         return cinemaCode;
-    }
-    public void setCinemaCode(int cinemaCode) {
-        this.cinemaCode = cinemaCode;
     }
     public Movie getCurrentMovie() {
         return currentMovie;
@@ -46,19 +27,14 @@ public class Cinema {
     public void setCurrentMovie(Movie currentMovie) {
         this.currentMovie = currentMovie;
     }
-
-    public Seating[][] getSeatingLayout() {
+    public boolean[][] getSeatingLayout() {
         return seatingLayout;
     }
-    public void setSeatingLayout(Seating[][] seatingLayout) {
+
+    public void setSeatingLayout(boolean[][] seatingLayout) {
         this.seatingLayout = seatingLayout;
     }
-    public void bookSeating(int row, int col){
-        seatingLayout[row][col].occupySeat();
-    }
-    public void unbookSeating(int row, int col){
-        seatingLayout[row][col].unOccupySeat();
-    }
+    public void bookSeating(int row, int col){ seatingLayout[row][col] = true; }
     public CinemaType getCinemaClass() {
         return cinemaClass;
     }
@@ -73,43 +49,19 @@ public class Cinema {
     }
 
     public void printSeatingLayout(){
-
         System.out.println("                                    Screen                                          ");
-        System.out.println("  1   2   3   4   5   6   7   8   9   10   11   12   13   14   15   16   17   18");
-        for (int i = 0; i< ROWS; i++) {
-            int asciiRow = 74-i; // Ascii for J to A
-            System.out.printf(i + " ");
-            for(int j = 0; j< COLS; j++) {
-                if(seatingLayout[i][j].isToDisplay()){
-                    if(seatingLayout[i][j].isCoupleSeat()){
+        for (int i = 0; i < COLS; ++i) {
+            System.out.print(i + "\t");
+        }
 
-                        if(!seatingLayout[i][j].isOccupied()){
-                            System.out.print("[  |  ] ");
-                        }
-                        else{
-                            System.out.print("[ x|x ] ");
-                        }
-                        j++;
-                    }
-                    else{
-                        if(!seatingLayout[i][j].isOccupied()){
-                            System.out.print("[ ] ");
-                        }
-                        else{
-                            System.out.print("[X] ");
-                        }
-                    }
-
-                }
-                else{
-                    System.out.print("    ");
-                }
+        for(int i = 0; i < COLS; ++i) {
+            for(int j = 0; j < ROWS; ++j) {
+                if(this.seatingLayout[i][j])
+                    System.out.println("[X]");
+                else
+                    System.out.println("[ ]");
             }
-            System.out.println((char)asciiRow + "");
-            System.out.println("____________________________________________________________________________");
+            System.out.println();
         }
     }
-
-
-
 }

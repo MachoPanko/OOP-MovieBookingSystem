@@ -51,12 +51,6 @@ public class Main {
                 }
             }
         }
-
-//        UserLogin.displayLoginMenu();
-//        MovieCreation.createMovie();
-//        MovieConfiguration.configureMovies();
-//        BookingSystem.purchaseTicket();
-
     }
 
 }

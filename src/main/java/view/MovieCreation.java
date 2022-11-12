@@ -46,9 +46,6 @@ public class MovieCreation {
         String statusChoice = SC.nextLine();
         MovieStatus movieStatus = MovieStatus.getMovieStatus(statusChoice);
 
-        System.out.println("Enter Movie Rating (0-5):");
-        double movieRating = Double.parseDouble(SC.nextLine());
-
         System.out.println("Enter Synopsis:");
         String synopsis = SC.nextLine();
 
@@ -57,7 +54,6 @@ public class MovieCreation {
                 movieTag,
                 movieStatus,
                 synopsis,
-                movieRating,
                 director,
                 ageRating,
                 casts

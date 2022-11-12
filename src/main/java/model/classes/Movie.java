@@ -1,5 +1,4 @@
 package model.classes;
-import static model.Main.SC;
 import model.enums.AgeRating;
 import model.enums.MovieStatus;
 import model.enums.MovieTag;
@@ -13,31 +12,26 @@ public class Movie implements Serializable {
     private MovieTag movieTag;
     private MovieStatus movieStatus;
     private String movieSynopsis;
-    private double movieRating; //Overall Reviewer Rating of movie 0-5
     private String movieDirector;
     private AgeRating ageRating;
     private ArrayList<String> casts;
-
+    private double movieRating;
     private int numberOfRatings;
-    private ArrayList<Review> reviews;
+    private final ArrayList<Review> reviews;
 
     //Still need to implement past reviews and reviewers rating
-
-    public Movie(
-                 String movieTitle,
+    public Movie(String movieTitle,
                  MovieTag movieTag,
                  MovieStatus movieStatus,
                  String movieSynopsis,
-                 double movieRating,
                  String movieDirector,
                  AgeRating ageRating,
                  ArrayList<String> casts) {
-
         this.movieTitle = movieTitle;
         this.movieTag = movieTag;
         this.movieStatus = movieStatus;
         this.movieSynopsis = movieSynopsis;
-        this.movieRating = movieRating;
+        this.movieRating = 0;
         this.movieDirector = movieDirector;
         this.ageRating = ageRating;
         this.casts = casts;
@@ -47,9 +41,10 @@ public class Movie implements Serializable {
     public ArrayList<Review> getReviews() {
         return reviews;
     }
+
     public void printReviews(){
         System.out.println(movieRating);
-        for ( Review r : this.reviews){
+        for (Review r : this.reviews){
             System.out.println(r.getCustomerReview());
         }
     }
@@ -59,7 +54,6 @@ public class Movie implements Serializable {
         this.movieRating = (this.movieRating*(numberOfRatings-1)+intrating)/numberOfRatings;
         this.reviews.add(newReview);
     }
-
 
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
@@ -85,9 +79,7 @@ public class Movie implements Serializable {
     public String getMovieSynopsis() {
         return movieSynopsis;
     }
-    public void setMovieRating(double movieRating) {
-        this.movieRating = movieRating;
-    }
+    public void setMovieRating(double movieRating) { this.movieRating = movieRating; }
     public double getMovieRating() {
         return movieRating;
     }
@@ -106,9 +98,7 @@ public class Movie implements Serializable {
     public ArrayList<String> getCasts() {
         return casts;
     }
-    public void setCasts(ArrayList<String> casts) {
-        this.casts = casts;
-    }
+    public void setCasts(ArrayList<String> casts) { this.casts = casts; }
 
     @Override
     public String toString() {

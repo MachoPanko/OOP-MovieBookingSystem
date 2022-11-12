@@ -3,37 +3,23 @@ package model.classes;
 import java.io.Serializable;
 
 public class Showtime implements Serializable {
-    private String movie;
-
-    private String[] time_arr = {"09:00", "14:00", "21:00"};
-    private int time_int;
-
-    public Showtime(String movie, int time_int) {
-        this.movie = movie;
-        this.time_int = time_int;
-    }
-
-    public String getMovie() {
-        return movie;
-    }
-
-    public void setMovie(String movie) {
-        this.movie = movie;
-    }
-
-    public String[] getTime_arr() {
-        return time_arr;
-    }
-
-    public void setTime_arr(String[] time_arr) {
-        this.time_arr = time_arr;
-    }
-
-    public int getTime_int() {
-        return time_int;
-    }
-
-    public void setTime_int(int time_int) {
-        this.time_int = time_int;
-    }
+    public final String[] TIME = {
+            "0000",
+            "0800",
+            "0900",
+            "1000",
+            "1100",
+            "1200",
+            "1300",
+            "1400",
+            "1500",
+            "1600",
+            "1700",
+            "1800",
+            "1900",
+            "2000",
+            "2100",
+            "2200",
+            "2300",
+    };
 }

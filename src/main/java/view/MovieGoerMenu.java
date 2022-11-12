@@ -72,7 +72,7 @@ public class MovieGoerMenu {
             movie.updateReviews(review);
         }
         else{
-            System.out.println("You havent watched this movie before! Try Another option.");
+            System.out.println("You haven't watched this movie before! Try Another option.");
         }
         return;
 

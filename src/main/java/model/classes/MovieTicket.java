@@ -6,41 +6,65 @@ import model.enums.DayType;
 import java.io.Serializable;
 
 public class MovieTicket implements Serializable {
-    private final Movie movie;
-    private final CinemaType cinemaType;
-    private final DayType dayType;
-    private final int cinemaRoom;
-    private final boolean isElderly;
-    private final boolean isStudent;
-    private final int seatRow;
-    private final int seatCol;
+    private Movie movie;
+    private CinemaType cinemaType;
+    private DayType dayType;
+    private int cinemaRoom;
+    private boolean isElderly;
+    private boolean isStudent;
 
     public MovieTicket(Movie movie,
                        CinemaType cinemaType,
                        DayType dayType,
                        boolean isStudent,
                        boolean isElderly,
-                       int seatRow,
-                       int seatCol,
+//                       Seating seat,
                        int cinemaRoom) {
         this.movie = movie;
         this.cinemaType = cinemaType;
         this.dayType = dayType;
         this.isStudent = isStudent;
         this.isElderly = isElderly;
-        this.seatCol = seatCol;
-        this.seatRow = seatRow;
+//        this.seat = seat;
         this.cinemaRoom = cinemaRoom;
     }
 
-    public Movie getMovie() { return movie; }
-    public CinemaType getCinemaType() { return cinemaType; }
-    public DayType getDayType() { return dayType; }
-    public int getCinemaRoom() { return cinemaRoom; }
-    public boolean isElderly() { return isElderly; }
-    public boolean isStudent() { return isStudent; }
-    public int getSeatRow() { return seatRow; }
-    public int getSeatCol() { return seatCol; }
+    public boolean isElderly() {
+        return isElderly;
+    }
+    public boolean isStudent() {
+        return isStudent;
+    }
+    public void setElderly(boolean elderly) {
+        isElderly = elderly;
+    }
+    public void setStudent(boolean student) {
+        isStudent = student;
+    }
+    public Movie getMovie() {
+        return movie;
+    }
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+    public CinemaType getCinemaType() {
+        return cinemaType;
+    }
+    public void setCinemaType(CinemaType cinemaType) {
+        this.cinemaType = cinemaType;
+    }
+    public DayType getDayType() {
+        return dayType;
+    }
+    public void setDayType(DayType dayType) {
+        this.dayType = dayType;
+    }
+//    public Seating getSeat() {
+//        return seat;
+//    }
+//    public void setSeat(Seating seat) {
+//        this.seat = seat;
+//    }
 
     @Override
     public String toString() {
@@ -51,8 +75,7 @@ public class MovieTicket implements Serializable {
                 ", cinemaRoom=" + cinemaRoom +
                 ", isElderly=" + isElderly +
                 ", isStudent=" + isStudent +
-                ", seatRow=" + seatRow +
-                ", seatCol=" + seatCol +
+//                ", seat=" + seat +
                 '}';
     }
 }

@@ -33,6 +33,7 @@ public class BookingSystem {
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "dd-MM-yyyy");
         String todaysDate = sdf.format(new java.sql.Date(millis));
+
         DayType dayType = DayType.getType(todaysDate);
         MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
         //INIT movieTickets

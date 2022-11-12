@@ -22,7 +22,7 @@ public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
 
     public static DayType getType(String date) {
         day = parseDate(date);
-        dayString =   date.substring(8) + date.substring(5,7);
+        dayString =   date.substring(0,2) + date.substring(3,5);
         Calendar c1 = Calendar.getInstance(TimeZone.getTimeZone("Singapore"));
         c1.setTime(day);
         for ( String holidays : holidayDates){
@@ -52,4 +52,10 @@ public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
         }
     }
 
+    public static void addHoliday(String newHoliday){
+        holidayDates.add(newHoliday);
+    }
+    public static void deleteHoliday(String holiday){
+        holidayDates.remove(holiday);
+    }
 }

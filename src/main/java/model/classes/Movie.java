@@ -17,6 +17,7 @@ public class Movie implements Serializable {
     private ArrayList<String> casts;
     private double movieRating;
     private int numberOfRatings;
+    private int ticketSales;
     private final ArrayList<Review> reviews;
 
     //Still need to implement past reviews and reviewers rating
@@ -42,6 +43,9 @@ public class Movie implements Serializable {
         return reviews;
     }
 
+    public int getTicketSales() { return ticketSales; }
+    public void increaseTicketSales() { this.ticketSales++; }
+
     public void printReviews(){
         System.out.println(movieRating);
         for (Review r : this.reviews){
@@ -54,6 +58,8 @@ public class Movie implements Serializable {
         this.movieRating = (this.movieRating*(numberOfRatings-1)+newReview.getCustomerRating())/numberOfRatings;
         this.reviews.add(newReview);
     }
+
+
 
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;

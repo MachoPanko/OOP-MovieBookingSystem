@@ -2,8 +2,6 @@ package model;
 
 import utils.DatabaseLoader;
 import view.*;
-
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -20,14 +18,13 @@ public class Main {
     public static final Scanner SC = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // register ctrl-c handler, we should save all database on exit
+        // register ctrl-c handler, we should save all database on exit or unexpected shutdown
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
                 Thread.sleep(200);
                 System.out.println("[+] Handling ctrl-c!");
                 System.out.println("[+] Running cleanup code!");
                 DatabaseLoader.saveAllDb();
-                SC.close();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 e.printStackTrace();
@@ -50,7 +47,8 @@ public class Main {
                 case MovieGoerLoginView -> MovieGoerLogin.display();
                 case MovieGoerView -> MovieGoerMenu.display();
                 case BookingSystemView -> BookingSystem.display();
-                case ExitedView -> {}
+                case ExitedView -> {
+                }
             }
         }
 

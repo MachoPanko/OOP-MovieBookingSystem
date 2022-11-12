@@ -49,6 +49,8 @@ public class Main {
                 case MovieGoerView -> MovieGoerMenu.display();
                 case BookingSystemView -> BookingSystem.display();
                 case BookingHistView -> BookingHistory.display();
+                case ReviewView -> MovieGoerMenu.displayReviewMenu();
+                case ListTop5MovieRatings -> ListTop5MovieRatings.display();
                 case ExitedView -> {}
             }
         }

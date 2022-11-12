@@ -30,6 +30,9 @@ public class MovieController {
             MOVIES.put("Slow and Chill 7", new Movie("Slow and Chill 7", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis, "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             Random rand = new Random();
             MOVIES.forEach((k,v) -> {
+                if(v.getMovieTitle().equals("KingsWomen")) {
+                    return;
+                }
                 v.updateReviews(new Review(new MovieGoer("John7", 999, 21, "John7@gmail.com"), "Good movie!",rand.nextDouble(0.0, 5.0)));
             });
         }

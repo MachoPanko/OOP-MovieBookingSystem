@@ -11,6 +11,7 @@ public class ViewState {
         LoginView,
         StaffLoginView,
         StaffView,
+        ReviewView,
         ConfigureSystemSettingView,
         MovieGoerLoginView,
         ViewMoviesView,
@@ -21,7 +22,8 @@ public class ViewState {
         MovieGoerView,
         ExitedView,
         BookingSystemView,
-        BookingHistView
+        BookingHistView,
+        ListTop5MovieRatings
     }
 
     public ViewState(State currState, User currUser) {

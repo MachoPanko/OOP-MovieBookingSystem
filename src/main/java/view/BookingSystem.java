@@ -22,9 +22,14 @@ public class BookingSystem {
     public static void display()  {
         //INIT Total price
         double totalPrice = 0 ;
+
         // INIT DATE and time
         long millis = System.currentTimeMillis();
         double currentTime = (millis/ 1000.0 ) / 60/60;
+
+        SimpleDateFormat dateformatTID = new SimpleDateFormat("yyyyMMddHHmm");
+        String dateformat = dateformatTID.format(new java.sql.Date(millis));
+
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "dd-MM-yyyy");
         String todaysDate = sdf.format(new java.sql.Date(millis));
@@ -145,8 +150,9 @@ public class BookingSystem {
                 - CASH
                 """);
             String transactionChoice = SC.nextLine();
+            String Tid = cinemaChosen.getCinemaCode()+dateformat;
             //UPDATE USERDATABASE update transaction choice
-            UserController.USER_DATABASE.get(VIEW_STATE.getCurrUser().getUsername()).updateBookings(new Booking(UUID.randomUUID().toString(),movieGoer,todaysDate,movieTickets,new Transaction(UUID.randomUUID().toString(),totalPrice,todaysDate,TransactionType.getTransactionType(transactionChoice))));
+            UserController.USER_DATABASE.get(VIEW_STATE.getCurrUser().getUsername()).updateBookings(new Booking(Tid,movieGoer,todaysDate,movieTickets,new Transaction(Tid,totalPrice,todaysDate,TransactionType.getTransactionType(transactionChoice))));
             VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
         } else {
             System.out.println("No such Movie exists! Please Try Again.");

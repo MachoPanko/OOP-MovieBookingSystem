@@ -52,6 +52,14 @@ public class MovieGoerMenu {
 
         if(movie != null) {
             if(watchedMovies.contains(movie)) {
+                // check if customer alr made review
+                for(Review r : movie.getReviews()) {
+                    if(r.getCustomer().getUsername().equals(movieGoer.getUsername())) {
+                        System.out.println("You have reviewed this movie!");
+                        VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+                        return;
+                    }
+                }
                 System.out.println("Please enter the Rating out of 5");
                 double rating = SC.nextDouble();
                 SC.nextLine();

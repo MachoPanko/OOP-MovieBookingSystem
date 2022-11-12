@@ -3,12 +3,20 @@ package model.enums;
 import model.classes.Transaction;
 
 public enum TransactionType {
-    TEST("TEST");
+    DEBITCARD("DEBITCARD"),
+    CREDITCARD("CREDITCARD"),
+    CASH("CASH");
 
-    TransactionType(String test) {
+    private String transactionType;
+
+    TransactionType(String transactionType) {
     }
 
-    public static TransactionType getType() {
-        return TEST;
+    public static TransactionType getTransactionType(String choice) {
+        return switch(choice.toUpperCase()){
+            case "DEBITCARD" -> DEBITCARD;
+            case "CREDITCARD" -> CREDITCARD;
+            case "CASH" -> CASH;
+        };
     }
 }

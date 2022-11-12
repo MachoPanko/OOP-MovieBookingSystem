@@ -14,7 +14,7 @@ public class ConfigureSystemSettingView {
     public static void display() {
         System.out.println("""
                 Configure System Setting
-                1) Add all movies
+                1) Change ticket price
                 2) Add a Movie
                 3) Exit""");
         int choice = SC.nextInt();

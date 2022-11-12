@@ -59,8 +59,6 @@ public class Movie implements Serializable {
         this.reviews.add(newReview);
     }
 
-
-
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }

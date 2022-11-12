@@ -11,6 +11,7 @@ import static model.enums.DayType.*;
 import static model.enums.MovieTag.THREED;
 
 public class PricingController {
+    // nvr take into consideration cinematype
     public static double getPrice(MovieTicket movieTicket,double time){
         double price = 0.0;
         boolean isStudent = movieTicket.isStudent();

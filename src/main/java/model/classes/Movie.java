@@ -49,9 +49,9 @@ public class Movie implements Serializable {
         }
     }
 
-    public void updateReviews(Review newReview , double intrating) {
+    public void updateReviews(Review newReview) {
         this.numberOfRatings++;
-        this.movieRating = (this.movieRating*(numberOfRatings-1)+intrating)/numberOfRatings;
+        this.movieRating = (this.movieRating*(numberOfRatings-1)+newReview.getCustomerRating())/numberOfRatings;
         this.reviews.add(newReview);
     }
 

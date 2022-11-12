@@ -48,8 +48,8 @@ public class Main {
                 case MovieGoerLoginView -> MovieGoerLogin.display();
                 case MovieGoerView -> MovieGoerMenu.display();
                 case BookingSystemView -> BookingSystem.display();
-                case ExitedView -> {
-                }
+                case BookingHistView -> BookingHistory.display();
+                case ExitedView -> {}
             }
         }
     }

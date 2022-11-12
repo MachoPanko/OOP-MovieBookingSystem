@@ -111,7 +111,7 @@ public class BookingSystem {
                 int row = SC.nextInt();
                 System.out.println("Col");
                 int col = SC.nextInt();
-                //Seating layout not complete idk who wrote this but tao is fixing this part
+
                 cinemaChosen.bookSeating(row, col);
                 System.out.println("Student?\n1) Yes\n2) No");
                 int student = SC.nextInt();

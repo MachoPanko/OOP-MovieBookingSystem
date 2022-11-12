@@ -59,6 +59,7 @@ public class Cinema implements Serializable {
         for (int i = 0; i < ROWS; ++i) {
             System.out.print(i + "\t");
         }
+        System.out.println();
 
         for(int i = 0; i < ROWS; ++i) {
             for(int j = 0; j < COLS; ++j) {

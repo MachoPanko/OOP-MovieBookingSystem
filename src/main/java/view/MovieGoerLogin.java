@@ -14,8 +14,6 @@ public class MovieGoerLogin {
             System.out.println("Hello Guest! Guest account creation in progress...");
             System.out.println("Please enter your username");
             String username = SC.nextLine();
-            System.out.println("Please enter your name");
-            String name = SC.nextLine();
             System.out.println("Please enter your mobile number");
             int mobile = SC.nextInt();
             SC.nextLine();

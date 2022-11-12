@@ -1,6 +1,7 @@
 package view;
 
 import controller.MovieController;
+import model.classes.Staff;
 
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
@@ -34,7 +35,15 @@ public class MovieListing {
 //                        .filter(m -> searchChoice.toUpperCase().replaceAll("\\s+", "").equals(m.getMovieTitle().toUpperCase().replaceAll("\\s+", "")))
 //                        .forEach(System.out::println);
             }
-            case 5 -> VIEW_STATE.setCurrState(ViewState.State.StaffView);
+            case 5 -> {
+                if( VIEW_STATE.getCurrUser() instanceof Staff){
+                    VIEW_STATE.setCurrState(ViewState.State.StaffView);
+                }
+                else{
+                    VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+                }
+
+            }
         }
     }
 }

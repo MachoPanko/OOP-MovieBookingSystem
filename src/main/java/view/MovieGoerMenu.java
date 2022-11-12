@@ -25,7 +25,7 @@ public class MovieGoerMenu {
         int choice = Integer.parseInt(SC.nextLine());
         switch (choice) {
             case 1 -> {
-                VIEW_STATE.setCurrState(ViewState.State.MovieListing);
+                VIEW_STATE.setCurrState(ViewState.State.ViewMoviesView);
                 // List out all movies
             }
 //            case 2 -> BookingSystem.purchaseTicket();
@@ -38,6 +38,11 @@ public class MovieGoerMenu {
             case 6 -> {
                 handleReview();
                 VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+            }
+            case 7 -> {
+                System.out.println("Logging out Guest...");
+                VIEW_STATE.setCurrState(ViewState.State.LoginView);
+                VIEW_STATE.setCurrUser(null);
             }
             default -> VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
 

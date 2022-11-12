@@ -70,11 +70,12 @@ public class Cinema implements Serializable {
         }
     }
 
+    public void updateMoviesShown(Movie newMovie){
+        this.moviesShown.add(newMovie);
+    }
     public ArrayList<Movie> getMoviesShown() {
         return moviesShown;
     }
 
-    public void setMoviesShown(ArrayList<Movie> moviesShown) {
-        this.moviesShown = moviesShown;
-    }
+
 }

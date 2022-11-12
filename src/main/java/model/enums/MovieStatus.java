@@ -7,7 +7,8 @@ public enum MovieStatus {
 
     COMING_SOON("COMING_SOON"),
     PREVIEW("PREVIEW"),
-    NOW_SHOWING("NOW_SHOWING");
+    NOW_SHOWING("NOW_SHOWING"),
+    END_OF_SHOWING("END_OF_SHOWING");
 
     private String status;
 
@@ -29,6 +30,7 @@ public enum MovieStatus {
             case "COMING_SOON" -> COMING_SOON;
             case "PREVIEW" -> PREVIEW;
             case "NOW_SHOWING" -> NOW_SHOWING;
+            case "END_OF_SHOWING" -> END_OF_SHOWING;
             default -> null;
         };
     }

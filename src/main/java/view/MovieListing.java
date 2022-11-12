@@ -1,7 +1,9 @@
 package view;
 
 import controller.MovieController;
+import model.classes.MovieGoer;
 import model.classes.Staff;
+import model.enums.MovieStatus;
 
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
@@ -24,7 +26,18 @@ public class MovieListing {
                     System.out.println("There are no movies!");
                 } else {
                     System.out.println("List of Movies");
-                    MovieController.MOVIES.forEach((k,v) -> System.out.println(v));
+                    MovieController.MOVIES.forEach((k,v) ->{
+                           var isStaff =  VIEW_STATE.getCurrUser() instanceof Staff;
+                           if(!isStaff){
+                               if(v.getMovieStatus() == MovieStatus.END_OF_SHOWING){
+                                   return;
+                               }
+
+                           }
+                        System.out.println(v);
+
+
+                    });
                     System.out.println();
                 }
             }

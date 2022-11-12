@@ -49,6 +49,7 @@ public class Main {
                 case ConfigureSystemSettingView -> ConfigureSystemSettingView.display();
                 case MovieGoerLoginView -> MovieGoerLogin.display();
                 case MovieGoerView -> MovieGoerMenu.display();
+                case BookingSystemView -> BookingSystem.display();
                 case ExitedView -> {}
             }
         }

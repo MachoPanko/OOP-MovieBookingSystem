@@ -28,7 +28,9 @@ public class MovieGoerMenu {
                 VIEW_STATE.setCurrState(ViewState.State.ViewMoviesView);
                 // List out all movies
             }
-//            case 2 -> BookingSystem.purchaseTicket();
+            case 2 -> {
+                VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
+            }
 //            case 3 -> {
 //                System.out.println("Please enter your name");
 //                String name = SC.nextLine();
@@ -55,7 +57,7 @@ public class MovieGoerMenu {
         MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
         String username = movieGoer.getUsername();
         boolean ValidWatcher = false;
-        ArrayList<Booking> bookingArrayList = UserController.USER_HISTORY.get(username).getBookings();
+        ArrayList<Booking> bookingArrayList = UserController.USER_DATABASE.get(username).getBookings();
         for (Booking b : bookingArrayList){
             for(MovieTicket m : b.getMovieTickets())
                 if(Objects.equals(m.getMovie().getMovieTitle(), movieName)){

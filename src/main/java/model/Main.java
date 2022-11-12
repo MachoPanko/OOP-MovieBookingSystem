@@ -31,6 +31,7 @@ public class Main {
             }
         }));
 
+
         DatabaseLoader.loadAllDb();
 
         while (VIEW_STATE.getCurrState() != ViewState.State.ExitedView) {

@@ -12,9 +12,12 @@ public class LoginView {
      * Display login view
      */
     public static void display() {
-        System.out.println("Welcome to MOBLIMA");
-        System.out.println("Are you a staff or a customer?");
-        System.out.println("1) Staff\n2) Customer\n3) Exit");
+        System.out.println("""
+                Welcome to MOBLIMA
+                Are you a staff or a customer?
+                1) Staff
+                2) Customer
+                3) Exit""");
 
         int choice = SC.nextInt();
         SC.nextLine();

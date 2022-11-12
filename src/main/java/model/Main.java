@@ -27,6 +27,7 @@ public class Main {
                 System.out.println("[+] Handling ctrl-c!");
                 System.out.println("[+] Running cleanup code!");
                 DatabaseLoader.saveAllDb();
+                SC.close();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 e.printStackTrace();

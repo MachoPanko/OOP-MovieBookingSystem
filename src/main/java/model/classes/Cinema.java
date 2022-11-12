@@ -57,7 +57,7 @@ public class Cinema implements Serializable {
     public void display(){
         System.out.println("                                    Screen                                          ");
         for (int i = 0; i < ROWS; ++i) {
-            System.out.print(i + "\t");
+            System.out.println(i + "\t");
         }
         System.out.println();
 

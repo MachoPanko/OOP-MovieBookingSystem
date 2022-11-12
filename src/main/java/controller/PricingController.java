@@ -25,7 +25,7 @@ public class PricingController {
         }
 
         if(movieTag != THREED) {
-            if(isElderly == true && isSixpm == false){
+            if(isElderly == true && dayType != HOLIDAY && isSixpm == false){
                 price = 4.00;
             }
             else if(isStudent == true && dayType != HOLIDAY && isSixpm != true){

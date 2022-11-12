@@ -17,13 +17,12 @@ public class ConfigureSystemSettingView {
         System.out.println("""
                 Configure System Setting
                 1) Add all
-                2) Add a Movie
+                2) Configure holidays
                 3) Exit""");
         int choice = SC.nextInt();
+        SC.nextLine();
         ArrayList<Movie> m = new ArrayList<>(MovieController.MOVIES.values());
         System.out.println(m);
-
-        SC.nextLine();
         switch (choice) {
             case 1 -> {
                 for (Cineplex cineplex : CineplexController.CINEPLEXES.values()){
@@ -31,6 +30,12 @@ public class ConfigureSystemSettingView {
                         cinema.setMoviesShown(m);
                     }
                 }
+            }
+            case 2 -> {
+                System.out.println("Enter new holiday date in this format : ddMM");
+                String newHoliday = SC.nextLine();
+
+
             }
         }
         VIEW_STATE.setCurrState(ViewState.State.StaffView);

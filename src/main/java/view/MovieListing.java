@@ -12,7 +12,7 @@ public class MovieListing {
                 Movie Listing!
                 1) List all movies
                 2) List top 5 movies by ticket sales
-                3) List top 5 movies by ticket ratings
+                3) List top 5 movies by movie ratings
                 4) Search for a movie
                 5) Back""");
         int choice = SC.nextInt();

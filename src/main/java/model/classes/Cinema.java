@@ -1,8 +1,10 @@
 package model.classes;
 import model.enums.CinemaType;
 
+import java.util.ArrayList;
+
 public class Cinema {
-    private final String cinemaCode;
+    private final int cinemaCode;
     private Movie currentMovie;
     private boolean[][] seatingLayout;
     private CinemaType cinemaClass;
@@ -10,15 +12,18 @@ public class Cinema {
     public static final int ROWS = 10;
     public static final int COLS = 18;
 
-    public Cinema(String cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
+    private ArrayList<Movie> moviesShown;
+
+    public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
         this.cinemaCode = cinemaCode;
         this.currentMovie = currentMovie;
         this.cinemaClass = cinemaClass;
         this.showTiming = showTiming;
         this.seatingLayout = new boolean[ROWS][COLS];
+        this.moviesShown = new ArrayList<>();
     }
 
-    public String getCinemaCode() {
+    public int getCinemaCode() {
         return cinemaCode;
     }
     public Movie getCurrentMovie() {

@@ -20,7 +20,7 @@ public class ViewState {
         DeleteMovieView,
         MovieGoerView,
         ExitedView,
-        MovieListing
+        BookingSystemView
     }
 
     public ViewState(State currState, User currUser) {

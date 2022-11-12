@@ -35,7 +35,7 @@ public class Cinema {
                 }
             }
         }
-        seatingLayout[9][7].occupySeat();
+
     }
 
     public int getCinemaCode() {
@@ -76,7 +76,7 @@ public class Cinema {
         this.showTiming = showTiming;
     }
 
-    public void printSeatingLayout(){
+    public void display(){
 
         System.out.println("                                    Screen                                          ");
         System.out.println("  1   2   3   4   5   6   7   8   9   10   11   12   13   14   15   16   17   18");

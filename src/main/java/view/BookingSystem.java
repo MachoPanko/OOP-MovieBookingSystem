@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import controller.DatabaseController;
+import controller.MovieController;
 import controller.PricingController;
 import model.classes.*;
 import model.enums.CinemaType;
@@ -25,48 +26,53 @@ public class BookingSystem {
 //        long millis = System.currentTimeMillis();
 //        SimpleDateFormat sdf = new SimpleDateFormat(
 //                "dd-MM-yyyy");
-//
 //        String todaysDate = sdf.format(new java.sql.Date(millis));
-//
 //        MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
 //        //INIT movieTickets
 //        ArrayList<MovieTicket> movieTickets = new ArrayList<>();
 //        //INIT Movie choice
-//        ArrayList<Movie> movies = DatabaseController.loadMovieData();
-//        String seatChoice;
-//        System.out.println("Please Enter The Movie You would like to watch!!");
+//        System.out.println("Please Enter The name of the Movie You would like to watch!!");
 //        String movieChoice = SC.nextLine();
-//        Movie movieChosen = null;
-//        int choice = SC.nextInt();
-//        for (Movie m : movies) {
-//            System.out.println(m.getMovieTitle());
-//            if (movieChoice.replaceAll("\\s+", "").toUpperCase().equals(m.getMovieTitle().replaceAll("\\s+", "").toUpperCase()) ) {
-//                movieChosen = m;
-//            } else {
-//                System.out.println("No such Movie exists! Please Try Again.");
-//                System.out.println("Please Enter The Movie You would like to watch!!");
-//                movieChoice = sc.next();
+//        Movie movieChosen = MovieController.MOVIES.get(movieChoice);
+//        Cinema cinemaChosen;
+//
+//        if (movieChosen != null) {
+//            System.out.println("Please Choose your Cinema Type");
+//            System.out.println("Platinum, Economy, IMAX");
+//            CinemaType cinemaType = CinemaType.getType(SC.nextLine());
+//
+//            System.out.println("At which time do you want to watch it?");
+//            System.out.println("1) 09:00,2) 14:00,3) 21:00");
+//            int showtimeChoice = SC.nextInt();
+//            Showtime showtime = new Showtime(movieChoice,showtimeChoice-1);
+//
+//            //Find suitable cinema based on time and movie given.
+//
+//            for (int j = 0 ; j <5 ; j++){ //implement once have cinema database this is dummy
+//                System.out.println("loop thru the cinema lists to match TIME and movie NAME and CINEMA TYPE. After finding cinema then save it as a variable");
+//                // find cinema by end of this loop
+//                cinemaChosen = new Cinema();
 //            }
+//            cinemaChosen.display();
+//
+//            // Ask for which seat they want
+//            int bookSeat = SC.nextInt() ;
+//            System.out.println("Enter the row that you like");
+//
+//
+//            while(bookSeat )
+//
+//
+//        } else {
+//            System.out.println("No such Movie exists! Please Try Again.");
+//            VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
 //        }
+//
 //
 //
 //
 //
 //        /// init cinema THIS PART IS EXTREMELY INCOMPLETE. ALOT OF HARD CODED FOR TESTING
-//        System.out.println("Please Choose your Cinema Type");
-//        System.out.println("Platinum, Economy, IMAX");
-//        CinemaType  cinemaType = CinemaType.getType(sc.next());
-////        int timeOfMovie ; /// *Time format used to store movie timings have not been set as of when this code was written. please review.
-////        timeOfMovie = sc.nextInt();
-//        System.out.println("At which time do you want to watch it?");
-//        System.out.println("1) 09:00,2) 14:00,3) 21:00");
-//        int showtimeChoice = sc.nextInt();
-//        Showtime showtime = new Showtime(movieChoice,showtimeChoice-1);
-//
-//        Cinema cinemaChosen = new Cinema(01,movieChosen,cinemaType, showtime); /// TESTING ONLY
-//        for (int j = 0 ; j <5 ; j++){
-//            System.out.println("loop thru the cinema lists to match TIME and movie NAME and CINEMA TYPE. After finding cinema then save it as a variable");
-//        }
 //
 //
 //
@@ -140,9 +146,9 @@ public class BookingSystem {
 //////        Updating Booking HistoryT
 //       // Booking booking = new Booking("test", movieGoer, todaysDate,movieTickets, new Transaction(1234,12,todaysDate, TransactionType.getType(), new ArrayList<>())); //HARD CODED TRANSACTION ARGUMENTS
 //        //DatabaseController.saveBookings(booking);
-//
-//
-//
-//
+
+
+
+
     }
 }

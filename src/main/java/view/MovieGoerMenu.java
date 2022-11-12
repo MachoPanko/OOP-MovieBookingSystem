@@ -24,8 +24,8 @@ public class MovieGoerMenu {
             case 1 -> VIEW_STATE.setCurrState(ViewState.State.ViewMoviesView);
             case 2 -> VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
             case 3 -> VIEW_STATE.setCurrState(ViewState.State.BookingHistView);
-            case 4 -> {}
-            case 5 -> VIEW_STATE.setCurrState(ViewState.State.ListTop5MovieRatings);
+            case 4 -> VIEW_STATE.setCurrState(ViewState.State.ListTop5Movie2);
+            case 5 -> VIEW_STATE.setCurrState(ViewState.State.ListTop5Movie);
             case 6 -> VIEW_STATE.setCurrState(ViewState.State.ReviewView);
             case 7 -> {
                 System.out.println("Logging out Guest...");

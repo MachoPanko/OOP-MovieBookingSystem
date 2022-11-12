@@ -23,7 +23,9 @@ public class ViewState {
         ExitedView,
         BookingSystemView,
         BookingHistView,
-        ListTop5MovieRatings
+
+        ListTop5Movie,
+        ListTop5Movie2
     }
 
     public ViewState(State currState, User currUser) {

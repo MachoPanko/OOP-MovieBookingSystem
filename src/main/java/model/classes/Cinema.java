@@ -12,7 +12,7 @@ public class Cinema implements Serializable {
     private Showtime showTiming;
     public static final int ROWS = 10;
     public static final int COLS = 18;
-    private final ArrayList<Movie> moviesShown;
+    private ArrayList<Movie> moviesShown;
 
     public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
         this.cinemaCode = cinemaCode;

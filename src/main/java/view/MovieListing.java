@@ -28,9 +28,13 @@ public class MovieListing {
                     System.out.println();
                 }
             }
+            case 2 -> {
+                System.out.println("These are the top 5 movies based on ticket sales");
+                VIEW_STATE.setCurrState(ViewState.State.ListTop5Movie2);
+            }
             case 3 -> {
                 System.out.println("These are the top 5 movies based on ratings");
-                VIEW_STATE.setCurrState(ViewState.State.ListTop5MovieRatings);
+                VIEW_STATE.setCurrState(ViewState.State.ListTop5Movie);
             }
             case 4 -> {
                 System.out.println("Which movie do you want to search?");

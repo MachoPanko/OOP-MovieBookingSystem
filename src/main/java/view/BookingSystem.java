@@ -92,7 +92,7 @@ public class BookingSystem {
             for (Cinema cinema: currentCineplex.getCinemaList()){
                 if ( cinema.getCinemaClass()==cinemaType){
                     for(Movie m : cinema.getMoviesShown()){
-                        if ( movieChosen == m){
+                        if (movieChosen.getMovieTitle().equals(m.getMovieTitle())){
                             cinemaChosen = cinema;
                             break;
                         }
@@ -109,17 +109,24 @@ public class BookingSystem {
                 cinemaChosen.display();
                 System.out.println("Row:");
                 int row = SC.nextInt();
+                SC.nextLine();
+
                 System.out.println("Col");
                 int col = SC.nextInt();
+                SC.nextLine();
 
+                //Seating layout not complete idk who wrote this but tao is fixing this part
                 cinemaChosen.bookSeating(row, col);
                 System.out.println("Student?\n1) Yes\n2) No");
                 int student = SC.nextInt();
+                SC.nextLine();
                 boolean isStudent;
                 boolean isElderly = false;
                 isStudent = student == 1;
                 System.out.println("Elderly?\n1) Yes\n2) No");
+
                 int elderly = SC.nextInt();
+                SC.nextLine();
                 isElderly = elderly == 1;
 
                 //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
@@ -128,6 +135,7 @@ public class BookingSystem {
                 movieTickets.add(currentMovieTicket);
                 System.out.println("Please Enter 1 if you would like to buy another ticket or enter anything else if you wish to stop.");
                 choice = SC.nextInt();
+                SC.nextLine();
             } while (choice == 1);
             System.out.println("You have Finished Purchasing Tickets!");
             System.out.println("""
@@ -139,6 +147,7 @@ public class BookingSystem {
             String transactionChoice = SC.nextLine();
             //UPDATE USERDATABASE update transaction choice
             UserController.USER_DATABASE.get(VIEW_STATE.getCurrUser().getUsername()).updateBookings(new Booking(UUID.randomUUID().toString(),movieGoer,todaysDate,movieTickets,new Transaction(UUID.randomUUID().toString(),totalPrice,todaysDate,TransactionType.getTransactionType(transactionChoice))));
+            VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
         } else {
             System.out.println("No such Movie exists! Please Try Again.");
             VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);

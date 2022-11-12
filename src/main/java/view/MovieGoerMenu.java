@@ -49,6 +49,7 @@ public class MovieGoerMenu {
         }
     }
     public static void handleReview() {  //UNTESTED AS OF FRI NIGHT. 233AM i go sleep first sorry
+        System.out.println("What is the name of the Movie You are reviewing?");
         String movieName = SC.nextLine();
         Movie movie = MovieController.MOVIES.get(movieName);
         MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();

@@ -28,8 +28,10 @@ public class MovieController {
             MOVIES.put("Parasite", new Movie("Parasite", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("Jon7", new Movie("Jon7", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis,  "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
             MOVIES.put("Slow and Chill 7", new Movie("Slow and Chill 7", MovieTag.NORMAL, MovieStatus.NOW_SHOWING, dummySynopsis, "Tao", AgeRating.PG, new ArrayList<>(List.of("Budi", "Azfar"))));
+
             Random rand = new Random();
             MOVIES.forEach((k,v) -> {
+                v.increaseTicketSales();
                 if(v.getMovieTitle().equals("KingsWomen")) {
                     return;
                 }

@@ -61,40 +61,45 @@ public class Movie implements Serializable {
     public String getMovieTitle() {
         return movieTitle;
     }
+
     public void setMovieTag(MovieTag movieTag) {
         this.movieTag = movieTag;
     }
     public MovieTag getMovieTag() {
         return movieTag;
     }
+
     public void setMovieStatus(MovieStatus movieStatus) {
         this.movieStatus = movieStatus;
     }
     public MovieStatus getMovieStatus() {
         return movieStatus;
     }
+
     public void setMovieSynopsis(String movieSynopsis) {
         this.movieSynopsis = movieSynopsis;
     }
     public String getMovieSynopsis() {
         return movieSynopsis;
     }
+
     public void setMovieRating(double movieRating) { this.movieRating = movieRating; }
-    public double getMovieRating() {
-        return movieRating;
-    }
+    public double getMovieRating() { return movieRating; }
+
     public void setMovieDirector(String movieDirector) {
         this.movieDirector = movieDirector;
     }
     public String getMovieDirector() {
         return movieDirector;
     }
+
     public void setAgeRating(AgeRating ageRating) {
         this.ageRating = ageRating;
     }
     public AgeRating getAgeRating() {
         return ageRating;
     }
+
     public ArrayList<String> getCasts() {
         return casts;
     }

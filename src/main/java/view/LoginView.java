@@ -3,8 +3,14 @@ package view;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for login
+ */
 public class LoginView {
 
+    /**
+     * Display login view
+     */
     public static void display() {
         System.out.println("Welcome to MOBLIMA");
         System.out.println("Are you a staff or a customer?");

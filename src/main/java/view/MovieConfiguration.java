@@ -6,13 +6,18 @@ import model.classes.Movie;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static model.Main.SC;
+
 public class MovieConfiguration {
 
     public static void configureMovies() {
         System.out.println("What would you like to do?");
-        System.out.println("1) Display movies\n2) Create movie\n3) Update movie\n3) Delete movie");
-        Scanner sc = new Scanner(System.in);
-        switch (sc.nextInt()) {
+        System.out.println("""
+                1) Display movies
+                2) Create movie
+                3) Update movie
+                3) Delete movie""");
+        switch (SC.nextInt()) {
             case 1 -> {
                 // Display movies (Still cannot show casts)
                 ArrayList<Movie> movies = DatabaseController.loadMovieData();

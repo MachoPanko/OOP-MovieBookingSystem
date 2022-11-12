@@ -11,7 +11,7 @@ import java.util.Objects;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 public class MovieGoerMenu {
-    public static void display() throws IOException {
+    public static void display() {
         System.out.println("""
                 1) List/Search Movies
                 2) Book & purchase ticket

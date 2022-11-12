@@ -1,19 +1,12 @@
 package model.enums;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
-
 public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
 
     WEEKDAY("Weekday"),
-
     FRIDAY("Friday"),
-
     THURSDAY("Thursday"),
     WEEKEND("Weekend"),
     HOLIDAY("Holiday");
@@ -50,6 +43,7 @@ public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
             return WEEKDAY;
         }
     }
+
     private static Date parseDate(String date) {
         try {
             return new SimpleDateFormat("yyyy-MM-dd").parse(date);

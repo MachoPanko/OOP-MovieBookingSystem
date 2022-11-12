@@ -113,7 +113,7 @@ public class Movie implements Serializable {
     @Override
     public String toString() {
         return "Movie{" +
-                ", movieTitle='" + movieTitle + '\'' +
+                "  movieTitle='" + movieTitle + '\'' +
                 ", movieTag=" + movieTag +
                 ", movieStatus=" + movieStatus +
                 ", movieSynopsis='" + movieSynopsis + '\'' +

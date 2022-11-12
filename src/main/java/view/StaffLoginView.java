@@ -3,8 +3,6 @@ package view;
 import controller.StaffController;
 import model.classes.Staff;
 
-import java.util.Scanner;
-
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
@@ -27,7 +25,7 @@ public class StaffLoginView {
             if (staff == null) {
                 System.out.println("Staff account dont exist!");
             } else {
-                if(staff.getPassword().equals(password)) {
+                if(staff.isCorrectPassword(password)) {
                     System.out.println("Hello " + staff.getUsername());
                     VIEW_STATE.setCurrState(ViewState.State.StaffView);
                     VIEW_STATE.setCurrUser(staff);

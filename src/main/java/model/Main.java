@@ -9,12 +9,17 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * Contains user and view information to display things correctly
+     * Contains user and view information to display things correctly. Need to make sure invariants are CHECKED, before
+     * state and user is set!
      */
     public static final ViewState VIEW_STATE = new ViewState(ViewState.State.LoginView, null);
+
+    /**
+     * Global Scanner object to be used. DO NOT CREATE ANY OTHER SCANNER OBJECTS
+     */
     public static final Scanner SC = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // register ctrl-c handler, we should save all database on exit
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {

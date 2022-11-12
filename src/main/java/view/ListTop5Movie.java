@@ -3,6 +3,8 @@ package view;
 
 import controller.MovieController;
 import model.classes.Movie;
+import model.classes.Staff;
+import model.classes.User;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -28,7 +30,14 @@ public class ListTop5Movie {
 
         }
         System.out.println();
-        VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+
+        boolean isStaff = VIEW_STATE.getCurrUser() instanceof Staff;
+
+        if(isStaff) {
+            VIEW_STATE.setCurrState(ViewState.State.StaffView);
+        } else {
+            VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+        }
     }
 
     public static void displayByTicketSales(){
@@ -45,6 +54,13 @@ public class ListTop5Movie {
             System.out.println("Title: " + m.getMovieTitle() + ", " + m.getTicketSales() );
         }
         System.out.println();
-        VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+
+        boolean isStaff = VIEW_STATE.getCurrUser() instanceof Staff;
+
+        if(isStaff) {
+            VIEW_STATE.setCurrState(ViewState.State.StaffView);
+        } else {
+            VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+        }
     }
 }

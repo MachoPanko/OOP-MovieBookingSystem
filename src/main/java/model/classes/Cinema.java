@@ -1,9 +1,10 @@
 package model.classes;
 import model.enums.CinemaType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cinema {
+public class Cinema implements Serializable {
     private final int cinemaCode;
     private Movie currentMovie;
     private boolean[][] seatingLayout;
@@ -11,8 +12,7 @@ public class Cinema {
     private Showtime showTiming;
     public static final int ROWS = 10;
     public static final int COLS = 18;
-
-    private ArrayList<Movie> moviesShown;
+    private final ArrayList<Movie> moviesShown;
 
     public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
         this.cinemaCode = cinemaCode;

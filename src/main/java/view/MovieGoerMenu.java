@@ -1,15 +1,13 @@
 package view;
 
 import controller.MovieController;
-import controller.UserController;
 import model.classes.*;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.HashSet;
 
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
+
 public class MovieGoerMenu {
     public static void display() {
         System.out.println("""
@@ -19,64 +17,51 @@ public class MovieGoerMenu {
                 4) See Top 5 ranking by ticket sales
                 5) See Top 5 ranking by overall reviewers' ratings
                 6) Add Review for a movie
-                7) Back""");
-
+                7) Logout""");
 
         int choice = Integer.parseInt(SC.nextLine());
         switch (choice) {
-            case 1 -> {
-                VIEW_STATE.setCurrState(ViewState.State.ViewMoviesView);
-                // List out all movies
-            }
-            case 2 -> {
-                VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
-            }
-            case 3 -> {
-                VIEW_STATE.setCurrState(ViewState.State.BookingHistView);
-            }
-            //case 4 ->
-            case 6 -> {
-                handleReview();
-                VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
-            }
+            case 1 -> VIEW_STATE.setCurrState(ViewState.State.ViewMoviesView);
+            case 2 -> VIEW_STATE.setCurrState(ViewState.State.BookingSystemView);
+            case 3 -> VIEW_STATE.setCurrState(ViewState.State.BookingHistView);
+            case 4 -> {}
+            case 6 -> VIEW_STATE.setCurrState(ViewState.State.ReviewView);
             case 7 -> {
                 System.out.println("Logging out Guest...");
                 VIEW_STATE.setCurrState(ViewState.State.LoginView);
                 VIEW_STATE.setCurrUser(null);
             }
             default -> VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
-
         }
     }
-    public static void handleReview() {  //UNTESTED AS OF FRI NIGHT. 233AM i go sleep first sorry
+    public static void displayReviewMenu() {  //UNTESTED AS OF FRI NIGHT. 233AM i go sleep first sorry
+        System.out.println("These are the movies you have watched!");
+        MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
+        HashSet<Movie> watchedMovies = new HashSet<>();
+        // print movies that person have booked
+        movieGoer.getBookings().forEach(bookings -> {
+            bookings.getMovieTickets().forEach(ticket -> {
+                System.out.println(ticket.getMovie());
+                watchedMovies.add(ticket.getMovie());
+            });
+        });
+
         System.out.println("What is the name of the Movie You are reviewing?");
         String movieName = SC.nextLine();
         Movie movie = MovieController.MOVIES.get(movieName);
-        MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
-        String username = movieGoer.getUsername();
-        boolean ValidWatcher = false;
-        ArrayList<Booking> bookingArrayList = UserController.USER_DATABASE.get(username).getBookings();
-        for (Booking b : bookingArrayList){
-            for(MovieTicket m : b.getMovieTickets())
-                if(Objects.equals(m.getMovie().getMovieTitle(), movieName)){
-                    ValidWatcher = true;
-                    break;
-                }
-        }
-        if (ValidWatcher){
-            System.out.println("Please enter the Rating out of 5");
-            double rating = SC.nextDouble();
-            System.out.println("Please enter your comments about the movie:");
-            String customerReview = SC.nextLine();
-            Review review = new Review((MovieGoer) VIEW_STATE.getCurrUser(),customerReview,rating );
-            movie.updateReviews(review);
-        }
-        else{
-            System.out.println("You haven't watched this movie before! Try Another option.");
-        }
-        return;
 
-
-        //if( )//user never watch before , exit , else let him change review
+        if(movie != null) {
+            if(watchedMovies.contains(movie)) {
+                System.out.println("Please enter the Rating out of 5");
+                double rating = SC.nextDouble();
+                SC.nextLine();
+                System.out.println("Please enter your comments about the movie:");
+                String customerReview = SC.nextLine();
+                movie.updateReviews(new Review(movieGoer, customerReview, rating));
+                VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+            } else {
+                System.out.println("You have not watched this movie!");
+            }
+        }
     }
 }

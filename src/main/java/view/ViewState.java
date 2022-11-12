@@ -11,6 +11,7 @@ public class ViewState {
         LoginView,
         StaffLoginView,
         StaffView,
+        ReviewView,
         ConfigureSystemSettingView,
         MovieGoerLoginView,
         ViewMoviesView,

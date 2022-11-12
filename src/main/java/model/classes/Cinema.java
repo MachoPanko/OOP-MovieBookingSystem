@@ -3,6 +3,7 @@ import model.enums.CinemaType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Cinema implements Serializable {
     private final int cinemaCode;
@@ -55,16 +56,16 @@ public class Cinema implements Serializable {
 
     public void display(){
         System.out.println("                                    Screen                                          ");
-        for (int i = 0; i < COLS; ++i) {
+        for (int i = 0; i < ROWS; ++i) {
             System.out.print(i + "\t");
         }
 
-        for(int i = 0; i < COLS; ++i) {
-            for(int j = 0; j < ROWS; ++j) {
+        for(int i = 0; i < ROWS; ++i) {
+            for(int j = 0; j < COLS; ++j) {
                 if(this.seatingLayout[i][j])
-                    System.out.println("[X]");
+                    System.out.print("[X]");
                 else
-                    System.out.println("[ ]");
+                    System.out.print("[ ]");
             }
             System.out.println();
         }
@@ -80,5 +81,15 @@ public class Cinema implements Serializable {
         return moviesShown;
     }
 
-
+    @Override
+    public String toString() {
+        return "Cinema{" +
+                "cinemaCode=" + cinemaCode +
+                ", currentMovie=" + currentMovie +
+                ", seatingLayout=" + Arrays.toString(seatingLayout) +
+                ", cinemaClass=" + cinemaClass +
+                ", showTiming=" + showTiming +
+                ", moviesShown=" + moviesShown +
+                '}';
+    }
 }

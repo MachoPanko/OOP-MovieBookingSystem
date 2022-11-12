@@ -1,5 +1,6 @@
 package model;
 
+import controller.CineplexController;
 import utils.DatabaseLoader;
 import view.*;
 import java.util.Scanner;
@@ -33,6 +34,7 @@ public class Main {
 
 
         DatabaseLoader.loadAllDb();
+        System.out.println(CineplexController.CINEPLEXES.toString());
 
         while (VIEW_STATE.getCurrState() != ViewState.State.ExitedView) {
             switch (VIEW_STATE.getCurrState()) {

@@ -38,7 +38,7 @@ public class BookingSystem {
                 - DOWNTOWN EAST
                 - CAUSEWAY POINT
                 """);
-        Cineplex currentCineplex = CineplexController.CINEPLEXES.get(SC.nextLine()); ///hmm feels weird not to list all movies before typing movie name but nvm lifestyle stuff fix ltr
+        Cineplex currentCineplex = CineplexController.CINEPLEXES.get(SC.nextLine());
         System.out.println("Please Enter The name of the Movie You would like to watch!!");
         String movieChoice = SC.nextLine();
         Movie movieChosen = MovieController.MOVIES.get(movieChoice);
@@ -75,8 +75,10 @@ public class BookingSystem {
             //Find suitable cinema based on time and movie given.
             for (Cinema cinema: currentCineplex.getCinemaList()){
                 if ( cinema.getCinemaClass()==cinemaType){
+                    System.out.println(1);
                     for(Movie m : cinema.getMoviesShown()){
                         if ( movieChosen == m){
+                            System.out.println(2);
                             cinemaChosen = cinema;
                             break;
                         }
@@ -88,7 +90,7 @@ public class BookingSystem {
             // Repeated booking loop
             int choice;
             do {
-                System.out.println("Dear "+VIEW_STATE.getCurrUser().getUsername()+", You Have Chosen To Buy A Ticket For "+ movieChosen.getMovieTitle()+" with a "+cinemaType+ "experience.");
+                System.out.println("Dear "+VIEW_STATE.getCurrUser().getUsername()+", You Have Chosen To Buy A Ticket For "+ movieChosen.getMovieTitle()+" with a "+cinemaType+ " experience.");
                 System.out.println("Please Choose your seat. Eg : row 1 col 1 ");
                 cinemaChosen.display();
                 System.out.println("Row:");

@@ -2,9 +2,9 @@ package model.enums;
 
 public enum CinemaType {
     //can just change the name of cinema classes/experiences
-    Platinum("Platinum Movie Suites"),
-    IMAX("IMAX Movie Theatre"),
-    Economy("Economy Movie Suites");
+    Platinum("Platinum"),
+    IMAX("IMAX"),
+    Economy("Economy");
 
     private String type;
     CinemaType(String type) { this.type = type;}

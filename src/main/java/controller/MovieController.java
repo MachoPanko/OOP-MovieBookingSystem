@@ -1,5 +1,6 @@
 package controller;
 
+import model.classes.Cinema;
 import model.classes.Movie;
 import model.classes.MovieGoer;
 import model.classes.Review;
@@ -14,6 +15,16 @@ public class MovieController {
     private static final String filename = "src/database/movieDatabase.ser";
 
     public static final HashMap<String, Movie> MOVIES = new HashMap<>();
+
+    public static ArrayList<Movie> getMoviesByCineplex(String cineplexId) {
+        HashSet<Movie> movies = new HashSet<>();
+
+        for(Cinema c : CineplexController.CINEPLEXES.get(cineplexId).getCinemaList()) {
+            movies.addAll(c.getMoviesShownFiltered());
+        }
+
+        return new ArrayList<>(movies);
+    }
 
     public static void load() {
         HashMap<String, Movie> hm = DatabaseLoader.loadDb(filename);

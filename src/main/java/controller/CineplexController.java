@@ -3,16 +3,15 @@ package controller;
 import model.classes.Cinema;
 import model.classes.Cineplex;
 import model.classes.Movie;
-import model.classes.Showtime;
-import model.enums.AgeRating;
 import model.enums.CinemaType;
 import model.enums.MovieStatus;
-import model.enums.MovieTag;
 import utils.DatabaseLoader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 
 public class CineplexController {
@@ -22,16 +21,37 @@ public class CineplexController {
 
     public static void load() {
         HashMap<String, Cineplex> hm = DatabaseLoader.loadDb(filename);
-        if(hm != null) {
-            if(hm.size() == 0) {
-                // preload movies if first time creating or there is no movies
-                CinemaType cinemaType;
-                CINEPLEXES.put("AMK HUB",new Cineplex("AMK HUB", new ArrayList<>(List.of(new Cinema(1,null,CinemaType.Economy, new Showtime()),new Cinema(2,null,CinemaType.IMAX, new Showtime()),new Cinema(3,null,CinemaType.Platinum, new Showtime())))));
-                CINEPLEXES.put("DOWNTOWN EAST",new Cineplex("DOWNTOWN EAST", new ArrayList<>(List.of(new Cinema(1,null,CinemaType.Economy, new Showtime()),new Cinema(2,null,CinemaType.IMAX, new Showtime()),new Cinema(3,null,CinemaType.Platinum, new Showtime())))));
-                CINEPLEXES.put("CAUSEWAY POINT",new Cineplex("CAUSEWAY POINT", new ArrayList<>(List.of(new Cinema(1,null,CinemaType.Economy, new Showtime()),new Cinema(2,null,CinemaType.IMAX, new Showtime()),new Cinema(3,null,CinemaType.Platinum, new Showtime())))));
+        if(hm == null || hm.size() == 0) {
+            // preload movies if first time creating or there is no movies
+            Cinema econ = new Cinema(1,CinemaType.Economy);
+            Cinema imax = new Cinema(2,CinemaType.IMAX);
+            Cinema plat = new Cinema(3,CinemaType.Platinum);
 
+            ArrayList<Movie> movieList = MovieController
+                    .MOVIES
+                    .values()
+                    .stream()
+                    .filter(s -> s.getMovieStatus() != MovieStatus.END_OF_SHOWING)
+                    .collect(Collectors.toCollection(ArrayList::new));
+
+            Random rand = new Random();
+            for(int i = 0; i < econ.getShowTiming().size(); ++i) {
+                Movie randMovie = movieList.get(rand.nextInt(0, movieList.size()));
+                econ.setMoviesShown(randMovie, i);
+                imax.setMoviesShown(randMovie, i);
+                plat.setMoviesShown(randMovie, i);
             }
 
+            Cineplex amk = new Cineplex("AMK HUB", new ArrayList<>(List.of(econ, imax, plat)));
+            Cineplex dtEast = new Cineplex("DOWNTOWN EAST", new ArrayList<>(List.of(econ, imax, plat)));
+            Cineplex cwPt = new Cineplex("CAUSEWAY POINT", new ArrayList<>(List.of(econ, imax, plat)));
+
+            CINEPLEXES.put("AMK HUB", amk);
+            CINEPLEXES.put("DOWNTOWN EAST", dtEast);
+            CINEPLEXES.put("CAUSEWAY POINT", cwPt);
+        }
+
+        if(hm != null) {
             System.out.println("[+] Loaded Movie Database!");
             CINEPLEXES.putAll(hm);
         }

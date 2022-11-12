@@ -26,11 +26,7 @@ public class ConfigureSystemSettingView {
         System.out.println(m);
         switch (choice) {
             case 1 -> {
-                for (Cineplex cineplex : CineplexController.CINEPLEXES.values()){
-                    for(Cinema cinema : cineplex.getCinemaList()){
-                        cinema.setMoviesShown(m);
-                    }
-                }
+            // remove  first
             }
             case 2 -> {
                 System.out.println("""

@@ -5,6 +5,7 @@ import model.enums.MovieTag;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Movie implements Serializable {
 
@@ -93,15 +94,9 @@ public class Movie implements Serializable {
     public void setMovieDirector(String movieDirector) {
         this.movieDirector = movieDirector;
     }
-    public String getMovieDirector() {
-        return movieDirector;
-    }
 
     public void setAgeRating(AgeRating ageRating) {
         this.ageRating = ageRating;
-    }
-    public AgeRating getAgeRating() {
-        return ageRating;
     }
 
     public ArrayList<String> getCasts() {
@@ -122,5 +117,13 @@ public class Movie implements Serializable {
                 ", casts=" + casts +
                 ", reviews=" + reviews +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(movieTitle, movie.movieTitle);
     }
 }

@@ -22,4 +22,8 @@ public class Showtime implements Serializable {
             "2200",
             "2300",
     };
+
+    public int size() {
+        return this.TIME.length;
+    }
 }

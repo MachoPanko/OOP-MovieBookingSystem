@@ -6,56 +6,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Cinema implements Serializable {
-    private final int cinemaCode;
-    private Movie currentMovie;
-    private boolean[][] seatingLayout;
-    private CinemaType cinemaClass;
-    private Showtime showTiming;
     public static final int ROWS = 10;
     public static final int COLS = 18;
-    private ArrayList<Movie> moviesShown;
 
-    public Cinema(int cinemaCode, Movie currentMovie, CinemaType cinemaClass, Showtime showTiming){
+    private final int cinemaCode;
+    /**
+     * Each Timing requires their own seating layout
+     */
+    private boolean[][][] seatingLayout;
+    private final CinemaType cinemaClass;
+    private final Showtime showTiming;
+    private final Movie[] moviesShown;
+
+    public Cinema(int cinemaCode, CinemaType cinemaClass){
         this.cinemaCode = cinemaCode;
-        this.currentMovie = currentMovie;
         this.cinemaClass = cinemaClass;
-        this.showTiming = showTiming;
-        this.seatingLayout = new boolean[ROWS][COLS];
-        this.moviesShown = new ArrayList<>();
+        this.showTiming = new Showtime();
+        this.seatingLayout = new boolean[this.showTiming.TIME.length][ROWS][COLS];
+        this.moviesShown = new Movie[this.showTiming.TIME.length];
     }
 
     public int getCinemaCode() {
         return cinemaCode;
     }
-    public Movie getCurrentMovie() {
-        return currentMovie;
-    }
-    public void setCurrentMovie(Movie currentMovie) {
-        this.currentMovie = currentMovie;
-    }
-    public boolean[][] getSeatingLayout() {
+    public boolean[][][] getSeatingLayout() {
         return seatingLayout;
     }
 
-    public void setSeatingLayout(boolean[][] seatingLayout) {
-        this.seatingLayout = seatingLayout;
-    }
-    public void bookSeating(int row, int col){ seatingLayout[row][col] = true; }
-    public CinemaType getCinemaClass() {
-        return cinemaClass;
-    }
-    public void setCinemaClass(CinemaType cinemaClass) {
-        this.cinemaClass = cinemaClass;
-    }
-    public Showtime getShowTiming() {
-        return showTiming;
-    }
-    public void setShowTiming(Showtime showTiming) {
-        this.showTiming = showTiming;
-    }
+    public void bookSeating(int timingIdx, int row, int col){ seatingLayout[timingIdx][row][col] = true; }
+    public CinemaType getCinemaClass() { return cinemaClass; }
+    public Showtime getShowTiming() { return showTiming; }
 
-    public void display(){
-        System.out.println("                                    Screen                                          ");
+    public void display(int timingIdx){
+        System.out.println("                                    Screen                                          \n ");
         for (int i = 0; i < ROWS; ++i) {
             System.out.println(i + "\t");
         }
@@ -63,7 +46,7 @@ public class Cinema implements Serializable {
 
         for(int i = 0; i < ROWS; ++i) {
             for(int j = 0; j < COLS; ++j) {
-                if(this.seatingLayout[i][j])
+                if(this.seatingLayout[timingIdx][i][j])
                     System.out.print("[X]");
                 else
                     System.out.print("[ ]");
@@ -72,25 +55,39 @@ public class Cinema implements Serializable {
         }
     }
 
-    public void updateMoviesShown(Movie newMovie){
-        this.moviesShown.add(newMovie);
+    public void setMoviesShown(Movie m, int idx){
+        this.moviesShown[idx] = m;
     }
-    public void setMoviesShown(ArrayList<Movie> movieList){
-        this.moviesShown = movieList;
-    }
-    public ArrayList<Movie> getMoviesShown() {
-        return moviesShown;
+    public Movie[] getMoviesShown() { return this.moviesShown; }
+
+    public ArrayList<Movie> getMoviesShownFiltered() {
+        ArrayList<Movie> movies = new ArrayList<>();
+        for (Movie movie : this.moviesShown) {
+            if(movie != null) {
+                movies.add(movie);
+            }
+        }
+
+        return movies;
     }
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Movie movie : this.moviesShown) {
+            if(movie != null) {
+                sb.append(movie.getMovieTitle());
+            } else {
+                sb.append("NA");
+            }
+            sb.append(",");
+        }
+
         return "Cinema{" +
                 "cinemaCode=" + cinemaCode +
-                ", currentMovie=" + currentMovie +
-                ", seatingLayout=" + Arrays.toString(seatingLayout) +
                 ", cinemaClass=" + cinemaClass +
                 ", showTiming=" + showTiming +
-                ", moviesShown=" + moviesShown +
+                ", moviesShown=[" + sb.toString() + "]" +
                 '}';
     }
 }

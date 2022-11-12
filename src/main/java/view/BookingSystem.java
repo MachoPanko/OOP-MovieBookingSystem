@@ -7,6 +7,7 @@ import controller.*;
 import model.classes.*;
 import model.enums.CinemaType;
 import model.enums.DayType;
+import model.enums.MovieStatus;
 import model.enums.TransactionType;
 
 import static model.Main.SC;
@@ -39,6 +40,21 @@ public class BookingSystem {
                 - CAUSEWAY POINT
                 """);
         Cineplex currentCineplex = CineplexController.CINEPLEXES.get(SC.nextLine()); ///hmm feels weird not to list all movies before typing movie name but nvm lifestyle stuff fix ltr
+
+        MovieController.MOVIES.forEach((k,v) ->{
+            var isStaff =  VIEW_STATE.getCurrUser() instanceof Staff;
+            if(!isStaff){
+                if(v.getMovieStatus() == MovieStatus.END_OF_SHOWING){
+                    return;
+                }
+
+            }
+            System.out.println(v);
+
+
+        });
+        System.out.println();
+
         System.out.println("Please Enter The name of the Movie You would like to watch!!");
         String movieChoice = SC.nextLine();
         Movie movieChosen = MovieController.MOVIES.get(movieChoice);

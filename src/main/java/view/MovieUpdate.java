@@ -77,7 +77,7 @@ public class MovieUpdate {
             }
             case 5 -> {
                 System.out.println("Update movie status");
-                System.out.println("Coming_Soon, Preview, Now_Showing");
+                System.out.println("Coming_Soon, Preview, Now_Showing, End_Of_Showing");
                 String statusChoice = SC.nextLine();
                 MovieStatus movieStatus = MovieStatus.getMovieStatus(statusChoice);
                 m.setMovieStatus(movieStatus);

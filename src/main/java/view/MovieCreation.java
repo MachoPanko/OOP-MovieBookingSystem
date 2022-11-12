@@ -42,7 +42,7 @@ public class MovieCreation {
         MovieTag movieTag = MovieTag.getMovieTag(tagChoice);
 
         System.out.println("Enter Movie Status:");
-        System.out.println("Coming_Soon, Preview, Now_Showing");
+        System.out.println("Coming_Soon, Preview, Now_Showing, End_Of_Showing");
         String statusChoice = SC.nextLine();
         MovieStatus movieStatus = MovieStatus.getMovieStatus(statusChoice);
 

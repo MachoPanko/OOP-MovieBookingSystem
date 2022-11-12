@@ -28,6 +28,10 @@ public class MovieListing {
                     System.out.println();
                 }
             }
+            case 3 -> {
+                System.out.println("These are the top 5 movies based on ratings");
+                VIEW_STATE.setCurrState(ViewState.State.ListTop5MovieRatings);
+            }
             case 4 -> {
                 System.out.println("Which movie do you want to search?");
                 String searchChoice = SC.nextLine();

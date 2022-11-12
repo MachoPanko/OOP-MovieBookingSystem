@@ -1,9 +1,10 @@
 package model.classes;
 import model.enums.CinemaType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cinema {
+public class Cinema implements Serializable {
     private final int cinemaCode;
     private Movie currentMovie;
     private boolean[][] seatingLayout;

@@ -35,6 +35,10 @@ public class MovieGoerMenu {
                 VIEW_STATE.setCurrState(ViewState.State.BookingHistView);
             }
             //case 4 ->
+            case 5 -> {
+                System.out.println("These are the top 5 movies based on ratings");
+                VIEW_STATE.setCurrState(ViewState.State.ListTop5MovieRatings);
+            }
             case 6 -> {
                 handleReview();
                 VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);

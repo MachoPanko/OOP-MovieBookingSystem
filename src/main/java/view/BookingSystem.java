@@ -18,9 +18,13 @@ public class BookingSystem {
     public static void display() {
         //INIT Total price
         double totalPrice = 0;
+
         // INIT DATE and time
         long millis = System.currentTimeMillis();
         double currentTime = (millis / 1000.0) / 60 / 60;
+        SimpleDateFormat dateformatTID = new SimpleDateFormat("yyyyMMddHHmm");
+        String dateformat = dateformatTID.format(new java.sql.Date(millis));
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String todaysDate = sdf.format(new java.sql.Date(millis));
 
@@ -143,6 +147,7 @@ public class BookingSystem {
                 //Seating layout not complete idk who wrote this but tao is fixing this part
                 cinemaChosen.bookSeating(showtimeChoiceIdx, row, col);
                 //INIT MOVIE TICKET AND ADDING TO MOVIE TICK LIST
+
                 MovieTicket currentMovieTicket = new MovieTicket(movieChosen, cinemaType, dayType, isStudent, isElderly, row, col, cinemaChosen.getCinemaCode());
                 totalPrice += PricingController.getPrice(currentMovieTicket, currentTime);
                 movieTickets.add(currentMovieTicket);
@@ -163,11 +168,11 @@ public class BookingSystem {
 
             String transactionChoice = SC.nextLine();
             //UPDATE USERDATABASE update transaction choice
-
+            String Tid = cinemaChosen.getCinemaCode()+dateformat;
             movieGoer.updateBookings(new
-                    Booking(UUID.randomUUID().toString(),
+                    Booking(Tid,
                     movieGoer, todaysDate, movieTickets,
-                    new Transaction(UUID.randomUUID().toString(), totalPrice, todaysDate,
+                    new Transaction(Tid, totalPrice, todaysDate,
                             TransactionType.getTransactionType(transactionChoice)), currentCineplex.getCineplexName()));
 
             VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);

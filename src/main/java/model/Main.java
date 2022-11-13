@@ -33,7 +33,7 @@ public class Main {
         }));
 
         DatabaseLoader.loadAllDb();
-        System.out.println(CineplexController.CINEPLEXES);
+//        System.out.println(CineplexController.CINEPLEXES);
 
         while (VIEW_STATE.getCurrState() != ViewState.State.ExitedView) {
             switch (VIEW_STATE.getCurrState()) {

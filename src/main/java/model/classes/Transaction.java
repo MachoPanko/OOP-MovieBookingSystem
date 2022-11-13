@@ -10,6 +10,13 @@ public class Transaction implements Serializable  {
     private final String date;
     private final TransactionType transactionType;
 
+    /**
+     *
+     * @param transactionID
+     * @param totalPrice
+     * @param date
+     * @param transactionType
+     */
     public Transaction(String transactionID,
                        double totalPrice,
                        String date,
@@ -19,15 +26,35 @@ public class Transaction implements Serializable  {
         this.date = date;
         this.transactionType = transactionType;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getTransactionID() {
         return transactionID;
     }
+
+    /**
+     *
+     * @return
+     */
     public double getTotalPrice() {
         return totalPrice;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getDate() {
         return date;
     }
+
+    /**
+     *
+     * @return
+     */
     public TransactionType getTransactionType() {
         return transactionType;
     }
@@ -50,6 +77,10 @@ public class Transaction implements Serializable  {
 //
 //    }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Transaction{" +

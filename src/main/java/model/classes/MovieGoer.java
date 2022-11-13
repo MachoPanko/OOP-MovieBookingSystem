@@ -3,6 +3,7 @@ package model.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 public class MovieGoer implements Serializable, User {
     private String username;
 
@@ -11,6 +12,13 @@ public class MovieGoer implements Serializable, User {
     private String email;
     private ArrayList<Booking>bookings;
 
+    /**
+     * Constructor for MovieGoer class
+     * @param username The username of the movieGoer
+     * @param mobile The phone number of the movieGoer
+     * @param age The age of the movieGoer
+     * @param email The email of the movieGoer
+     */
     public MovieGoer(String username,  int mobile, int age, String email) {
         this.username = username;
         this.mobile = mobile;

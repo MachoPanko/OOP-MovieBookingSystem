@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+
 public class Cinema implements Serializable {
     public static final int ROWS = 10;
     public static final int COLS = 18;
@@ -18,6 +20,11 @@ public class Cinema implements Serializable {
     private final Showtime showTiming;
     private final Movie[] moviesShown;
 
+    /**
+     * Constructor for Cinema class
+     * @param cinemaCode The individual code number that the cinema belongs to
+     * @param cinemaClass
+     */
     public Cinema(int cinemaCode, CinemaType cinemaClass){
         this.cinemaCode = cinemaCode;
         this.cinemaClass = cinemaClass;

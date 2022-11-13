@@ -2,11 +2,18 @@ package model.classes;
 
 import java.io.Serializable;
 
+
 public class Review implements Serializable {
     private final MovieGoer customer;
     private final String customerReview;
     private final double customerRating;
 
+    /**
+     * Constructor for Review class
+     * @param customer
+     * @param customerReview The review that the customer gives to the movie
+     * @param customerRating The rating that the customer gives to the movie
+     */
     public Review(MovieGoer customer, String customerReview, double customerRating){
         this.customer = customer;
         this.customerReview = customerReview;

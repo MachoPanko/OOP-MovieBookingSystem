@@ -3,6 +3,7 @@ package model.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 public class Booking implements Serializable {
     private final String bookingId;
     private final MovieGoer movieGoer;
@@ -11,6 +12,15 @@ public class Booking implements Serializable {
     private final Transaction transaction;
     private final String cineplexName;
 
+    /**
+     * Constructor for Booking class
+     * @param bookingId A randomly generated string of character and numbers
+     * @param movieGoer A
+     * @param date The date that the movieGoer is booking the ticket
+     * @param movieTickets ArrayList of movieTickets
+     * @param transaction
+     * @param cineplexName The name of the cineplex that the movierGoer is going to go to
+     */
     public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTickets, Transaction transaction, String cineplexName) {
         this.bookingId = bookingId;
         this.movieGoer = movieGoer;
@@ -20,6 +30,10 @@ public class Booking implements Serializable {
         this.cineplexName = cineplexName;
     }
 
+    /**
+     *
+     * @return bookingId
+     */
     public String getBookingId() {
         return bookingId;
     }

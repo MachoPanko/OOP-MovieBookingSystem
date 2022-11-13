@@ -5,6 +5,8 @@ import model.enums.DayType;
 
 import java.io.Serializable;
 
+
+
 public class MovieTicket implements Serializable {
     private final Movie movie;
     private final CinemaType cinemaType;
@@ -14,6 +16,18 @@ public class MovieTicket implements Serializable {
     private final boolean isStudent;
     private final int seatRow;
     private final int seatCol;
+
+    /**
+     * Constructor for MovieTicket class
+     * @param movie
+     * @param cinemaType
+     * @param dayType
+     * @param cinemaRoom The room number of the cinema
+     * @param isElderly True if is an elderly and false if otherwise
+     * @param isStudent True if is a student and false if otherwise
+     * @param seatRow The row of the seat
+     * @param seatCol The column of the seat
+     */
 
     public MovieTicket(Movie movie,
                        CinemaType cinemaType,

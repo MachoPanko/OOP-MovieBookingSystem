@@ -3,6 +3,7 @@ package model.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 public class Cineplex implements Serializable {
 
     private final String cineplexName;
@@ -13,6 +14,11 @@ public class Cineplex implements Serializable {
         cinemaList = new ArrayList<>();
     }
 
+    /**
+     * Constructor for Cineplex class
+     * @param cineplexName The name of the cineplex
+     * @param cinemaList
+     */
     public Cineplex(String cineplexName, ArrayList<Cinema> cinemaList) {
         this.cineplexName = cineplexName;
         this.cinemaList = cinemaList;

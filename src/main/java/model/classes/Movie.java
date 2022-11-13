@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
+
+
 public class Movie implements Serializable {
 
     private String movieTitle;
@@ -21,7 +23,17 @@ public class Movie implements Serializable {
     private int ticketSales;
     private final ArrayList<Review> reviews;
 
-    //Still need to implement past reviews and reviewers rating
+
+    /**
+     * Constructor for Movie class
+     * @param movieTitle
+     * @param movieTag
+     * @param movieStatus
+     * @param movieSynopsis
+     * @param movieDirector
+     * @param ageRating
+     * @param casts
+     */
     public Movie(String movieTitle,
                  MovieTag movieTag,
                  MovieStatus movieStatus,
@@ -40,6 +52,11 @@ public class Movie implements Serializable {
         this.reviews = new ArrayList<>();
         this.numberOfRatings = 0;
     }
+
+    /**
+     * An array list which gets the reviews
+     * @return reviews
+     */
     public ArrayList<Review> getReviews() {
         return reviews;
     }

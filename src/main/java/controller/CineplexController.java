@@ -13,13 +13,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-
+/**
+ * Controller to set predefined cinemas to cineplexes hash map
+ */
 
 public class CineplexController {
     private static final String filename = "src/database/cinemaDatabase.ser";
 
     public static final HashMap<String, Cineplex> CINEPLEXES = new HashMap<>();
 
+    /**
+     * Load cinema objects to cineplex hash map
+     */
     public static void load() {
         HashMap<String, Cineplex> hm = DatabaseLoader.loadDb(filename);
         if(hm == null || hm.size() == 0) {
@@ -57,6 +62,9 @@ public class CineplexController {
         }
     }
 
+    /**
+     * Write updated file to cineplexes hash map
+     */
     public static void write() {
         DatabaseLoader.writeDb(filename, CINEPLEXES);
     }}

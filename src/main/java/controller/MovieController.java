@@ -11,11 +11,20 @@ import utils.DatabaseLoader;
 
 import java.util.*;
 
+/**
+ * Controller to set predefined movies to the MOVIES hash map
+ */
+
 public class MovieController {
     private static final String filename = "src/database/movieDatabase.ser";
 
     public static final HashMap<String, Movie> MOVIES = new HashMap<>();
 
+    /**
+     * Gets movies in a cineplex
+     * @param cineplexId The Id of the cineplex
+     * @return movies
+     */
     public static HashSet<Movie> getMoviesByCineplex(String cineplexId) {
         HashSet<Movie> movies = new HashSet<>();
 
@@ -30,6 +39,9 @@ public class MovieController {
         return movies;
     }
 
+    /**
+     * Loads predefined movies to MOVIE hash map
+     */
     public static void load() {
         HashMap<String, Movie> hm = DatabaseLoader.loadDb(filename);
 
@@ -60,6 +72,9 @@ public class MovieController {
         }
     }
 
+    /**
+     * Writes updated file to MOVIES hash map
+     */
     public static void write() {
         DatabaseLoader.writeDb(filename, MOVIES);
     }

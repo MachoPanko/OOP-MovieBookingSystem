@@ -6,11 +6,17 @@ import utils.DatabaseLoader;
 
 import java.util.HashMap;
 
+/**
+ * Controller to set predefined staff accounts
+ */
 public class StaffController {
     private static final String filename = "src/database/staffAccount.ser";
 
     public static final HashMap<String, Staff> STAFF_ACCOUNTS = new HashMap<>();
 
+    /**
+     * Load predefined staff accounts to STAFF_ACCOUNTS hash map
+     */
     public static void load() {
         HashMap<String, Staff> hm = DatabaseLoader.loadDb(filename);
         if(hm == null || hm.size() == 0) {
@@ -26,6 +32,9 @@ public class StaffController {
         }
     }
 
+    /**
+     * Write updated file to database
+     */
     public static void write() {
         DatabaseLoader.writeDb(filename, STAFF_ACCOUNTS);
     }

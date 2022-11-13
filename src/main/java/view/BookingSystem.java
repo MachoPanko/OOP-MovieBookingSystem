@@ -23,6 +23,7 @@ public class BookingSystem {
         double currentTime = (millis / 1000.0) / 60 / 60;
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String todaysDate = sdf.format(new java.sql.Date(millis));
+
         DayType dayType = DayType.getType(todaysDate);
         MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
 

@@ -5,6 +5,7 @@ import controller.MovieController;
 import model.classes.Cinema;
 import model.classes.Cineplex;
 import model.classes.Movie;
+import model.enums.DayType;
 
 import java.util.ArrayList;
 
@@ -28,11 +29,24 @@ public class ConfigureSystemSettingView {
             // remove  first
             }
             case 2 -> {
-                System.out.println("Enter new holiday date in this format : ddMM");
-                String newHoliday = SC.nextLine();
-
-
+                System.out.println("""
+                Configure System Setting
+                1) Add holidays
+                2) Remove holidays
+                """);
+                choice = SC.nextInt();
+                SC.nextLine();
+                if(choice == 1){
+                    System.out.println("Enter the date of the holiday in this format 'ddMM'");
+                    String holiday = SC.nextLine();
+                    DayType.addHoliday(holiday);
+                } else if (choice == 2) {
+                    String holiday = SC.nextLine();
+                    DayType.deleteHoliday(holiday);
+                }
+                VIEW_STATE.setCurrState(ViewState.State.StaffView);
             }
+
         }
         VIEW_STATE.setCurrState(ViewState.State.StaffView);
     }

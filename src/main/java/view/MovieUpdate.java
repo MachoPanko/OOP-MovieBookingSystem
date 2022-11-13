@@ -11,9 +11,15 @@ import java.util.ArrayList;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for staff to update movie configuration
+ */
 public class MovieUpdate {
     private static Movie m = null;
 
+    /**
+     * To display the update movie screen
+     */
     public static void display() {
         System.out.println("Enter the name of the movie to update");
         String movieId = SC.nextLine();
@@ -27,6 +33,9 @@ public class MovieUpdate {
         }
     }
 
+    /**
+     * To display the second page of the update movie screen
+     */
     public static void displaySubmenu() {
         System.out.println("What do you want to update?");
         System.out.println("""

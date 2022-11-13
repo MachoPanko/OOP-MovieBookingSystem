@@ -9,7 +9,7 @@ import static model.Main.VIEW_STATE;
 public class LoginView {
 
     /**
-     * Display login view
+     * Display the login screen
      */
     public static void display() {
         System.out.println("""

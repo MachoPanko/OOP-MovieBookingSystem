@@ -6,7 +6,13 @@ import model.classes.Staff;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for staff login
+ */
 public class StaffLoginView {
+    /**
+     * To display the staff login screen
+     */
     public static void display() {
         System.out.println("Staff login!");
         System.out.println("1) Login staff account\n2) Back");

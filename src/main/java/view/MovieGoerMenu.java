@@ -8,7 +8,13 @@ import java.util.HashSet;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for the Movie goer menu
+ */
 public class MovieGoerMenu {
+    /**
+     * To display the main menu screen for movie goer
+     */
     public static void display() {
         System.out.println("""
                 1) List/Search Movies
@@ -36,6 +42,10 @@ public class MovieGoerMenu {
             default -> VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
         }
     }
+
+    /**
+     * To display the Review section
+     */
     public static void displayReviewMenu() {  //UNTESTED AS OF FRI NIGHT. 233AM i go sleep first sorry
         System.out.println("These are the movies you have watched!");
         MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();

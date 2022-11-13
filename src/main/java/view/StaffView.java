@@ -3,7 +3,13 @@ package view;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for staff main menu
+ */
 public class StaffView {
+    /**
+     * To display staff main menu
+     */
     public static void display() {
         System.out.println("Staff Menu!");
         System.out.println("""

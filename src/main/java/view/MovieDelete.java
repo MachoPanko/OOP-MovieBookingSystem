@@ -6,7 +6,13 @@ import model.classes.Movie;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View to delete movie
+ */
 public class MovieDelete {
+    /**
+     * To display the delete movie screen
+     */
     public static void display() {
         System.out.println("Enter the name of the movie to delete");
         String movieId = SC.nextLine();

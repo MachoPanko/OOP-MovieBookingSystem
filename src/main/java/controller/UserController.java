@@ -14,11 +14,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Controller class to make a predefined movieGoer with bookings in the system
+ */
+
 public class UserController {
     private static final String filename = "src/database/userDatabase.ser";
 
     public static final HashMap<String, MovieGoer> USER_DATABASE = new HashMap<>();
 
+    /**
+     * A function to load predefined movies
+     */
     public static void load() {
         HashMap<String, MovieGoer> hm = DatabaseLoader.loadDb(filename);
         if(hm == null || hm.size() == 0) {
@@ -45,6 +52,9 @@ public class UserController {
         }
     }
 
+    /**
+     * Writes an updated file to the database
+     */
     public static void write() {
         DatabaseLoader.writeDb(filename, USER_DATABASE);
     }

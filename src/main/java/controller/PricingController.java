@@ -10,8 +10,18 @@ import model.enums.MovieTag;
 import static model.enums.DayType.*;
 import static model.enums.MovieTag.THREED;
 
+/**
+ * Controller for pricing of tickets
+ */
 public class PricingController {
     // nvr take into consideration cinematype
+
+    /**
+     * Gets the price of a movieticket
+     * @param movieTicket A MovieTicket object
+     * @param time The time of movie shown
+     * @return price
+     */
     public static double getPrice(MovieTicket movieTicket, String time){
         double price = 0.0;
         double costOfCinemaType = 1;

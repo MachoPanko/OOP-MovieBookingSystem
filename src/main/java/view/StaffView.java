@@ -12,8 +12,8 @@ public class StaffView {
                  3) Update Movie
                  4) Delete Movie
                  5) Configure System Settings
-                 6) See Top 5 ranking by ticket sales
-                 7) See Top 5 ranking by overall reviewers' ratings
+                 6) See Top 5 ranking by overall reviewers' ratings
+                 7) See Top 5 ranking by ticket sales
                  8) Logout""");
 
         int choice = SC.nextInt();

@@ -15,7 +15,7 @@ public class MovieUpdate {
     private static Movie m = null;
 
     public static void display() {
-        System.out.println("Enter the ID of the movie to update");
+        System.out.println("Enter the name of the movie to update");
         String movieId = SC.nextLine();
         m = MovieController.MOVIES.get(movieId);
 

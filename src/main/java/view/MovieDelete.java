@@ -8,7 +8,7 @@ import static model.Main.VIEW_STATE;
 
 public class MovieDelete {
     public static void display() {
-        System.out.println("Enter the ID of the movie to delete");
+        System.out.println("Enter the name of the movie to delete");
         String movieId = SC.nextLine();
         Movie m = MovieController.MOVIES.get(movieId);
         if(m == null) {

@@ -28,7 +28,7 @@ public class PricingController {
         MovieTag movieTag = movieTicket.getMovie().getMovieTag();
         DayType dayType = movieTicket.getDayType();
         boolean isSixpm = false;
-        if(bookingTime > 18.00){
+        if(bookingTime >= 18.00){
             isSixpm = true;
         }
 

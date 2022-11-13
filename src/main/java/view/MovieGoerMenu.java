@@ -17,7 +17,8 @@ public class MovieGoerMenu {
                 4) See Top 5 ranking by ticket sales
                 5) See Top 5 ranking by overall reviewers' ratings
                 6) Add Review for a movie
-                7) Logout""");
+                7) Logout
+                """);
 
         int choice = Integer.parseInt(SC.nextLine());
         switch (choice) {
@@ -38,6 +39,7 @@ public class MovieGoerMenu {
     public static void displayReviewMenu() {  //UNTESTED AS OF FRI NIGHT. 233AM i go sleep first sorry
         System.out.println("These are the movies you have watched!");
         MovieGoer movieGoer = (MovieGoer) VIEW_STATE.getCurrUser();
+
         HashSet<Movie> watchedMovies = new HashSet<>();
         // print movies that person have booked
         movieGoer.getBookings().forEach(bookings -> {
@@ -46,6 +48,12 @@ public class MovieGoerMenu {
                 watchedMovies.add(ticket.getMovie());
             });
         });
+
+        if(watchedMovies.size() == 0) {
+            System.out.println("You have not watched any movies with us :(\n");
+            VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+            return;
+        }
 
         System.out.println("What is the name of the Movie You are reviewing?");
         String movieName = SC.nextLine();

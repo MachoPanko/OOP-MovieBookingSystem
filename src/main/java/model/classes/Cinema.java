@@ -5,7 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+/**
+ *
+ */
 
 public class Cinema implements Serializable {
     public static final int ROWS = 10;
@@ -23,7 +25,7 @@ public class Cinema implements Serializable {
     /**
      * Constructor for Cinema class
      * @param cinemaCode The individual code number that the cinema belongs to
-     * @param cinemaClass
+     * @param cinemaClass A CinemaType enum
      */
     public Cinema(int cinemaCode, CinemaType cinemaClass){
         this.cinemaCode = cinemaCode;
@@ -33,16 +35,46 @@ public class Cinema implements Serializable {
         this.moviesShown = new Movie[this.showTiming.TIME.length];
     }
 
+    /**
+     * Gets the cinema code
+     * @return cinemaCode
+     */
     public int getCinemaCode() {
         return cinemaCode;
     }
+
+    /**
+     * Gets the seating layout
+     * @return seatingLayout
+     */
     public boolean[][][] getSeatingLayout() {
         return seatingLayout;
     }
 
+    /**
+     * This method is to book seats
+     * @param timingIdx
+     * @param row The row of where the seat is
+     * @param col The column of where the seat is
+     */
     public void bookSeating(int timingIdx, int row, int col){ seatingLayout[timingIdx][row][col] = true; }
+
+    /**
+     * Gets the cinema class
+     * @return cinemaClass
+     */
     public CinemaType getCinemaClass() { return cinemaClass; }
+
+    /**
+     * Gets the show timing
+     * @return showTiming
+     */
     public Showtime getShowTiming() { return showTiming; }
+
+    /**
+     * This method displays the layout of the seatings
+     * @param timingIdx The index of the movie timing
+     */
 
     public void display(int timingIdx){
         System.out.print("                                    Screen                                          \n ");
@@ -71,6 +103,11 @@ public class Cinema implements Serializable {
         }
     }
 
+    /**
+     * Sets the movies shown
+     * @param m A movie object
+     * @param idx The index of the movies shown
+     */
     public void setMoviesShown(Movie m, int idx){
         this.moviesShown[idx] = m;
     }
@@ -87,6 +124,10 @@ public class Cinema implements Serializable {
         return movies;
     }
 
+    /**
+     * Overrides toString
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

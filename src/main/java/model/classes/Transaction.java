@@ -12,10 +12,10 @@ public class Transaction implements Serializable  {
 
     /**
      *
-     * @param transactionID
-     * @param totalPrice
-     * @param date
-     * @param transactionType
+     * @param transactionID The Id of the transaction made
+     * @param totalPrice The total price of all tickets booked
+     * @param date The date of when the transaction is made
+     * @param transactionType The type of transaction that is made
      */
     public Transaction(String transactionID,
                        double totalPrice,
@@ -28,32 +28,32 @@ public class Transaction implements Serializable  {
     }
 
     /**
-     *
-     * @return
+     * Gets the transaction id
+     * @return transactionID
      */
     public String getTransactionID() {
         return transactionID;
     }
 
     /**
-     *
-     * @return
+     * Gets the total price
+     * @return totalPrice
      */
     public double getTotalPrice() {
         return totalPrice;
     }
 
     /**
-     *
-     * @return
+     * Gets the date
+     * @return date
      */
     public String getDate() {
         return date;
     }
 
     /**
-     *
-     * @return
+     * Gets the transaction type
+     * @return transactionType
      */
     public TransactionType getTransactionType() {
         return transactionType;
@@ -78,8 +78,8 @@ public class Transaction implements Serializable  {
 //    }
 
     /**
-     *
-     * @return
+     * Overrides toString
+     * @return String
      */
     @Override
     public String toString() {

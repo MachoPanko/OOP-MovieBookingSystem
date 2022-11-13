@@ -3,6 +3,9 @@ package model.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ *
+ */
 
 public class Booking implements Serializable {
     private final String bookingId;
@@ -15,10 +18,10 @@ public class Booking implements Serializable {
     /**
      * Constructor for Booking class
      * @param bookingId A randomly generated string of character and numbers
-     * @param movieGoer A
+     * @param movieGoer A MovieGoer object
      * @param date The date that the movieGoer is booking the ticket
      * @param movieTickets ArrayList of movieTickets
-     * @param transaction
+     * @param transaction A Transaction object
      * @param cineplexName The name of the cineplex that the movierGoer is going to go to
      */
     public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTickets, Transaction transaction, String cineplexName) {
@@ -31,31 +34,55 @@ public class Booking implements Serializable {
     }
 
     /**
-     *
+     * Gets the booking id
      * @return bookingId
      */
     public String getBookingId() {
         return bookingId;
     }
 
+    /**
+     * Gets the MovieGoer object
+     * @return MovieGoer
+     */
     public MovieGoer getMovieGoer() {
         return movieGoer;
     }
 
+    /**
+     * Gets the date
+     * @return date
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * Gets the array of movietickets
+     * @return movieTickets
+     */
     public ArrayList<MovieTicket> getMovieTickets() {
         return movieTickets;
     }
 
+    /**
+     * Gets the transaction object
+     * @return transaction
+     */
     public Transaction getTransaction() {
         return transaction;
     }
 
+    /**
+     * Gets the cineplex name
+     * @return cineplexName
+     */
     public String getCineplexName() { return cineplexName; }
 
+    /**
+     * Overrides toString
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[\n");

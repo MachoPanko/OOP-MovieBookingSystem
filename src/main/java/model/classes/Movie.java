@@ -26,13 +26,13 @@ public class Movie implements Serializable {
 
     /**
      * Constructor for Movie class
-     * @param movieTitle
+     * @param movieTitle The title of the movie
      * @param movieTag
      * @param movieStatus
      * @param movieSynopsis
      * @param movieDirector
      * @param ageRating
-     * @param casts
+     * @param casts An array of cast names
      */
     public Movie(String movieTitle,
                  MovieTag movieTag,
@@ -61,9 +61,20 @@ public class Movie implements Serializable {
         return reviews;
     }
 
+    /**
+     * Gets the ticket sales
+     * @return tickeSales
+     */
     public int getTicketSales() { return ticketSales; }
+
+    /**
+     * Increases the ticket sales
+     */
     public void increaseTicketSales() { this.ticketSales++; }
 
+    /**
+     * Prints the reviews
+     */
     public void printReviews(){
         System.out.println(movieRating);
         for (Review r : this.reviews){
@@ -71,56 +82,129 @@ public class Movie implements Serializable {
         }
     }
 
+    /**
+     * Updates the reviews
+     * @param newReview A Review object
+     */
     public void updateReviews(Review newReview) {
         this.numberOfRatings++;
         this.movieRating = (this.movieRating*(numberOfRatings-1)+newReview.getCustomerRating())/numberOfRatings;
         this.reviews.add(newReview);
     }
 
+    /**
+     * Sets the movie title
+     * @param movieTitle The title of the movie
+     */
+
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
+
+    /**
+     * Gets the movie title
+     * @return movieTitle
+     */
     public String getMovieTitle() {
         return movieTitle;
     }
 
+    /**
+     * Sets the movie tag
+     * @param movieTag An enum of movie tags
+     */
     public void setMovieTag(MovieTag movieTag) {
         this.movieTag = movieTag;
     }
+
+    /**
+     * Gets the movie tag
+     * @return movieTag
+     */
     public MovieTag getMovieTag() {
         return movieTag;
     }
 
+    /**
+     * Sets the movie status
+     * @param movieStatus An enum of movie status
+     */
+
     public void setMovieStatus(MovieStatus movieStatus) {
         this.movieStatus = movieStatus;
     }
+
+    /**
+     * Gets the movie status
+     * @return movieStatus
+     */
     public MovieStatus getMovieStatus() {
         return movieStatus;
     }
 
+    /**
+     * Sets the movie sypnosis
+     * @param movieSynopsis The sypnosis of the movie
+     */
     public void setMovieSynopsis(String movieSynopsis) {
         this.movieSynopsis = movieSynopsis;
     }
+
+    /**
+     * Gets the movie sypnosis
+     * @return movieSypnosis
+     */
     public String getMovieSynopsis() {
         return movieSynopsis;
     }
 
+    /**
+     * Sets the movie rating
+     * @param movieRating The rating of the movie
+     */
+
     public void setMovieRating(double movieRating) { this.movieRating = movieRating; }
+
+    /**
+     * Gets the movie rating
+     * @return movieRating
+     */
     public double getMovieRating() { return movieRating; }
 
+    /**
+     * Sets the director of the movie
+     * @param movieDirector the movie director
+     */
     public void setMovieDirector(String movieDirector) {
         this.movieDirector = movieDirector;
     }
 
+    /**
+     * Sets the age rating
+     * @param ageRating age rating of the movie
+     */
     public void setAgeRating(AgeRating ageRating) {
         this.ageRating = ageRating;
     }
 
+    /**
+     * An array list of casts
+     * @return casts
+     */
     public ArrayList<String> getCasts() {
         return casts;
     }
+
+    /**
+     *Sets the array of casts
+     * @param casts An array of casts
+     */
     public void setCasts(ArrayList<String> casts) { this.casts = casts; }
 
+    /**
+     * Overrides toString
+     * @return String
+     */
     @Override
     public String toString() {
         // cut short movieSynopsis for displaying
@@ -148,6 +232,11 @@ public class Movie implements Serializable {
                 '}';
     }
 
+    /**
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -156,6 +245,10 @@ public class Movie implements Serializable {
         return Objects.equals(movieTitle, movie.movieTitle);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         return Objects.hash(movieTitle);

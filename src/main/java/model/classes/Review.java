@@ -10,7 +10,7 @@ public class Review implements Serializable {
 
     /**
      * Constructor for Review class
-     * @param customer
+     * @param customer A MovieGoer object
      * @param customerReview The review that the customer gives to the movie
      * @param customerRating The rating that the customer gives to the movie
      */
@@ -20,16 +20,34 @@ public class Review implements Serializable {
         this.customerRating = customerRating;
     }
 
+    /**
+     * Gets the MovieGoer object
+     * @return customer
+     */
     public MovieGoer getCustomer() {
         return customer;
     }
+
+    /**
+     * Gets the customer review
+     * @return customerReview
+     */
     public String getCustomerReview() {
         return customerReview;
     }
+
+    /**
+     * Gets the customer rating
+     * @return customerRating
+     */
     public double getCustomerRating() {
         return customerRating;
     }
 
+    /**
+     * Overrides toString
+     * @return String
+     */
     @Override
     public String toString() {
         return "Review{" +

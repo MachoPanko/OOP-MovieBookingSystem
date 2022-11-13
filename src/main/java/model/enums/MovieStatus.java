@@ -1,7 +1,7 @@
 package model.enums;
 
 /**
- * Status of movie
+ * Enumerations of status of movie
  */
 public enum MovieStatus {
 

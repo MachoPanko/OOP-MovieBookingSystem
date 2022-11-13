@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
+ * To make a Cinema object
  */
 
 public class Cinema implements Serializable {

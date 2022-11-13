@@ -2,6 +2,9 @@ package model.classes;
 
 import java.io.Serializable;
 
+/**
+ * To make a showtime object
+ */
 public class Showtime implements Serializable {
     public final String[] TIME = {
             "0000",
@@ -23,6 +26,10 @@ public class Showtime implements Serializable {
             "2300",
     };
 
+    /**
+     * Gets the size of the TIME array
+     * @return TIME.length
+     */
     public int size() {
         return this.TIME.length;
     }

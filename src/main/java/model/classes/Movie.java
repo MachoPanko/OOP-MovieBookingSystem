@@ -7,7 +7,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-
+/**
+ * To make a Movie object
+ */
 
 public class Movie implements Serializable {
 

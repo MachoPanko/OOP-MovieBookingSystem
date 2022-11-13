@@ -3,7 +3,9 @@ package model.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
+/**
+ * To make a MovieGoer object
+ */
 public class MovieGoer implements Serializable, User {
     private String username;
 

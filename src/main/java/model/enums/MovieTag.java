@@ -11,7 +11,7 @@ public enum MovieTag {
     private String tag;
 
     /**
-     * Constructor for MovieTage
+     * Constructor for MovieTag
      * @param tag string, invariants unchecked
      */
     MovieTag(String tag){
@@ -19,9 +19,9 @@ public enum MovieTag {
     }
 
     /**
-     * Converts string to MovieTage
+     * Converts string to MovieTag
      * @param choice string, invariants unchecked
-     * @return MovieTage
+     * @return MovieTag
      */
     public static MovieTag getMovieTag(String choice) {
         choice = choice.toUpperCase();

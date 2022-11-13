@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
+ * To make a Booking object
  */
 
 public class Booking implements Serializable {

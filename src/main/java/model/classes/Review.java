@@ -2,6 +2,9 @@ package model.classes;
 
 import java.io.Serializable;
 
+/**
+ * To make a Review object
+ */
 
 public class Review implements Serializable {
     private final MovieGoer customer;

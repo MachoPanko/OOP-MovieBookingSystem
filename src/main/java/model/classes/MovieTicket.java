@@ -5,7 +5,9 @@ import model.enums.DayType;
 
 import java.io.Serializable;
 
-
+/**
+ * To make a MovieTicket object
+ */
 
 public class MovieTicket implements Serializable {
     private final Movie movie;

@@ -3,7 +3,9 @@ package model.classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
+/**
+ *  To make a Cineplex object
+ */
 public class Cineplex implements Serializable {
 
     private final String cineplexName;

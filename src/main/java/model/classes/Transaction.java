@@ -4,6 +4,9 @@ import model.enums.TransactionType;
 
 import java.io.Serializable;
 
+/**
+ * To make a Transaction object
+ */
 public class Transaction implements Serializable  {
     private final String transactionID;
     private final double totalPrice;

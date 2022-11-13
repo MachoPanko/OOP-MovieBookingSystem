@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 
+
 public class CineplexController {
     private static final String filename = "src/database/cinemaDatabase.ser";
 

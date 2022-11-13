@@ -138,4 +138,9 @@ public class Movie implements Serializable {
         Movie movie = (Movie) o;
         return Objects.equals(movieTitle, movie.movieTitle);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(movieTitle);
+    }
 }

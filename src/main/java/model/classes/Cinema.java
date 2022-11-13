@@ -39,12 +39,21 @@ public class Cinema implements Serializable {
 
     public void display(int timingIdx){
         System.out.print("                                    Screen                                          \n ");
-        for (int i = 0; i < ROWS; ++i) {
-            System.out.print(i + "\t ");
+        for (int i = 0; i < COLS; ++i) {
+
+            if(i > 9) {
+                System.out.print(i + " ");
+            } else if(i == 9) {
+                System.out.print("  " + i + " ");
+            } else {
+                System.out.print("  " + i);
+            }
+
         }
         System.out.println();
 
         for(int i = 0; i < ROWS; ++i) {
+            System.out.print(i + " ");
             for(int j = 0; j < COLS; ++j) {
                 if(this.seatingLayout[timingIdx][i][j])
                     System.out.print("[X]");
@@ -87,7 +96,7 @@ public class Cinema implements Serializable {
                 "cinemaCode=" + cinemaCode +
                 ", cinemaClass=" + cinemaClass +
                 ", showTiming=" + showTiming +
-                ", moviesShown=[" + sb.toString() + "]" +
+                ", moviesShown=[" + sb + "]" +
                 '}';
     }
 }

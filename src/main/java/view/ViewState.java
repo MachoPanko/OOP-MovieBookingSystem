@@ -13,6 +13,8 @@ public class ViewState {
         StaffView,
         ReviewView,
         ConfigureSystemSettingView,
+        ConfigureCinemaView,
+        ConfigureCinemaSubmenu,
         MovieGoerLoginView,
         ViewMoviesView,
         AddMovieView,

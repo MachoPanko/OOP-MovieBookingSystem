@@ -46,6 +46,8 @@ public class Main {
                 case UpdateMovieViewSubmenu -> MovieUpdate.displaySubmenu();
                 case DeleteMovieView -> MovieDelete.display();
                 case ConfigureSystemSettingView -> ConfigureSystemSettingView.display();
+                case ConfigureCinemaView -> ConfigureCinemaView.display();
+                case ConfigureCinemaSubmenu -> ConfigureCinemaView.displaySubmenu();
                 case MovieGoerLoginView -> MovieGoerLogin.display();
                 case MovieGoerView -> MovieGoerMenu.display();
                 case BookingSystemView -> BookingSystem.display();

@@ -40,6 +40,11 @@ public class BookingSystem {
         String cineplexStr = SC.nextLine();
         Cineplex currentCineplex = CineplexController.CINEPLEXES.get(cineplexStr); ///hmm feels weird not to list all movies before typing movie name but nvm lifestyle stuff fix ltr
 
+        if(currentCineplex == null) {
+            System.out.println("We dont have that cineplex! Try again!");
+            return;
+        }
+
         for(Movie v: MovieController.getMoviesByCineplex(cineplexStr)) {
             boolean isStaff = VIEW_STATE.getCurrUser() instanceof Staff;
             if (!isStaff) {
@@ -141,6 +146,8 @@ public class BookingSystem {
                 MovieTicket currentMovieTicket = new MovieTicket(movieChosen, cinemaType, dayType, isStudent, isElderly, row, col, cinemaChosen.getCinemaCode());
                 totalPrice += PricingController.getPrice(currentMovieTicket, currentTime);
                 movieTickets.add(currentMovieTicket);
+                movieChosen.increaseTicketSales();
+
                 System.out.println("Please Enter 1 if you would like to buy another ticket or enter any other number else if you wish to stop.");
                 choice = SC.nextInt();
                 SC.nextLine();

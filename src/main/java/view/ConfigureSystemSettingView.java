@@ -19,9 +19,11 @@ public class ConfigureSystemSettingView {
                 Configure System Setting
                 1) Add all
                 2) Configure holidays
-                3) Exit""");
+                3) Configure cinema
+                4) Exit""");
         int choice = SC.nextInt();
         SC.nextLine();
+
         ArrayList<Movie> m = new ArrayList<>(MovieController.MOVIES.values());
         System.out.println(m);
         switch (choice) {
@@ -46,8 +48,8 @@ public class ConfigureSystemSettingView {
                 }
                 VIEW_STATE.setCurrState(ViewState.State.StaffView);
             }
-
+            case 3 -> VIEW_STATE.setCurrState(ViewState.State.ConfigureCinemaView);
+            case 4 -> VIEW_STATE.setCurrState(ViewState.State.StaffView);
         }
-        VIEW_STATE.setCurrState(ViewState.State.StaffView);
     }
 }

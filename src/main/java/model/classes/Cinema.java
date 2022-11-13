@@ -38,9 +38,9 @@ public class Cinema implements Serializable {
     public Showtime getShowTiming() { return showTiming; }
 
     public void display(int timingIdx){
-        System.out.println("                                    Screen                                          \n ");
+        System.out.print("                                    Screen                                          \n ");
         for (int i = 0; i < ROWS; ++i) {
-            System.out.println(i + "\t");
+            System.out.print(i + "\t ");
         }
         System.out.println();
 

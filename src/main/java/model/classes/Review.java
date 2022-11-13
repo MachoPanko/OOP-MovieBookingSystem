@@ -28,7 +28,7 @@ public class Review implements Serializable {
         return "Review{" +
                 "customer=" + customer +
                 ", customerReview='" + customerReview + '\'' +
-                ", customerRating=" + customerRating +
+                ", customerRating=" + String.format("%.2f", customerRating) +
                 '}';
     }
 }

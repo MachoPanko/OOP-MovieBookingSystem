@@ -4,66 +4,61 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Booking implements Serializable {
-    private String bookingId;
-    private MovieGoer movieGoer;
-    private String date;
-    private ArrayList<MovieTicket> movieTickets;
-    private Transaction transaction;
+    private final String bookingId;
+    private final MovieGoer movieGoer;
+    private final String date;
+    private final ArrayList<MovieTicket> movieTickets;
+    private final Transaction transaction;
+    private final String cineplexName;
 
-    public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTickets, Transaction transaction) {
+    public Booking(String bookingId, MovieGoer movieGoer, String date, ArrayList<MovieTicket> movieTickets, Transaction transaction, String cineplexName) {
         this.bookingId = bookingId;
         this.movieGoer = movieGoer;
         this.date = date;
         this.movieTickets = movieTickets;
         this.transaction = transaction;
+        this.cineplexName = cineplexName;
     }
 
     public String getBookingId() {
         return bookingId;
     }
 
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
-    }
-
     public MovieGoer getMovieGoer() {
         return movieGoer;
-    }
-
-    public void setMovieGoer(MovieGoer movieGoer) {
-        this.movieGoer = movieGoer;
     }
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public ArrayList<MovieTicket> getMovieTickets() {
         return movieTickets;
-    }
-
-    public void setMovieTickets(ArrayList<MovieTicket> movieTickets) {
-        this.movieTickets = movieTickets;
     }
 
     public Transaction getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(Transaction transaction) {
-        this.transaction = transaction;
-    }
+    public String getCineplexName() { return cineplexName; }
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder("[\n");
+
+        for(MovieTicket movieTicket : this.getMovieTickets()) {
+            sb.append("\t");
+            sb.append(movieTicket);
+            sb.append("\n");
+        }
+
+        sb.append("]");
+
         return "Booking ID: " + this.getBookingId() + "\n" +
                 "Name: " + this.getMovieGoer().getUsername() + "\n" +
+                "Cineplex: " + this.cineplexName + "\n" +
                 "Date: " + this.getDate() + "\n" +
-                "Ticket: " + this.getMovieTickets().toString() + "\n" +
+                "Tickets: " + sb + "\n" +
                 "Transaction: " + this.getTransaction().toString() + "\n";
     }
 }

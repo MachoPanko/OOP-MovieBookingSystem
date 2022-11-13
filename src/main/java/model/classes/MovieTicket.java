@@ -36,19 +36,15 @@ public class MovieTicket implements Serializable {
     public Movie getMovie() { return movie; }
     public CinemaType getCinemaType() { return cinemaType; }
     public DayType getDayType() { return dayType; }
-    public int getCinemaRoom() { return cinemaRoom; }
     public boolean isElderly() { return isElderly; }
     public boolean isStudent() { return isStudent; }
-    public int getSeatRow() { return seatRow; }
-    public int getSeatCol() { return seatCol; }
 
     @Override
     public String toString() {
-        return "MovieTicket{" +
-                "movie=" + movie +
+        return "MovieTicket { movie=" + movie +
                 ", cinemaType=" + cinemaType +
                 ", dayType=" + dayType +
-                ", cinemaRoom=" + cinemaRoom +
+                ", hallNo=" + cinemaRoom +
                 ", isElderly=" + isElderly +
                 ", isStudent=" + isStudent +
                 ", seatRow=" + seatRow +

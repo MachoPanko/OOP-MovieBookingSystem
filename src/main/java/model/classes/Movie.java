@@ -106,12 +106,24 @@ public class Movie implements Serializable {
 
     @Override
     public String toString() {
-        return "Movie{" +
+        // cut short movieSynopsis for displaying
+        StringBuilder sb = new StringBuilder();
+
+        // print all of short or print 10 chars
+        for(int i = 0; i < Math.min(movieSynopsis.length(), 20); ++i) {
+            sb.append(movieSynopsis.charAt(i));
+        }
+
+        if(sb.length() <= movieSynopsis.length()) {
+            sb.append("....");
+        }
+
+        return "Movie {" +
                 "  movieTitle='" + movieTitle + '\'' +
                 ", movieTag=" + movieTag +
                 ", movieStatus=" + movieStatus +
-                ", movieSynopsis='" + movieSynopsis + '\'' +
-                ", movieRating=" + movieRating +
+                ", movieSynopsis='" + sb + '\'' +
+                ", movieRating=" + String.format("%.2f", movieRating) +
                 ", movieDirector='" + movieDirector + '\'' +
                 ", ageRating=" + ageRating +
                 ", casts=" + casts +

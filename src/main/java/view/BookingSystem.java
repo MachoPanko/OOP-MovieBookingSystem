@@ -35,6 +35,7 @@ public class BookingSystem {
                 - DOWNTOWN EAST
                 - CAUSEWAY POINT
                 """);
+
         String cineplexStr = SC.nextLine();
         Cineplex currentCineplex = CineplexController.CINEPLEXES.get(cineplexStr); ///hmm feels weird not to list all movies before typing movie name but nvm lifestyle stuff fix ltr
 
@@ -64,16 +65,30 @@ public class BookingSystem {
                 }
             }
 
+            // invalid cinema
+            if(cinemaChosen == null) {
+                System.out.println("You have chosen an invalid cinemaType!");
+                VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+                return;
+            }
+
             System.out.println("At which time do you want to watch it?");
 
+            boolean haveMovie = false;
             // print out the timings with this movie shown
             for(int i = 0; i < cinemaChosen.getShowTiming().size(); ++i) {
                 Movie shown = cinemaChosen.getMoviesShownFiltered().get(i);
                 if(shown != null && shown.equals(movieChosen)) {
+                    haveMovie = true;
                     System.out.println((i + 1) + ")\t" +cinemaChosen.getShowTiming().TIME[i]);
-                } else {
-                    System.out.println((i + 1) + ")\tNA");
                 }
+            }
+
+            if(!haveMovie) {
+                System.out.println("We dont have the movie you are looking for, for " + cinemaType + " @ " + currentCineplex.getCineplexName() + "!");
+                System.out.println("Please search again");
+                VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
+                return;
             }
 
             int showtimeChoiceIdx = SC.nextInt() - 1;
@@ -84,11 +99,11 @@ public class BookingSystem {
                 return;
             }
 
+            System.out.println("Dear " + movieGoer.getUsername() + ", You Have Chosen To Buy A Ticket For " + movieChosen.getMovieTitle() + " with a " + cinemaType + " experience.");
             // Repeated booking loop
-            int choice;
+            int choice = 1;
             do {
-                System.out.println("Dear " + movieGoer.getUsername() + ", You Have Chosen To Buy A Ticket For " + movieChosen.getMovieTitle() + " with a " + cinemaType + " experience.");
-                System.out.println("Please Choose your seat. Eg : row 1 col 1 ");
+                System.out.println("Please Choose your seat. Eg : row 0 col 0 ");
 
                 cinemaChosen.display(showtimeChoiceIdx);
                 System.out.println("Row:");
@@ -98,6 +113,12 @@ public class BookingSystem {
                 System.out.println("Col");
                 int col = SC.nextInt();
                 SC.nextLine();
+
+                // check if seat alr book
+                if(cinemaChosen.getSeatingLayout()[showtimeChoiceIdx][row][col]) {
+                    System.out.println("The seat you want is already booked! Try again!");
+                    continue;
+                }
 
                 System.out.println("Student?\n1) Yes\n2) No");
                 int student = SC.nextInt();
@@ -131,6 +152,7 @@ public class BookingSystem {
                     - CREDITCARD
                     - CASH
                     """);
+
             String transactionChoice = SC.nextLine();
             //UPDATE USERDATABASE update transaction choice
 
@@ -138,7 +160,7 @@ public class BookingSystem {
                     Booking(UUID.randomUUID().toString(),
                     movieGoer, todaysDate, movieTickets,
                     new Transaction(UUID.randomUUID().toString(), totalPrice, todaysDate,
-                            TransactionType.getTransactionType(transactionChoice))));
+                            TransactionType.getTransactionType(transactionChoice)), currentCineplex.getCineplexName()));
 
             VIEW_STATE.setCurrState(ViewState.State.MovieGoerView);
         } else {

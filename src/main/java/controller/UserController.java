@@ -23,6 +23,7 @@ public class UserController {
         HashMap<String, MovieGoer> hm = DatabaseLoader.loadDb(filename);
         if(hm == null || hm.size() == 0) {
             MovieGoer m = new MovieGoer("John7", 999, 21, "John7@gmail.com");
+
             m.updateBookings(new Booking(UUID.randomUUID().toString(), m, "27-11-2022", new ArrayList<>(List.of(
                     new MovieTicket(MovieController.MOVIES.get("Ice Age 2"), CinemaType.Economy, DayType.FRIDAY, true, false, 0, 0, 1),
                     new MovieTicket(MovieController.MOVIES.get("Fast and Furious 420"), CinemaType.Economy, DayType.FRIDAY, true, false, 0, 0, 1),
@@ -31,7 +32,7 @@ public class UserController {
                     new MovieTicket(MovieController.MOVIES.get("Parasite"), CinemaType.Economy, DayType.FRIDAY, true, false, 0, 0, 1),
                     new MovieTicket(MovieController.MOVIES.get("Jon7"), CinemaType.Economy, DayType.FRIDAY, true, false, 0, 0, 1),
                     new MovieTicket(MovieController.MOVIES.get("Slow and Chill 7"), CinemaType.Economy, DayType.FRIDAY, true, false, 0, 0, 1)
-            )), new Transaction(UUID.randomUUID().toString(), 70.0, "27-11-2022", TransactionType.CREDITCARD)));
+            )), new Transaction(UUID.randomUUID().toString(), 70.0, "27-10-2022", TransactionType.CREDITCARD), "AMK HUB"));
 
             USER_DATABASE.put("John7", m);
         }

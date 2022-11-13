@@ -46,7 +46,7 @@ public enum DayType {  /// MUST INITIALIZE WITH yyyy-MM-dd format
 
     private static Date parseDate(String date) {
         try {
-            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            return new SimpleDateFormat("dd-MM-yyyy").parse(date);
         } catch (ParseException e) {
             return null;
         }

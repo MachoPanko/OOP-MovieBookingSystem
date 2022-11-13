@@ -12,8 +12,13 @@ import java.util.UUID;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for movie creation
+ */
 public class MovieCreation {
-
+    /**
+     * To display the movie creation screen
+     */
     public static void display() {
         System.out.println("Enter title of movie:");
         String movieTitle = SC.nextLine();

@@ -13,8 +13,13 @@ import model.enums.TransactionType;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for booking movie tickets
+ */
 public class BookingSystem {
-
+    /**
+     * To display the booking movie ticket screen
+     */
     public static void display() {
         //INIT Total price
         double totalPrice = 0;

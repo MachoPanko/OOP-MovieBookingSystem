@@ -4,7 +4,13 @@ import model.classes.MovieGoer;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for moviegoer login
+ */
 public class MovieGoerLogin {
+    /**
+     * To display the login screen for moviegoer
+     */
     public static void display() {
         System.out.println("Guest login!");
         System.out.println("1) Register new account\n2) Log in to existing account \n3) Back");

@@ -11,8 +11,13 @@ import java.util.ArrayList;
 
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for the list of top 5 movies
+ */
 public class ListTop5Movie {
-
+    /**
+     * To display the top 5 movies according to its rating
+     */
     public static void displayByRating(){
         DecimalFormat df = new DecimalFormat("0.00");
         System.out.println("-----------------------------------");
@@ -40,6 +45,9 @@ public class ListTop5Movie {
         }
     }
 
+    /**
+     * To display the top 5 movies according to its ticket sales
+     */
     public static void displayByTicketSales(){
         System.out.println("-----------------------------------");
         System.out.println("Top 5 movies according to ticket sales");

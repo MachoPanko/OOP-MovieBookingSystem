@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for movie list
+ */
 public class MovieListing {
     public static void display() {
         System.out.println("""

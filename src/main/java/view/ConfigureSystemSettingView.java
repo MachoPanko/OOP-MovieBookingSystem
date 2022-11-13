@@ -13,7 +13,13 @@ import static java.util.stream.Collectors.toCollection;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for system setting
+ */
 public class ConfigureSystemSettingView {
+    /**
+     * To display the system setting screen
+     */
     public static void display() {
         System.out.println("""
                 Configure System Setting

@@ -11,11 +11,17 @@ import model.enums.MovieStatus;
 import static model.Main.SC;
 import static model.Main.VIEW_STATE;
 
+/**
+ * View for staff to configure cinema setting
+ */
 public class ConfigureCinemaView {
 
     private static Cineplex currentCineplex;
     private static Cinema cinema;
 
+    /**
+     * To display configure cinema setting screen
+     */
     public static void display() {
         System.out.println("""
                 Please Enter the name of the Cineplex to configure!!
@@ -50,6 +56,9 @@ public class ConfigureCinemaView {
         VIEW_STATE.setCurrState(ViewState.State.ConfigureCinemaSubmenu);
     }
 
+    /**
+     * To display the second page of the configure cinema
+     */
     public static void displaySubmenu() {
         System.out.println("""
                 Configure Cinema!!

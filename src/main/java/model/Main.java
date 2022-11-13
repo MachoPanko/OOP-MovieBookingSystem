@@ -5,6 +5,9 @@ import utils.DatabaseLoader;
 import view.*;
 import java.util.Scanner;
 
+/**
+ * This is where we run the MOBLIMA menu
+ */
 public class Main {
 
     /**
@@ -18,6 +21,10 @@ public class Main {
      */
     public static final Scanner SC = new Scanner(System.in);
 
+    /**
+     * To run the menu
+     * @param args Stores input used to run it in string array
+     */
     public static void main(String[] args) {
         // register ctrl-c handler, we should save all database on exit or unexpected shutdown
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
